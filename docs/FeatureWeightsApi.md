@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_column_weights**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} put_column_weights(org_id, dataset_id, entity_weight_record)
+> Response put_column_weights(org_id, dataset_id, body)
 
 Put column weights for the specified dataset
 
@@ -103,7 +103,7 @@ Put column weights for the specified dataset
 import time
 import whylabs_client
 from whylabs_client.api import feature_weights_api
-from whylabs_client.model.entity_weight_record import EntityWeightRecord
+from whylabs_client.model.response import Response
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -128,33 +128,12 @@ with whylabs_client.ApiClient(configuration) as api_client:
     api_instance = feature_weights_api.FeatureWeightsApi(api_client)
     org_id = "org-123" # str | 
     dataset_id = "model-123" # str | 
-    entity_weight_record = EntityWeightRecord(
-        segment_weights=[
-            SegmentWeight(
-                segment=Segment(
-                    tags=[
-                        SegmentTag(
-                            key="key_example",
-                            value="value_example",
-                        ),
-                    ],
-                ),
-                weights={
-                    "key": 3.14,
-                },
-            ),
-        ],
-        metadata=EntityWeightRecordMetadata(
-            version=1,
-            updated_timestamp=1,
-            author="author_example",
-        ),
-    ) # EntityWeightRecord | 
+    body = "body_example" # str | 
 
     # example passing only required values which don't have defaults set
     try:
         # Put column weights for the specified dataset
-        api_response = api_instance.put_column_weights(org_id, dataset_id, entity_weight_record)
+        api_response = api_instance.put_column_weights(org_id, dataset_id, body)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling FeatureWeightsApi->put_column_weights: %s\n" % e)
@@ -167,11 +146,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  |
  **dataset_id** | **str**|  |
- **entity_weight_record** | [**EntityWeightRecord**](EntityWeightRecord.md)|  |
+ **body** | **str**|  |
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+[**Response**](Response.md)
 
 ### Authorization
 

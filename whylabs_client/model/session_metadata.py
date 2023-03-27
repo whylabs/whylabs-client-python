@@ -85,7 +85,6 @@ class SessionMetadata(ModelNormal):
             'session_id': (str,),  # noqa: E501
             'org_id': (str,),  # noqa: E501
             'model_id': (str,),  # noqa: E501
-            'closed': (bool,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
         }
 
@@ -98,7 +97,6 @@ class SessionMetadata(ModelNormal):
         'session_id': 'sessionId',  # noqa: E501
         'org_id': 'orgId',  # noqa: E501
         'model_id': 'modelId',  # noqa: E501
-        'closed': 'closed',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
     }
 
@@ -146,7 +144,6 @@ class SessionMetadata(ModelNormal):
             session_id (str): The id of the session. [optional]  # noqa: E501
             org_id (str): The org id of the session. [optional]  # noqa: E501
             model_id (str): The model id of the session. There should only be a single model.. [optional]  # noqa: E501
-            closed (bool): Whether or not the session is open for uploading dataset profiles to.. [optional]  # noqa: E501
             user_id (str): The generated user id for the session.. [optional]  # noqa: E501
         """
 
@@ -232,7 +229,6 @@ class SessionMetadata(ModelNormal):
             session_id (str): The id of the session. [optional]  # noqa: E501
             org_id (str): The org id of the session. [optional]  # noqa: E501
             model_id (str): The model id of the session. There should only be a single model.. [optional]  # noqa: E501
-            closed (bool): Whether or not the session is open for uploading dataset profiles to.. [optional]  # noqa: E501
             user_id (str): The generated user id for the session.. [optional]  # noqa: E501
         """
 

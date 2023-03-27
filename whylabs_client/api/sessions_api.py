@@ -22,10 +22,11 @@ from whylabs_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from whylabs_client.model.close_session_response import CloseSessionResponse
+from whylabs_client.model.async_log_response import AsyncLogResponse
+from whylabs_client.model.create_session_request import CreateSessionRequest
 from whylabs_client.model.create_session_response import CreateSessionResponse
-from whylabs_client.model.create_session_upload_response import CreateSessionUploadResponse
 from whylabs_client.model.get_session_response import GetSessionResponse
+from whylabs_client.model.log_async_request import LogAsyncRequest
 
 
 class SessionsApi(object):
@@ -39,74 +40,25 @@ class SessionsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.close_session_endpoint = _Endpoint(
-            settings={
-                'response_type': (CloseSessionResponse,),
-                'auth': [],
-                'endpoint_path': '/v0/sessions/{session_token}/close',
-                'operation_id': 'close_session',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'session_token',
-                ],
-                'required': [
-                    'session_token',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'session_token':
-                        (str,),
-                },
-                'attribute_map': {
-                    'session_token': 'session_token',
-                },
-                'location_map': {
-                    'session_token': 'path',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [],
-            },
-            api_client=api_client
-        )
         self.create_dataset_profile_upload_endpoint = _Endpoint(
             settings={
-                'response_type': (CreateSessionUploadResponse,),
+                'response_type': (AsyncLogResponse,),
                 'auth': [],
-                'endpoint_path': '/v0/sessions/{session_token}/upload',
+                'endpoint_path': '/v0/sessions/{session_id}/upload',
                 'operation_id': 'create_dataset_profile_upload',
                 'http_method': 'POST',
                 'servers': None,
             },
             params_map={
                 'all': [
-                    'session_token',
-                    'dataset_timestamp',
+                    'session_id',
+                    'log_async_request',
                 ],
                 'required': [
-                    'session_token',
+                    'session_id',
+                    'log_async_request',
                 ],
                 'nullable': [
-                    'dataset_timestamp',
                 ],
                 'enum': [
                 ],
@@ -119,18 +71,17 @@ class SessionsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'session_token':
+                    'session_id':
                         (str,),
-                    'dataset_timestamp':
-                        (int, none_type,),
+                    'log_async_request':
+                        (LogAsyncRequest,),
                 },
                 'attribute_map': {
-                    'session_token': 'session_token',
-                    'dataset_timestamp': 'dataset_timestamp',
+                    'session_id': 'session_id',
                 },
                 'location_map': {
-                    'session_token': 'path',
-                    'dataset_timestamp': 'query',
+                    'session_id': 'path',
+                    'log_async_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -139,7 +90,9 @@ class SessionsApi(object):
                 'accept': [
                     'application/json'
                 ],
-                'content_type': [],
+                'content_type': [
+                    'application/json'
+                ]
             },
             api_client=api_client
         )
@@ -154,8 +107,11 @@ class SessionsApi(object):
             },
             params_map={
                 'all': [
+                    'create_session_request',
                 ],
-                'required': [],
+                'required': [
+                    'create_session_request',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -169,10 +125,13 @@ class SessionsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
+                    'create_session_request':
+                        (CreateSessionRequest,),
                 },
                 'attribute_map': {
                 },
                 'location_map': {
+                    'create_session_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -181,7 +140,9 @@ class SessionsApi(object):
                 'accept': [
                     'application/json'
                 ],
-                'content_type': [],
+                'content_type': [
+                    'application/json'
+                ]
             },
             api_client=api_client
         )
@@ -191,17 +152,17 @@ class SessionsApi(object):
                 'auth': [
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/v0/sessions/{session_token}',
+                'endpoint_path': '/v0/sessions/{session_id}',
                 'operation_id': 'get_session',
                 'http_method': 'GET',
                 'servers': None,
             },
             params_map={
                 'all': [
-                    'session_token',
+                    'session_id',
                 ],
                 'required': [
-                    'session_token',
+                    'session_id',
                 ],
                 'nullable': [
                 ],
@@ -216,14 +177,14 @@ class SessionsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'session_token':
+                    'session_id':
                         (str,),
                 },
                 'attribute_map': {
-                    'session_token': 'session_token',
+                    'session_id': 'session_id',
                 },
                 'location_map': {
-                    'session_token': 'path',
+                    'session_id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -237,80 +198,10 @@ class SessionsApi(object):
             api_client=api_client
         )
 
-    def close_session(
-        self,
-        session_token,
-        **kwargs
-    ):
-        """naddeo Close a session, triggering its display in whylabs and making it no longer accept any additional data.  # noqa: E501
-
-        naddeo Close a session, triggering its display in whylabs and making it no longer accept any additional data.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.close_session(session_token, async_req=True)
-        >>> result = thread.get()
-
-        Args:
-            session_token (str):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            CloseSessionResponse
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['session_token'] = \
-            session_token
-        return self.close_session_endpoint.call_with_http_info(**kwargs)
-
     def create_dataset_profile_upload(
         self,
-        session_token,
+        session_id,
+        log_async_request,
         **kwargs
     ):
         """Create an upload for a given session.  # noqa: E501
@@ -319,14 +210,14 @@ class SessionsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_dataset_profile_upload(session_token, async_req=True)
+        >>> thread = api.create_dataset_profile_upload(session_id, log_async_request, async_req=True)
         >>> result = thread.get()
 
         Args:
-            session_token (str):
+            session_id (str):
+            log_async_request (LogAsyncRequest):
 
         Keyword Args:
-            dataset_timestamp (int, none_type): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -351,7 +242,7 @@ class SessionsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            CreateSessionUploadResponse
+            AsyncLogResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -376,12 +267,15 @@ class SessionsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['session_token'] = \
-            session_token
+        kwargs['session_id'] = \
+            session_id
+        kwargs['log_async_request'] = \
+            log_async_request
         return self.create_dataset_profile_upload_endpoint.call_with_http_info(**kwargs)
 
     def create_session(
         self,
+        create_session_request,
         **kwargs
     ):
         """Create a new session that can be used to upload dataset profiles from whylogs for display in whylabs.  # noqa: E501
@@ -390,9 +284,11 @@ class SessionsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_session(async_req=True)
+        >>> thread = api.create_session(create_session_request, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            create_session_request (CreateSessionRequest):
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -444,11 +340,13 @@ class SessionsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['create_session_request'] = \
+            create_session_request
         return self.create_session_endpoint.call_with_http_info(**kwargs)
 
     def get_session(
         self,
-        session_token,
+        session_id,
         **kwargs
     ):
         """Get information about a session.  # noqa: E501
@@ -457,11 +355,11 @@ class SessionsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_session(session_token, async_req=True)
+        >>> thread = api.get_session(session_id, async_req=True)
         >>> result = thread.get()
 
         Args:
-            session_token (str):
+            session_id (str):
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -513,7 +411,7 @@ class SessionsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['session_token'] = \
-            session_token
+        kwargs['session_id'] = \
+            session_id
         return self.get_session_endpoint.call_with_http_info(**kwargs)
 

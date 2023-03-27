@@ -23,6 +23,7 @@ from whylabs_client.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from whylabs_client.model.entity_weight_record import EntityWeightRecord
+from whylabs_client.model.response import Response
 
 
 class FeatureWeightsApi(object):
@@ -95,7 +96,7 @@ class FeatureWeightsApi(object):
         )
         self.put_column_weights_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': (Response,),
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -108,12 +109,12 @@ class FeatureWeightsApi(object):
                 'all': [
                     'org_id',
                     'dataset_id',
-                    'entity_weight_record',
+                    'body',
                 ],
                 'required': [
                     'org_id',
                     'dataset_id',
-                    'entity_weight_record',
+                    'body',
                 ],
                 'nullable': [
                 ],
@@ -132,8 +133,8 @@ class FeatureWeightsApi(object):
                         (str,),
                     'dataset_id':
                         (str,),
-                    'entity_weight_record':
-                        (EntityWeightRecord,),
+                    'body':
+                        (str,),
                 },
                 'attribute_map': {
                     'org_id': 'org_id',
@@ -142,7 +143,7 @@ class FeatureWeightsApi(object):
                 'location_map': {
                     'org_id': 'path',
                     'dataset_id': 'path',
-                    'entity_weight_record': 'body',
+                    'body': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -237,7 +238,7 @@ class FeatureWeightsApi(object):
         self,
         org_id,
         dataset_id,
-        entity_weight_record,
+        body,
         **kwargs
     ):
         """Put column weights for the specified dataset  # noqa: E501
@@ -246,13 +247,13 @@ class FeatureWeightsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.put_column_weights(org_id, dataset_id, entity_weight_record, async_req=True)
+        >>> thread = api.put_column_weights(org_id, dataset_id, body, async_req=True)
         >>> result = thread.get()
 
         Args:
             org_id (str):
             dataset_id (str):
-            entity_weight_record (EntityWeightRecord):
+            body (str):
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -279,7 +280,7 @@ class FeatureWeightsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            Response
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -308,7 +309,7 @@ class FeatureWeightsApi(object):
             org_id
         kwargs['dataset_id'] = \
             dataset_id
-        kwargs['entity_weight_record'] = \
-            entity_weight_record
+        kwargs['body'] = \
+            body
         return self.put_column_weights_endpoint.call_with_http_info(**kwargs)
 

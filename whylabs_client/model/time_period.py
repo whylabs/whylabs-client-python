@@ -109,10 +109,10 @@ class TimePeriod(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): A TimePeriod represents the bucketing that a dataset has undergone.., must be one of ["P1M", "P1W", "P1D", "PT1H", "PT5M", ]  # noqa: E501
+            args[0] (str):, must be one of ["P1M", "P1W", "P1D", "PT1H", "PT5M", ]  # noqa: E501
 
         Keyword Args:
-            value (str): A TimePeriod represents the bucketing that a dataset has undergone.., must be one of ["P1M", "P1W", "P1D", "PT1H", "PT5M", ]  # noqa: E501
+            value (str):, must be one of ["P1M", "P1W", "P1D", "PT1H", "PT5M", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -199,10 +199,10 @@ class TimePeriod(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): A TimePeriod represents the bucketing that a dataset has undergone.., must be one of ["P1M", "P1W", "P1D", "PT1H", "PT5M", ]  # noqa: E501
+            args[0] (str):, must be one of ["P1M", "P1W", "P1D", "PT1H", "PT5M", ]  # noqa: E501
 
         Keyword Args:
-            value (str): A TimePeriod represents the bucketing that a dataset has undergone.., must be one of ["P1M", "P1W", "P1D", "PT1H", "PT5M", ]  # noqa: E501
+            value (str):, must be one of ["P1M", "P1W", "P1D", "PT1H", "PT5M", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

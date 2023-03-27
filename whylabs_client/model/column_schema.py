@@ -82,9 +82,9 @@ class ColumnSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'classifier': (str,),  # noqa: E501
-            'data_type': (str,),  # noqa: E501
-            'discreteness': (str,),  # noqa: E501
+            'classifier': (str, none_type,),  # noqa: E501
+            'data_type': (str, none_type,),  # noqa: E501
+            'discreteness': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -109,9 +109,9 @@ class ColumnSchema(ModelNormal):
         """ColumnSchema - a model defined in OpenAPI
 
         Args:
-            classifier (str): We can classify these columns into various grouping. Currently we only support 'input' and 'output'
-            data_type (str): The data type of the columns. Setting this field affects the default grouping (i.e integral columns)
-            discreteness (str): Whether a column should be discrete or continuous. Changing this column will change the default grouping (discrete columns vs. continuous columns
+            classifier (str, none_type): We can classify these columns into various grouping. Currently we only support 'input' and 'output'
+            data_type (str, none_type): The data type of the columns. Setting this field affects the default grouping (i.e integral columns)
+            discreteness (str, none_type): Whether a column should be discrete or continuous. Changing this column will change the default grouping (discrete columns vs. continuous columns
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -198,9 +198,9 @@ class ColumnSchema(ModelNormal):
         """ColumnSchema - a model defined in OpenAPI
 
         Args:
-            classifier (str): We can classify these columns into various grouping. Currently we only support 'input' and 'output'
-            data_type (str): The data type of the columns. Setting this field affects the default grouping (i.e integral columns)
-            discreteness (str): Whether a column should be discrete or continuous. Changing this column will change the default grouping (discrete columns vs. continuous columns
+            classifier (str, none_type): We can classify these columns into various grouping. Currently we only support 'input' and 'output'
+            data_type (str, none_type): The data type of the columns. Setting this field affects the default grouping (i.e integral columns)
+            discreteness (str, none_type): Whether a column should be discrete or continuous. Changing this column will change the default grouping (discrete columns vs. continuous columns
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
