@@ -50,9 +50,9 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import time
 import whylabs_client
 from pprint import pprint
-from whylabs_client.api import alerts_api
-from whylabs_client.model.get_alerts_paths_response import GetAlertsPathsResponse
-from whylabs_client.model.segment_tag import SegmentTag
+from whylabs_client.api import dataset_profile_api
+from whylabs_client.model.delete_analyzer_results_response import DeleteAnalyzerResultsResponse
+from whylabs_client.model.delete_dataset_profiles_response import DeleteDatasetProfilesResponse
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
@@ -74,25 +74,18 @@ configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
 # Enter a context with an instance of the API client
 with whylabs_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = alerts_api.AlertsApi(api_client)
+    api_instance = dataset_profile_api.DatasetProfileApi(api_client)
     org_id = "org-123" # str | Your company's unique organization ID
-model_id = "model-123" # str | The unique model ID in your company. The model is created if it doesn't exist already.
-start_timestamp = 1577836800000 # int | Start time exclusive
-end_timestamp = 1893456000000 # int | 
-segment_tags = [
-        SegmentTag(
-            key="key_example",
-            value="value_example",
-        ),
-    ] # [SegmentTag], none_type | List of (key, value) pair tags for a segment. Must not contain duplicate values (optional)
-version = "" # str, none_type | the version of the alert in case we have multiple schemas (optional)
+dataset_id = "model-123" # str | The unique dataset ID in your company.
+start_timestamp = 1577836800000 # int, none_type | Optional, scope deleting analyzer results more recent than the timestamp (optional)
+end_timestamp = 1893456000000 # int, none_type | Optional, scope deleting analyzer results older than the timestamp (optional)
 
     try:
-        # Get the alerts for a given time period.
-        api_response = api_instance.get_alerts_paths(org_id, model_id, start_timestamp, end_timestamp, segment_tags=segment_tags, version=version)
+        # Deletes a set of analyzer results
+        api_response = api_instance.delete_analyzer_results(org_id, dataset_id, start_timestamp=start_timestamp, end_timestamp=end_timestamp)
         pprint(api_response)
     except whylabs_client.ApiException as e:
-        print("Exception when calling AlertsApi->get_alerts_paths: %s\n" % e)
+        print("Exception when calling DatasetProfileApi->delete_analyzer_results: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -101,71 +94,52 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AlertsApi* | [**get_alerts_paths**](docs/AlertsApi.md#get_alerts_paths) | **GET** /v0/organizations/{org_id}/alerts/models/{model_id}/paths | Get the alerts for a given time period.
-*ApiKeyApi* | [**create_api_key**](docs/ApiKeyApi.md#create_api_key) | **POST** /v0/organizations/{org_id}/api-key | Generate an API key for a user.
-*ApiKeyApi* | [**get_api_key**](docs/ApiKeyApi.md#get_api_key) | **GET** /v0/organizations/{org_id}/api-key/{key_id} | Get an api key by its id
-*ApiKeyApi* | [**list_api_keys**](docs/ApiKeyApi.md#list_api_keys) | **GET** /v0/organizations/{org_id}/api-key | List API key metadata for a given organization and user
-*ApiKeyApi* | [**revoke_api_key**](docs/ApiKeyApi.md#revoke_api_key) | **DELETE** /v0/organizations/{org_id}/api-key | Revoke the given API Key, removing its ability to access WhyLabs systems
 *DatasetProfileApi* | [**delete_analyzer_results**](docs/DatasetProfileApi.md#delete_analyzer_results) | **DELETE** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/analyzer-results | Deletes a set of analyzer results
 *DatasetProfileApi* | [**delete_dataset_profiles**](docs/DatasetProfileApi.md#delete_dataset_profiles) | **DELETE** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id} | Deletes a set of dataset profiles
-*EventsApi* | [**get_events_data**](docs/EventsApi.md#get_events_data) | **GET** /v0/organizations/{org_id}/events/models/{model_id}/data | Get the event data as multi-line JSON for a given time period.
+*DatasetMetadataApi* | [**delete_dataset_metadata**](docs/DatasetMetadataApi.md#delete_dataset_metadata) | **DELETE** /v0/organizations/{org_id}/dataset/{dataset_id}/metadata | Delete dataset metadata for the specified dataset
+*DatasetMetadataApi* | [**get_dataset_metadata**](docs/DatasetMetadataApi.md#get_dataset_metadata) | **GET** /v0/organizations/{org_id}/dataset/{dataset_id}/metadata | Get dataset metadata for the specified dataset
+*DatasetMetadataApi* | [**put_dataset_metadata**](docs/DatasetMetadataApi.md#put_dataset_metadata) | **PUT** /v0/organizations/{org_id}/dataset/{dataset_id}/metadata | Put dataset metadata for the specified dataset
 *FeatureWeightsApi* | [**get_column_weights**](docs/FeatureWeightsApi.md#get_column_weights) | **GET** /v0/organizations/{org_id}/dataset/{dataset_id}/weights | Get column weights for the specified dataset
 *FeatureWeightsApi* | [**put_column_weights**](docs/FeatureWeightsApi.md#put_column_weights) | **PUT** /v0/organizations/{org_id}/dataset/{dataset_id}/weights | Put column weights for the specified dataset
-*LogApi* | [**log**](docs/LogApi.md#log) | **POST** /v0/organizations/{org_id}/log | Log a dataset profile entry to the backend
 *LogApi* | [**log_async**](docs/LogApi.md#log_async) | **POST** /v0/organizations/{org_id}/log/async/{dataset_id} | Like /log, except this api doesn&#39;t take the actual profile content. It returns an upload link that can be used to upload the profile to.
 *LogApi* | [**log_reference**](docs/LogApi.md#log_reference) | **POST** /v0/organizations/{org_id}/log/reference/{model_id} | Returns a presigned URL for uploading the reference profile to.
-*MembershipApi* | [**create_membership**](docs/MembershipApi.md#create_membership) | **POST** /v0/membership | Create a membership for a user, making them apart of an organization. Uses the user&#39;s current email address.
 *MembershipApi* | [**create_organization_membership**](docs/MembershipApi.md#create_organization_membership) | **POST** /v0/organizations/{org_id}/membership | Create a membership for a user, making them apart of an organization. Uses the user&#39;s current email address.
-*MembershipApi* | [**get_default_membership_for_email**](docs/MembershipApi.md#get_default_membership_for_email) | **GET** /v0/membership/default | Get the default membership for a user.
-*MembershipApi* | [**get_memberships**](docs/MembershipApi.md#get_memberships) | **GET** /v0/membership/user/{user_id} | Get memberships for a user.
-*MembershipApi* | [**get_memberships_by_email**](docs/MembershipApi.md#get_memberships_by_email) | **GET** /v0/membership/user | Get memberships for a user given that user&#39;s email address.
-*MembershipApi* | [**get_memberships_by_org**](docs/MembershipApi.md#get_memberships_by_org) | **GET** /v0/membership/org/{org_id} | Get memberships for an org.
 *MembershipApi* | [**list_organization_memberships**](docs/MembershipApi.md#list_organization_memberships) | **GET** /v0/organizations/{org_id}/membership | List organization memberships
-*MembershipApi* | [**remove_membership_by_email**](docs/MembershipApi.md#remove_membership_by_email) | **DELETE** /v0/membership | Removes membership in a given org from a user, using the user&#39;s email address.
 *MembershipApi* | [**remove_organization_membership**](docs/MembershipApi.md#remove_organization_membership) | **DELETE** /v0/organizations/{org_id}/membership | Removes membership in a given org from a user, using the user&#39;s email address.
-*MembershipApi* | [**set_default_membership**](docs/MembershipApi.md#set_default_membership) | **POST** /v0/membership/default | Sets the organization that should be used when logging a user in
-*MembershipApi* | [**update_membership_by_email**](docs/MembershipApi.md#update_membership_by_email) | **PUT** /v0/membership | Updates the role in an membership
 *MembershipApi* | [**update_organization_membership**](docs/MembershipApi.md#update_organization_membership) | **PUT** /v0/organizations/{org_id}/membership | Updates the role in an membership
 *ModelsApi* | [**create_model**](docs/ModelsApi.md#create_model) | **POST** /v0/organizations/{org_id}/models | Create a model with a given name and a time period
 *ModelsApi* | [**deactivate_model**](docs/ModelsApi.md#deactivate_model) | **DELETE** /v0/organizations/{org_id}/models/{model_id} | Mark a model as inactive
-*ModelsApi* | [**delete_analyzer**](docs/ModelsApi.md#delete_analyzer) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/analyzer/{analyzer_id} | Delete the analyzer config for a given dataset.
 *ModelsApi* | [**delete_entity_schema_column**](docs/ModelsApi.md#delete_entity_schema_column) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Delete the entity schema of a single column for a given dataset.
-*ModelsApi* | [**delete_monitor**](docs/ModelsApi.md#delete_monitor) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/monitor/{monitor_id} | Delete the monitor for a given dataset.
-*ModelsApi* | [**get_analyzer**](docs/ModelsApi.md#get_analyzer) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/analyzer/{analyzer_id} | Get the analyzer config for a given dataset.
 *ModelsApi* | [**get_entity_schema**](docs/ModelsApi.md#get_entity_schema) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema | Get the entity schema config for a given dataset.
 *ModelsApi* | [**get_entity_schema_column**](docs/ModelsApi.md#get_entity_schema_column) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Get the entity schema of a single column for a given dataset.
 *ModelsApi* | [**get_model**](docs/ModelsApi.md#get_model) | **GET** /v0/organizations/{org_id}/models/{model_id} | Get a model metadata
-*ModelsApi* | [**get_monitor**](docs/ModelsApi.md#get_monitor) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/monitor/{monitor_id} | Get the monitor config for a given dataset.
-*ModelsApi* | [**get_monitor_config_v2**](docs/ModelsApi.md#get_monitor_config_v2) | **GET** /v0/organizations/{org_id}/models/{model_id}/monitor-config/v2 | Get the monitor config for a given model or segment. The return of this api will include default values that we apply over any config that omits portions of the monitor config schema.
-*ModelsApi* | [**get_monitor_config_v3**](docs/ModelsApi.md#get_monitor_config_v3) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3 | Get the monitor config document for a given dataset.
-*ModelsApi* | [**get_monitor_config_v3_version**](docs/ModelsApi.md#get_monitor_config_v3_version) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3/versions/{version_id} | Get the monitor config document version for a given dataset.
 *ModelsApi* | [**list_models**](docs/ModelsApi.md#list_models) | **GET** /v0/organizations/{org_id}/models | Get a list of all of the model ids for an organization.
-*ModelsApi* | [**list_monitor_config_v3_versions**](docs/ModelsApi.md#list_monitor_config_v3_versions) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3/versions | List the monitor config document versions for a given dataset.
-*ModelsApi* | [**list_segments**](docs/ModelsApi.md#list_segments) | **GET** /v0/organizations/{org_id}/models/{model_id}/segments | Get a model metadata
-*ModelsApi* | [**put_analyzer**](docs/ModelsApi.md#put_analyzer) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/analyzer/{analyzer_id} | Save the analyzer config for a given dataset.
 *ModelsApi* | [**put_entity_schema**](docs/ModelsApi.md#put_entity_schema) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema | Save the entity schema config for a given dataset.
 *ModelsApi* | [**put_entity_schema_column**](docs/ModelsApi.md#put_entity_schema_column) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Save the entity schema of a single column for a given dataset.
-*ModelsApi* | [**put_monitor**](docs/ModelsApi.md#put_monitor) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/monitor/{monitor_id} | Save the monitor for a given dataset.
-*ModelsApi* | [**put_monitor_config_v2**](docs/ModelsApi.md#put_monitor_config_v2) | **PUT** /v0/organizations/{org_id}/models/{model_id}/monitor-config/v2 | Save the monitor config for a given model or segment
-*ModelsApi* | [**put_monitor_config_v3**](docs/ModelsApi.md#put_monitor_config_v3) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3 | Save the monitor config document for a given dataset.
-*ModelsApi* | [**put_request_monitor_run_config**](docs/ModelsApi.md#put_request_monitor_run_config) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/request-monitor-run | Put the RequestMonitorRun config into S3.
-*ModelsApi* | [**put_segments**](docs/ModelsApi.md#put_segments) | **PUT** /v0/organizations/{org_id}/models/{model_id}/segments | Add a segment to the dataset
 *ModelsApi* | [**update_model**](docs/ModelsApi.md#update_model) | **PUT** /v0/organizations/{org_id}/models/{model_id} | Update a model&#39;s metadata
-*ModelsApi* | [**validate_monitor_config_v3**](docs/ModelsApi.md#validate_monitor_config_v3) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3/validate | Validate the monitor config document for a given dataset.
+*MonitorApi* | [**delete_analyzer**](docs/MonitorApi.md#delete_analyzer) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/analyzer/{analyzer_id} | Delete the analyzer config for a given dataset.
+*MonitorApi* | [**delete_monitor**](docs/MonitorApi.md#delete_monitor) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/monitor/{monitor_id} | Delete the monitor for a given dataset.
+*MonitorApi* | [**get_analyzer**](docs/MonitorApi.md#get_analyzer) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/analyzer/{analyzer_id} | Get the analyzer config for a given dataset.
+*MonitorApi* | [**get_monitor**](docs/MonitorApi.md#get_monitor) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/monitor/{monitor_id} | Get the monitor config for a given dataset.
+*MonitorApi* | [**get_monitor_config_v3**](docs/MonitorApi.md#get_monitor_config_v3) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3 | Get the monitor config document for a given dataset.
+*MonitorApi* | [**patch_monitor_config_v3**](docs/MonitorApi.md#patch_monitor_config_v3) | **PATCH** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3 | Patch an updated monitor config document for a given dataset.
+*MonitorApi* | [**put_analyzer**](docs/MonitorApi.md#put_analyzer) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/analyzer/{analyzer_id} | Save the analyzer config for a given dataset.
+*MonitorApi* | [**put_monitor**](docs/MonitorApi.md#put_monitor) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/monitor/{monitor_id} | Save the monitor for a given dataset.
+*MonitorApi* | [**put_monitor_config_v3**](docs/MonitorApi.md#put_monitor_config_v3) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3 | Save the monitor config document for a given dataset.
+*MonitorApi* | [**validate_monitor_config_v3**](docs/MonitorApi.md#validate_monitor_config_v3) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/monitor-config/v3/validate | Validate the monitor config document for a given dataset.
 *NotificationSettingsApi* | [**delete_notification_action**](docs/NotificationSettingsApi.md#delete_notification_action) | **DELETE** /v0/notification-settings/{org_id}/actions/{action_id} | Delete notification action
 *NotificationSettingsApi* | [**get_email_notification_action_payload**](docs/NotificationSettingsApi.md#get_email_notification_action_payload) | **GET** /v0/notification-settings/actions/email/payload | Get dummy notification action payload
 *NotificationSettingsApi* | [**get_notification_action**](docs/NotificationSettingsApi.md#get_notification_action) | **GET** /v0/notification-settings/{org_id}/actions/{action_id} | Get notification action for id
-*NotificationSettingsApi* | [**get_notification_settings**](docs/NotificationSettingsApi.md#get_notification_settings) | **GET** /v0/notification-settings/{org_id} | Get notification settings for an org
 *NotificationSettingsApi* | [**get_pager_duty_notification_action_payload**](docs/NotificationSettingsApi.md#get_pager_duty_notification_action_payload) | **GET** /v0/notification-settings/actions/pagerduty/payload | Get dummy notification action payload
 *NotificationSettingsApi* | [**get_slack_notification_action_payload**](docs/NotificationSettingsApi.md#get_slack_notification_action_payload) | **GET** /v0/notification-settings/actions/slack/payload | Get dummy notification action payload
 *NotificationSettingsApi* | [**list_notification_actions**](docs/NotificationSettingsApi.md#list_notification_actions) | **GET** /v0/notification-settings/{org_id}/actions | List notification actions for an org
 *NotificationSettingsApi* | [**put_notification_action**](docs/NotificationSettingsApi.md#put_notification_action) | **PUT** /v0/notification-settings/{org_id}/actions/{type}/{action_id} | Add new notification action
+*NotificationSettingsApi* | [**test_notification_action**](docs/NotificationSettingsApi.md#test_notification_action) | **POST** /v0/notification-settings/{org_id}/actions/{action_id}/test | Test a notification action
 *NotificationSettingsApi* | [**update_notification_action**](docs/NotificationSettingsApi.md#update_notification_action) | **PATCH** /v0/notification-settings/{org_id}/actions/{type}/{action_id} | Update notification action
-*NotificationSettingsApi* | [**update_notification_settings**](docs/NotificationSettingsApi.md#update_notification_settings) | **POST** /v0/notification-settings/{org_id} | Update notification settings for an org
-*SessionsApi* | [**close_session**](docs/SessionsApi.md#close_session) | **POST** /v0/sessions/{session_token}/close | naddeo Close a session, triggering its display in whylabs and making it no longer accept any additional data.
-*SessionsApi* | [**create_dataset_profile_upload**](docs/SessionsApi.md#create_dataset_profile_upload) | **POST** /v0/sessions/{session_token}/upload | Create an upload for a given session.
+*SchemaApi* | [**get_monitor_config_schema**](docs/SchemaApi.md#get_monitor_config_schema) | **GET** /v0/organizations/{org_id}/schema/monitor-config | Get the current supported schema of the monitor configuration
+*SessionsApi* | [**create_dataset_profile_upload**](docs/SessionsApi.md#create_dataset_profile_upload) | **POST** /v0/sessions/{session_id}/upload | Create an upload for a given session.
 *SessionsApi* | [**create_session**](docs/SessionsApi.md#create_session) | **POST** /v0/sessions | Create a new session that can be used to upload dataset profiles from whylogs for display in whylabs.
-*SessionsApi* | [**get_session**](docs/SessionsApi.md#get_session) | **GET** /v0/sessions/{session_token} | Get information about a session.
+*SessionsApi* | [**get_session**](docs/SessionsApi.md#get_session) | **GET** /v0/sessions/{session_id} | Get information about a session.
 
 
 ## Documentation For Models
@@ -173,12 +147,10 @@ Class | Method | HTTP request | Description
  - [AWSMarketplaceMetadata](docs/AWSMarketplaceMetadata.md)
  - [ActionType](docs/ActionType.md)
  - [AddMembershipRequest](docs/AddMembershipRequest.md)
- - [AlertsPath](docs/AlertsPath.md)
  - [AsyncLogResponse](docs/AsyncLogResponse.md)
- - [CloseSessionResponse](docs/CloseSessionResponse.md)
  - [ColumnSchema](docs/ColumnSchema.md)
+ - [CreateSessionRequest](docs/CreateSessionRequest.md)
  - [CreateSessionResponse](docs/CreateSessionResponse.md)
- - [CreateSessionUploadResponse](docs/CreateSessionUploadResponse.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [DTOAutoScaleDTO](docs/DTOAutoScaleDTO.md)
  - [DTOAwsAttributesDTO](docs/DTOAwsAttributesDTO.md)
@@ -206,24 +178,20 @@ Class | Method | HTTP request | Description
  - [EntitySchema](docs/EntitySchema.md)
  - [EntityWeightRecord](docs/EntityWeightRecord.md)
  - [EntityWeightRecordMetadata](docs/EntityWeightRecordMetadata.md)
- - [EventsPath](docs/EventsPath.md)
  - [FeatureFlags](docs/FeatureFlags.md)
- - [GetAlertsPathsResponse](docs/GetAlertsPathsResponse.md)
  - [GetConnectionRequest](docs/GetConnectionRequest.md)
  - [GetConnectionResponse](docs/GetConnectionResponse.md)
+ - [GetDatasetMetadataResponse](docs/GetDatasetMetadataResponse.md)
  - [GetDefaultMembershipResponse](docs/GetDefaultMembershipResponse.md)
- - [GetEventsPathResponse](docs/GetEventsPathResponse.md)
  - [GetMarketplaceMetadataResponse](docs/GetMarketplaceMetadataResponse.md)
  - [GetMembershipsResponse](docs/GetMembershipsResponse.md)
  - [GetMonitorConfigV2Response](docs/GetMonitorConfigV2Response.md)
  - [GetNotificationSettingsResponse](docs/GetNotificationSettingsResponse.md)
  - [GetSessionResponse](docs/GetSessionResponse.md)
- - [InlineObject](docs/InlineObject.md)
  - [ListJobsRequest](docs/ListJobsRequest.md)
  - [ListJobsResponse](docs/ListJobsResponse.md)
  - [ListModelsResponse](docs/ListModelsResponse.md)
  - [ListOrganizationMembershipsResponse](docs/ListOrganizationMembershipsResponse.md)
- - [ListSegmentsResponse](docs/ListSegmentsResponse.md)
  - [ListUserApiKeys](docs/ListUserApiKeys.md)
  - [LogAsyncRequest](docs/LogAsyncRequest.md)
  - [LogReferenceRequest](docs/LogReferenceRequest.md)
@@ -235,7 +203,7 @@ Class | Method | HTTP request | Description
  - [MissingRecentDataRequestConfig](docs/MissingRecentDataRequestConfig.md)
  - [MissingRecentProfilesRequestConfig](docs/MissingRecentProfilesRequestConfig.md)
  - [MissingValuesMonitorRequestConfig](docs/MissingValuesMonitorRequestConfig.md)
- - [ModelMetadata](docs/ModelMetadata.md)
+ - [ModelMetadataResponse](docs/ModelMetadataResponse.md)
  - [ModelType](docs/ModelType.md)
  - [MonitorConfig](docs/MonitorConfig.md)
  - [MonitorConfigVersion](docs/MonitorConfigVersion.md)
@@ -264,14 +232,13 @@ Class | Method | HTTP request | Description
  - [RemoveMembershipRequest](docs/RemoveMembershipRequest.md)
  - [RequestFeatureMonitorConfig](docs/RequestFeatureMonitorConfig.md)
  - [RequestMonitorConfig](docs/RequestMonitorConfig.md)
+ - [Response](docs/Response.md)
  - [Role](docs/Role.md)
  - [RunJobRequest](docs/RunJobRequest.md)
  - [RunJobResponse](docs/RunJobResponse.md)
  - [SchemaMetadata](docs/SchemaMetadata.md)
  - [SeasonalARIMARequestConfig](docs/SeasonalARIMARequestConfig.md)
  - [Segment](docs/Segment.md)
- - [SegmentMetadata](docs/SegmentMetadata.md)
- - [SegmentSummary](docs/SegmentSummary.md)
  - [SegmentTag](docs/SegmentTag.md)
  - [SegmentWeight](docs/SegmentWeight.md)
  - [SessionMetadata](docs/SessionMetadata.md)

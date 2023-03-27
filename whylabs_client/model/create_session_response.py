@@ -82,7 +82,7 @@ class CreateSessionResponse(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'token': (str,),  # noqa: E501
+            'id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -91,7 +91,7 @@ class CreateSessionResponse(ModelNormal):
 
 
     attribute_map = {
-        'token': 'token',  # noqa: E501
+        'id': 'id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -101,11 +101,11 @@ class CreateSessionResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, token, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, *args, **kwargs):  # noqa: E501
         """CreateSessionResponse - a model defined in OpenAPI
 
         Args:
-            token (str): Token for the created session, to be passsed into other session APIs.
+            id (str): Token for the created session, to be passsed into other session APIs.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -165,7 +165,7 @@ class CreateSessionResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.token = token
+        self.id = id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -186,11 +186,11 @@ class CreateSessionResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, token, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, *args, **kwargs):  # noqa: E501
         """CreateSessionResponse - a model defined in OpenAPI
 
         Args:
-            token (str): Token for the created session, to be passsed into other session APIs.
+            id (str): Token for the created session, to be passsed into other session APIs.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -248,7 +248,7 @@ class CreateSessionResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.token = token
+        self.id = id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

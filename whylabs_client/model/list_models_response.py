@@ -31,8 +31,8 @@ from whylabs_client.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from whylabs_client.model.model_metadata import ModelMetadata
-    globals()['ModelMetadata'] = ModelMetadata
+    from whylabs_client.model.model_metadata_response import ModelMetadataResponse
+    globals()['ModelMetadataResponse'] = ModelMetadataResponse
 
 
 class ListModelsResponse(ModelNormal):
@@ -90,7 +90,7 @@ class ListModelsResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'items': ([ModelMetadata],),  # noqa: E501
+            'items': ([ModelMetadataResponse],),  # noqa: E501
         }
 
     @cached_property
@@ -113,7 +113,7 @@ class ListModelsResponse(ModelNormal):
         """ListModelsResponse - a model defined in OpenAPI
 
         Args:
-            items ([ModelMetadata]): A list of all known model ids for an organization.
+            items ([ModelMetadataResponse]): A list of all known model ids for an organization.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -198,7 +198,7 @@ class ListModelsResponse(ModelNormal):
         """ListModelsResponse - a model defined in OpenAPI
 
         Args:
-            items ([ModelMetadata]): A list of all known model ids for an organization.
+            items ([ModelMetadataResponse]): A list of all known model ids for an organization.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
