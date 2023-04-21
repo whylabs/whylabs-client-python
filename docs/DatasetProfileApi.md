@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_analyzer_results**](DatasetProfileApi.md#delete_analyzer_results) | **DELETE** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/analyzer-results | Deletes a set of analyzer results
 [**delete_dataset_profiles**](DatasetProfileApi.md#delete_dataset_profiles) | **DELETE** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id} | Deletes a set of dataset profiles
+[**list_reference_profiles**](DatasetProfileApi.md#list_reference_profiles) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles | Returns a list for reference profiles
 
 
 # **delete_analyzer_results**
@@ -193,6 +194,99 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **0** | The [DeleteDatasetProfilesResponse] if operation succeeds |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_reference_profiles**
+> [ReferenceProfileItemResponse] list_reference_profiles(org_id, model_id)
+
+Returns a list for reference profiles
+
+Returns a list of Reference Profiles.          
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import dataset_profile_api
+from whylabs_client.model.reference_profile_item_response import ReferenceProfileItemResponse
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_profile_api.DatasetProfileApi(api_client)
+    org_id = "org-123" # str | Your company's unique organization ID
+    model_id = "model-123" # str | The unique model ID in your company.
+    from_epoch = 1577836800000 # int, none_type | Milli epoch time that represents the end of the time range to query. (optional)
+    to_epoch = 1893456000000 # int, none_type | Milli epoch time that represents the end of the time range to query. (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Returns a list for reference profiles
+        api_response = api_instance.list_reference_profiles(org_id, model_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling DatasetProfileApi->list_reference_profiles: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Returns a list for reference profiles
+        api_response = api_instance.list_reference_profiles(org_id, model_id, from_epoch=from_epoch, to_epoch=to_epoch)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling DatasetProfileApi->list_reference_profiles: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**| Your company&#39;s unique organization ID |
+ **model_id** | **str**| The unique model ID in your company. |
+ **from_epoch** | **int, none_type**| Milli epoch time that represents the end of the time range to query. | [optional]
+ **to_epoch** | **int, none_type**| Milli epoch time that represents the end of the time range to query. | [optional]
+
+### Return type
+
+[**[ReferenceProfileItemResponse]**](ReferenceProfileItemResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | The metadata for the summarized dataset profile including paths to JSON and protobuf data |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

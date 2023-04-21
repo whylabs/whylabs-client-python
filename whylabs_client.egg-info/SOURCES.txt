@@ -30,6 +30,7 @@ whylabs_client/model/add_membership_request.py
 whylabs_client/model/async_log_response.py
 whylabs_client/model/aws_marketplace_metadata.py
 whylabs_client/model/column_schema.py
+whylabs_client/model/create_session_request.py
 whylabs_client/model/create_session_response.py
 whylabs_client/model/create_user_request.py
 whylabs_client/model/databricks_connection.py

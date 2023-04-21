@@ -32,8 +32,10 @@ from whylabs_client.exceptions import ApiAttributeError
 
 def lazy_import():
     from whylabs_client.model.column_schema import ColumnSchema
+    from whylabs_client.model.metric_schema import MetricSchema
     from whylabs_client.model.schema_metadata import SchemaMetadata
     globals()['ColumnSchema'] = ColumnSchema
+    globals()['MetricSchema'] = MetricSchema
     globals()['SchemaMetadata'] = SchemaMetadata
 
 
@@ -92,6 +94,7 @@ class EntitySchema(ModelNormal):
         return {
             'columns': ({str: (ColumnSchema,)},),  # noqa: E501
             'metadata': (SchemaMetadata,),  # noqa: E501
+            'metrics': ({str: (MetricSchema,)}, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -102,6 +105,7 @@ class EntitySchema(ModelNormal):
     attribute_map = {
         'columns': 'columns',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
+        'metrics': 'metrics',  # noqa: E501
     }
 
     read_only_vars = {
@@ -149,6 +153,7 @@ class EntitySchema(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             metadata (SchemaMetadata): [optional]  # noqa: E501
+            metrics ({str: (MetricSchema,)}, none_type): Schema for user-defined metrics (map of unique custom metric labels to their definitions). [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -235,6 +240,7 @@ class EntitySchema(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             metadata (SchemaMetadata): [optional]  # noqa: E501
+            metrics ({str: (MetricSchema,)}, none_type): Schema for user-defined metrics (map of unique custom metric labels to their definitions). [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -23,10 +23,14 @@ from whylabs_client.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from whylabs_client.model.async_log_response import AsyncLogResponse
+from whylabs_client.model.batch_log_reference_request import BatchLogReferenceRequest
+from whylabs_client.model.batch_log_session_reference_response import BatchLogSessionReferenceResponse
 from whylabs_client.model.create_session_request import CreateSessionRequest
 from whylabs_client.model.create_session_response import CreateSessionResponse
 from whylabs_client.model.get_session_response import GetSessionResponse
 from whylabs_client.model.log_async_request import LogAsyncRequest
+from whylabs_client.model.log_reference_request import LogReferenceRequest
+from whylabs_client.model.log_session_reference_response import LogSessionReferenceResponse
 
 
 class SessionsApi(object):
@@ -40,6 +44,119 @@ class SessionsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.batch_create_reference_profile_upload_endpoint = _Endpoint(
+            settings={
+                'response_type': (BatchLogSessionReferenceResponse,),
+                'auth': [],
+                'endpoint_path': '/v0/sessions/{session_id}/references',
+                'operation_id': 'batch_create_reference_profile_upload',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'session_id',
+                    'batch_log_reference_request',
+                ],
+                'required': [
+                    'session_id',
+                    'batch_log_reference_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'session_id':
+                        (str,),
+                    'batch_log_reference_request':
+                        (BatchLogReferenceRequest,),
+                },
+                'attribute_map': {
+                    'session_id': 'session_id',
+                },
+                'location_map': {
+                    'session_id': 'path',
+                    'batch_log_reference_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.claim_guest_session_endpoint = _Endpoint(
+            settings={
+                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/sessions/{session_id}/claim',
+                'operation_id': 'claim_guest_session',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'session_id',
+                    'org_id',
+                ],
+                'required': [
+                    'session_id',
+                    'org_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'session_id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'session_id': 'session_id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'session_id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.create_dataset_profile_upload_endpoint = _Endpoint(
             settings={
                 'response_type': (AsyncLogResponse,),
@@ -82,6 +199,62 @@ class SessionsApi(object):
                 'location_map': {
                     'session_id': 'path',
                     'log_async_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.create_reference_profile_upload_endpoint = _Endpoint(
+            settings={
+                'response_type': (LogSessionReferenceResponse,),
+                'auth': [],
+                'endpoint_path': '/v0/sessions/{session_id}/reference',
+                'operation_id': 'create_reference_profile_upload',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'session_id',
+                    'log_reference_request',
+                ],
+                'required': [
+                    'session_id',
+                    'log_reference_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'session_id':
+                        (str,),
+                    'log_reference_request':
+                        (LogReferenceRequest,),
+                },
+                'attribute_map': {
+                    'session_id': 'session_id',
+                },
+                'location_map': {
+                    'session_id': 'path',
+                    'log_reference_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -198,6 +371,156 @@ class SessionsApi(object):
             api_client=api_client
         )
 
+    def batch_create_reference_profile_upload(
+        self,
+        session_id,
+        batch_log_reference_request,
+        **kwargs
+    ):
+        """Create multiple reference profile uploads for a given session.  # noqa: E501
+
+        Create multiple reference profile uploads for a given session.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.batch_create_reference_profile_upload(session_id, batch_log_reference_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            session_id (str):
+            batch_log_reference_request (BatchLogReferenceRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            BatchLogSessionReferenceResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['session_id'] = \
+            session_id
+        kwargs['batch_log_reference_request'] = \
+            batch_log_reference_request
+        return self.batch_create_reference_profile_upload_endpoint.call_with_http_info(**kwargs)
+
+    def claim_guest_session(
+        self,
+        session_id,
+        org_id,
+        **kwargs
+    ):
+        """Claim a guest session, copying its model data into another org and expiring the session.  # noqa: E501
+
+        Claim a guest session, copying its model data into another org and expiring the session.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.claim_guest_session(session_id, org_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            session_id (str):
+            org_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['session_id'] = \
+            session_id
+        kwargs['org_id'] = \
+            org_id
+        return self.claim_guest_session_endpoint.call_with_http_info(**kwargs)
+
     def create_dataset_profile_upload(
         self,
         session_id,
@@ -272,6 +595,81 @@ class SessionsApi(object):
         kwargs['log_async_request'] = \
             log_async_request
         return self.create_dataset_profile_upload_endpoint.call_with_http_info(**kwargs)
+
+    def create_reference_profile_upload(
+        self,
+        session_id,
+        log_reference_request,
+        **kwargs
+    ):
+        """Create a reference profile upload for a given session.  # noqa: E501
+
+        Create a reference profile upload for a given session.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_reference_profile_upload(session_id, log_reference_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            session_id (str):
+            log_reference_request (LogReferenceRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            LogSessionReferenceResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['session_id'] = \
+            session_id
+        kwargs['log_reference_request'] = \
+            log_reference_request
+        return self.create_reference_profile_upload_endpoint.call_with_http_info(**kwargs)
 
     def create_session(
         self,

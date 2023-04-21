@@ -6,13 +6,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_model**](ModelsApi.md#create_model) | **POST** /v0/organizations/{org_id}/models | Create a model with a given name and a time period
 [**deactivate_model**](ModelsApi.md#deactivate_model) | **DELETE** /v0/organizations/{org_id}/models/{model_id} | Mark a model as inactive
+[**delete_entity_schema**](ModelsApi.md#delete_entity_schema) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema | Delete the entity schema config for a given dataset.
 [**delete_entity_schema_column**](ModelsApi.md#delete_entity_schema_column) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Delete the entity schema of a single column for a given dataset.
+[**delete_entity_schema_metric**](ModelsApi.md#delete_entity_schema_metric) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_label} | Delete the schema of a single metric for a given dataset.
 [**get_entity_schema**](ModelsApi.md#get_entity_schema) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema | Get the entity schema config for a given dataset.
 [**get_entity_schema_column**](ModelsApi.md#get_entity_schema_column) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Get the entity schema of a single column for a given dataset.
 [**get_model**](ModelsApi.md#get_model) | **GET** /v0/organizations/{org_id}/models/{model_id} | Get a model metadata
 [**list_models**](ModelsApi.md#list_models) | **GET** /v0/organizations/{org_id}/models | Get a list of all of the model ids for an organization.
 [**put_entity_schema**](ModelsApi.md#put_entity_schema) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema | Save the entity schema config for a given dataset.
 [**put_entity_schema_column**](ModelsApi.md#put_entity_schema_column) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Save the entity schema of a single column for a given dataset.
+[**put_entity_schema_metric**](ModelsApi.md#put_entity_schema_metric) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric | Save the schema of a single metric for a given dataset.
 [**update_model**](ModelsApi.md#update_model) | **PUT** /v0/organizations/{org_id}/models/{model_id} | Update a model&#39;s metadata
 
 
@@ -193,6 +196,86 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_entity_schema**
+> Response delete_entity_schema(org_id, dataset_id)
+
+Delete the entity schema config for a given dataset.
+
+Delete the entity schema config for a given dataset.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.response import Response
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete the entity schema config for a given dataset.
+        api_response = api_instance.delete_entity_schema(org_id, dataset_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->delete_entity_schema: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | DeleteEntitySchema default response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_entity_schema_column**
 > Response delete_entity_schema_column(org_id, dataset_id, column_id)
 
@@ -272,6 +355,88 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **0** | DeleteEntitySchemaColumn default response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_entity_schema_metric**
+> Response delete_entity_schema_metric(org_id, dataset_id, metric_label)
+
+Delete the schema of a single metric for a given dataset.
+
+Delete the schema of a single metric for a given dataset.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.response import Response
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+    metric_label = "feature-123" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete the schema of a single metric for a given dataset.
+        api_response = api_instance.delete_entity_schema_metric(org_id, dataset_id, metric_label)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->delete_entity_schema_metric: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+ **metric_label** | **str**|  |
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | DeleteEntitySchemaMetric default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -649,6 +814,13 @@ with whylabs_client.ApiClient(configuration) as api_client:
             updated_timestamp=1,
             author="author_example",
         ),
+        metrics={
+            "key": MetricSchema(
+                label="estimated_prediction.median",
+                column="estimated_prediction",
+                default_metric="median",
+            ),
+        },
     ) # EntitySchema | 
 
     # example passing only required values which don't have defaults set
@@ -777,6 +949,93 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **0** | PutEntitySchemaColumn default response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_entity_schema_metric**
+> Response put_entity_schema_metric(org_id, dataset_id, metric_schema)
+
+Save the schema of a single metric for a given dataset.
+
+Save the schema of a single metric for a given dataset.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.metric_schema import MetricSchema
+from whylabs_client.model.response import Response
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+    metric_schema = MetricSchema(
+        label="estimated_prediction.median",
+        column="estimated_prediction",
+        default_metric="median",
+    ) # MetricSchema | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Save the schema of a single metric for a given dataset.
+        api_response = api_instance.put_entity_schema_metric(org_id, dataset_id, metric_schema)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->put_entity_schema_metric: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+ **metric_schema** | [**MetricSchema**](MetricSchema.md)|  |
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | PutEntitySchemaMetric default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
