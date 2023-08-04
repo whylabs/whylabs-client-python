@@ -1,6 +1,6 @@
 # BatchLogSessionReferenceResponse
 
-Response payload for uploading reference profile.
+Response payload for uploading reference profiles.
 
 ## Properties
 Name | Type | Description | Notes

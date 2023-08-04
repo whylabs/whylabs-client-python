@@ -31,8 +31,8 @@ from whylabs_client.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from whylabs_client.model.dto_job_dto import DTOJobDTO
-    globals()['DTOJobDTO'] = DTOJobDTO
+    from whylabs_client.model.dto_jobs_job_dto import DTOJobsJobDTO
+    globals()['DTOJobsJobDTO'] = DTOJobsJobDTO
 
 
 class ListJobsResponse(ModelNormal):
@@ -88,7 +88,7 @@ class ListJobsResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'jobs': ([DTOJobDTO],),  # noqa: E501
+            'jobs': ([DTOJobsJobDTO],),  # noqa: E501
         }
 
     @cached_property
@@ -111,7 +111,7 @@ class ListJobsResponse(ModelNormal):
         """ListJobsResponse - a model defined in OpenAPI
 
         Args:
-            jobs ([DTOJobDTO]):
+            jobs ([DTOJobsJobDTO]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -196,7 +196,7 @@ class ListJobsResponse(ModelNormal):
         """ListJobsResponse - a model defined in OpenAPI
 
         Args:
-            jobs ([DTOJobDTO]):
+            jobs ([DTOJobsJobDTO]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

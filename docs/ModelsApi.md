@@ -1,6 +1,6 @@
 # whylabs_client.ModelsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.whylabsapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -38,10 +38,10 @@ from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from whylabs_client.model.model_type import ModelType
 from whylabs_client.model.time_period import TimePeriod
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -133,10 +133,10 @@ import whylabs_client
 from whylabs_client.api import models_api
 from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -213,10 +213,10 @@ import whylabs_client
 from whylabs_client.api import models_api
 from whylabs_client.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -293,10 +293,10 @@ import whylabs_client
 from whylabs_client.api import models_api
 from whylabs_client.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -375,10 +375,10 @@ import whylabs_client
 from whylabs_client.api import models_api
 from whylabs_client.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -457,10 +457,10 @@ import whylabs_client
 from whylabs_client.api import models_api
 from whylabs_client.model.entity_schema import EntitySchema
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -537,10 +537,10 @@ import whylabs_client
 from whylabs_client.api import models_api
 from whylabs_client.model.column_schema import ColumnSchema
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -619,10 +619,10 @@ import whylabs_client
 from whylabs_client.api import models_api
 from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -699,10 +699,10 @@ import whylabs_client
 from whylabs_client.api import models_api
 from whylabs_client.model.list_models_response import ListModelsResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -778,10 +778,10 @@ from whylabs_client.api import models_api
 from whylabs_client.model.entity_schema import EntitySchema
 from whylabs_client.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -881,10 +881,10 @@ from whylabs_client.api import models_api
 from whylabs_client.model.column_schema import ColumnSchema
 from whylabs_client.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -970,10 +970,10 @@ from whylabs_client.api import models_api
 from whylabs_client.model.metric_schema import MetricSchema
 from whylabs_client.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1058,10 +1058,10 @@ from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from whylabs_client.model.model_type import ModelType
 from whylabs_client.model.time_period import TimePeriod
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters

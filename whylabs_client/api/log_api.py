@@ -23,6 +23,8 @@ from whylabs_client.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from whylabs_client.model.async_log_response import AsyncLogResponse
+from whylabs_client.model.get_profile_observatory_link_request import GetProfileObservatoryLinkRequest
+from whylabs_client.model.get_profile_observatory_link_response import GetProfileObservatoryLinkResponse
 from whylabs_client.model.log_async_request import LogAsyncRequest
 from whylabs_client.model.log_reference_request import LogReferenceRequest
 from whylabs_client.model.log_reference_response import LogReferenceResponse
@@ -39,6 +41,70 @@ class LogApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.get_profile_observatory_link_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetProfileObservatoryLinkResponse,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/log/observatory-link/{dataset_id}',
+                'operation_id': 'get_profile_observatory_link',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'dataset_id',
+                    'org_id',
+                    'get_profile_observatory_link_request',
+                ],
+                'required': [
+                    'dataset_id',
+                    'org_id',
+                    'get_profile_observatory_link_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'dataset_id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                    'get_profile_observatory_link_request':
+                        (GetProfileObservatoryLinkRequest,),
+                },
+                'attribute_map': {
+                    'dataset_id': 'dataset_id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'dataset_id': 'path',
+                    'org_id': 'path',
+                    'get_profile_observatory_link_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.log_async_endpoint = _Endpoint(
             settings={
                 'response_type': (AsyncLogResponse,),
@@ -167,6 +233,85 @@ class LogApi(object):
             },
             api_client=api_client
         )
+
+    def get_profile_observatory_link(
+        self,
+        dataset_id,
+        org_id,
+        get_profile_observatory_link_request,
+        **kwargs
+    ):
+        """Get observatory links for profiles in a given org/model. A max of 3 profiles can be viewed a a time.  # noqa: E501
+
+        Get observatory links for profiles in a given org/model. A max of 3 profiles can be viewed a a time.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_profile_observatory_link(dataset_id, org_id, get_profile_observatory_link_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            dataset_id (str):
+            org_id (str):
+            get_profile_observatory_link_request (GetProfileObservatoryLinkRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetProfileObservatoryLinkResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['org_id'] = \
+            org_id
+        kwargs['get_profile_observatory_link_request'] = \
+            get_profile_observatory_link_request
+        return self.get_profile_observatory_link_endpoint.call_with_http_info(**kwargs)
 
     def log_async(
         self,

@@ -1,13 +1,116 @@
 # whylabs_client.DatasetProfileApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.whylabsapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create_reference_profile**](DatasetProfileApi.md#create_reference_profile) | **POST** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/reference-profile | Returns data needed to uploading the reference profile
 [**delete_analyzer_results**](DatasetProfileApi.md#delete_analyzer_results) | **DELETE** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/analyzer-results | Deletes a set of analyzer results
 [**delete_dataset_profiles**](DatasetProfileApi.md#delete_dataset_profiles) | **DELETE** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id} | Deletes a set of dataset profiles
+[**delete_reference_profile**](DatasetProfileApi.md#delete_reference_profile) | **DELETE** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles/{reference_id} | Delete a single reference profile
+[**get_reference_profile**](DatasetProfileApi.md#get_reference_profile) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles/{reference_id} | Returns a single reference profile
 [**list_reference_profiles**](DatasetProfileApi.md#list_reference_profiles) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles | Returns a list for reference profiles
 
+
+# **create_reference_profile**
+> CreateReferenceProfileResponse create_reference_profile(org_id, dataset_id, create_reference_profile_request)
+
+Returns data needed to uploading the reference profile
+
+Returns data needed to upload the reference profile. Supports uploading segmented reference profiles.              If segments are omitted, provides data needed to upload a single reference profile.              This replaces the deprecated LogReference operation.         
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import dataset_profile_api
+from whylabs_client.model.create_reference_profile_request import CreateReferenceProfileRequest
+from whylabs_client.model.create_reference_profile_response import CreateReferenceProfileResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_profile_api.DatasetProfileApi(api_client)
+    org_id = "org-123" # str | Your company's unique organization ID
+    dataset_id = "model-123" # str | The unique model ID in your company.
+    create_reference_profile_request = CreateReferenceProfileRequest(
+        alias="alias_example",
+        version="version_example",
+        dataset_timestamp=1,
+        segments=[
+            Segment(
+                tags=[
+                    SegmentTag(
+                        key="key_example",
+                        value="value_example",
+                    ),
+                ],
+            ),
+        ],
+        tags=[
+            "tags_example",
+        ],
+    ) # CreateReferenceProfileRequest | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Returns data needed to uploading the reference profile
+        api_response = api_instance.create_reference_profile(org_id, dataset_id, create_reference_profile_request)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling DatasetProfileApi->create_reference_profile: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**| Your company&#39;s unique organization ID |
+ **dataset_id** | **str**| The unique model ID in your company. |
+ **create_reference_profile_request** | [**CreateReferenceProfileRequest**](CreateReferenceProfileRequest.md)|  |
+
+### Return type
+
+[**CreateReferenceProfileResponse**](CreateReferenceProfileResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | The metadata for the summarized reference profile data |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_analyzer_results**
 > DeleteAnalyzerResultsResponse delete_analyzer_results(org_id, dataset_id)
@@ -26,10 +129,10 @@ import whylabs_client
 from whylabs_client.api import dataset_profile_api
 from whylabs_client.model.delete_analyzer_results_response import DeleteAnalyzerResultsResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -49,8 +152,8 @@ with whylabs_client.ApiClient(configuration) as api_client:
     api_instance = dataset_profile_api.DatasetProfileApi(api_client)
     org_id = "org-123" # str | Your company's unique organization ID
     dataset_id = "model-123" # str | The unique dataset ID in your company.
-    start_timestamp = 1577836800000 # int, none_type | Optional, scope deleting analyzer results more recent than the timestamp (optional)
-    end_timestamp = 1893456000000 # int, none_type | Optional, scope deleting analyzer results older than the timestamp (optional)
+    start_timestamp = 1577836800000 # int, none_type |  (optional)
+    end_timestamp = 1893456000000 # int, none_type |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -77,8 +180,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**| Your company&#39;s unique organization ID |
  **dataset_id** | **str**| The unique dataset ID in your company. |
- **start_timestamp** | **int, none_type**| Optional, scope deleting analyzer results more recent than the timestamp | [optional]
- **end_timestamp** | **int, none_type**| Optional, scope deleting analyzer results older than the timestamp | [optional]
+ **start_timestamp** | **int, none_type**|  | [optional]
+ **end_timestamp** | **int, none_type**|  | [optional]
 
 ### Return type
 
@@ -119,10 +222,10 @@ import whylabs_client
 from whylabs_client.api import dataset_profile_api
 from whylabs_client.model.delete_dataset_profiles_response import DeleteDatasetProfilesResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -142,7 +245,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     api_instance = dataset_profile_api.DatasetProfileApi(api_client)
     org_id = "org-123" # str | Your company's unique organization ID
     dataset_id = "model-123" # str | The unique dataset ID in your company.
-    profile_start_timestamp = 1577836800000 # int, none_type | Optional, scope deleting profiles more recently than the timestamp (optional)
+    profile_start_timestamp = 1577836800000 # int, none_type | Optional, scope deleting profiles from and more recent than the timestamp (optional)
     profile_end_timestamp = 1893456000000 # int, none_type | Optional, scope deleting profiles older than the timestamp (optional)
     before_upload_timestamp = 1577836800000 # int, none_type | Optional, scope deleting profiles uploaded prior to the timestamp (optional)
 
@@ -171,7 +274,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**| Your company&#39;s unique organization ID |
  **dataset_id** | **str**| The unique dataset ID in your company. |
- **profile_start_timestamp** | **int, none_type**| Optional, scope deleting profiles more recently than the timestamp | [optional]
+ **profile_start_timestamp** | **int, none_type**| Optional, scope deleting profiles from and more recent than the timestamp | [optional]
  **profile_end_timestamp** | **int, none_type**| Optional, scope deleting profiles older than the timestamp | [optional]
  **before_upload_timestamp** | **int, none_type**| Optional, scope deleting profiles uploaded prior to the timestamp | [optional]
 
@@ -197,6 +300,169 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_reference_profile**
+> bool delete_reference_profile(org_id, model_id, reference_id)
+
+Delete a single reference profile
+
+Delete a a Reference Profile. Returns false if the deletion encountered some error.          
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import dataset_profile_api
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_profile_api.DatasetProfileApi(api_client)
+    org_id = "org-123" # str | Your company's unique organization ID
+    model_id = "model-123" # str | The unique model ID in your company.
+    reference_id = "ref-xxy" # str | Unique reference Id.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete a single reference profile
+        api_response = api_instance.delete_reference_profile(org_id, model_id, reference_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling DatasetProfileApi->delete_reference_profile: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**| Your company&#39;s unique organization ID |
+ **model_id** | **str**| The unique model ID in your company. |
+ **reference_id** | **str**| Unique reference Id. |
+
+### Return type
+
+**bool**
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | true if successful, false if we encounter failures |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_reference_profile**
+> ReferenceProfileItemResponse get_reference_profile(org_id, model_id, reference_id)
+
+Returns a single reference profile
+
+Returns a Reference Profile.          
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import dataset_profile_api
+from whylabs_client.model.reference_profile_item_response import ReferenceProfileItemResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_profile_api.DatasetProfileApi(api_client)
+    org_id = "org-123" # str | Your company's unique organization ID
+    model_id = "model-123" # str | The unique model ID in your company.
+    reference_id = "ref-xxy" # str | Unique reference Id.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Returns a single reference profile
+        api_response = api_instance.get_reference_profile(org_id, model_id, reference_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling DatasetProfileApi->get_reference_profile: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**| Your company&#39;s unique organization ID |
+ **model_id** | **str**| The unique model ID in your company. |
+ **reference_id** | **str**| Unique reference Id. |
+
+### Return type
+
+[**ReferenceProfileItemResponse**](ReferenceProfileItemResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | The metadata for the summarized dataset profile including paths to JSON and protobuf data |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_reference_profiles**
 > [ReferenceProfileItemResponse] list_reference_profiles(org_id, model_id)
 
@@ -214,10 +480,10 @@ import whylabs_client
 from whylabs_client.api import dataset_profile_api
 from whylabs_client.model.reference_profile_item_response import ReferenceProfileItemResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
