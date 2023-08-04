@@ -22,6 +22,8 @@ from whylabs_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from whylabs_client.model.create_reference_profile_request import CreateReferenceProfileRequest
+from whylabs_client.model.create_reference_profile_response import CreateReferenceProfileResponse
 from whylabs_client.model.delete_analyzer_results_response import DeleteAnalyzerResultsResponse
 from whylabs_client.model.delete_dataset_profiles_response import DeleteDatasetProfilesResponse
 from whylabs_client.model.reference_profile_item_response import ReferenceProfileItemResponse
@@ -38,6 +40,70 @@ class DatasetProfileApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.create_reference_profile_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateReferenceProfileResponse,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/reference-profile',
+                'operation_id': 'create_reference_profile',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                    'create_reference_profile_request',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                    'create_reference_profile_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'create_reference_profile_request':
+                        (CreateReferenceProfileRequest,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
+                    'create_reference_profile_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.delete_analyzer_results_endpoint = _Endpoint(
             settings={
                 'response_type': (DeleteAnalyzerResultsResponse,),
@@ -182,6 +248,132 @@ class DatasetProfileApi(object):
             },
             api_client=api_client
         )
+        self.delete_reference_profile_endpoint = _Endpoint(
+            settings={
+                'response_type': (bool,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles/{reference_id}',
+                'operation_id': 'delete_reference_profile',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'model_id',
+                    'reference_id',
+                ],
+                'required': [
+                    'org_id',
+                    'model_id',
+                    'reference_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'model_id':
+                        (str,),
+                    'reference_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'model_id': 'model_id',
+                    'reference_id': 'reference_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'model_id': 'path',
+                    'reference_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_reference_profile_endpoint = _Endpoint(
+            settings={
+                'response_type': (ReferenceProfileItemResponse,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles/{reference_id}',
+                'operation_id': 'get_reference_profile',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'model_id',
+                    'reference_id',
+                ],
+                'required': [
+                    'org_id',
+                    'model_id',
+                    'reference_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'model_id':
+                        (str,),
+                    'reference_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'model_id': 'model_id',
+                    'reference_id': 'reference_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'model_id': 'path',
+                    'reference_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.list_reference_profiles_endpoint = _Endpoint(
             settings={
                 'response_type': ([ReferenceProfileItemResponse],),
@@ -252,6 +444,85 @@ class DatasetProfileApi(object):
             api_client=api_client
         )
 
+    def create_reference_profile(
+        self,
+        org_id,
+        dataset_id,
+        create_reference_profile_request,
+        **kwargs
+    ):
+        """Returns data needed to uploading the reference profile  # noqa: E501
+
+        Returns data needed to upload the reference profile. Supports uploading segmented reference profiles.              If segments are omitted, provides data needed to upload a single reference profile.              This replaces the deprecated LogReference operation.           # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_reference_profile(org_id, dataset_id, create_reference_profile_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Your company's unique organization ID
+            dataset_id (str): The unique model ID in your company.
+            create_reference_profile_request (CreateReferenceProfileRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateReferenceProfileResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['create_reference_profile_request'] = \
+            create_reference_profile_request
+        return self.create_reference_profile_endpoint.call_with_http_info(**kwargs)
+
     def delete_analyzer_results(
         self,
         org_id,
@@ -272,8 +543,8 @@ class DatasetProfileApi(object):
             dataset_id (str): The unique dataset ID in your company.
 
         Keyword Args:
-            start_timestamp (int, none_type): Optional, scope deleting analyzer results more recent than the timestamp. [optional]
-            end_timestamp (int, none_type): Optional, scope deleting analyzer results older than the timestamp. [optional]
+            start_timestamp (int, none_type): [optional]
+            end_timestamp (int, none_type): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -349,7 +620,7 @@ class DatasetProfileApi(object):
             dataset_id (str): The unique dataset ID in your company.
 
         Keyword Args:
-            profile_start_timestamp (int, none_type): Optional, scope deleting profiles more recently than the timestamp. [optional]
+            profile_start_timestamp (int, none_type): Optional, scope deleting profiles from and more recent than the timestamp. [optional]
             profile_end_timestamp (int, none_type): Optional, scope deleting profiles older than the timestamp. [optional]
             before_upload_timestamp (int, none_type): Optional, scope deleting profiles uploaded prior to the timestamp. [optional]
             _return_http_data_only (bool): response data without head status
@@ -406,6 +677,164 @@ class DatasetProfileApi(object):
         kwargs['dataset_id'] = \
             dataset_id
         return self.delete_dataset_profiles_endpoint.call_with_http_info(**kwargs)
+
+    def delete_reference_profile(
+        self,
+        org_id,
+        model_id,
+        reference_id,
+        **kwargs
+    ):
+        """Delete a single reference profile  # noqa: E501
+
+        Delete a a Reference Profile. Returns false if the deletion encountered some error.            # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_reference_profile(org_id, model_id, reference_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Your company's unique organization ID
+            model_id (str): The unique model ID in your company.
+            reference_id (str): Unique reference Id.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            bool
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['model_id'] = \
+            model_id
+        kwargs['reference_id'] = \
+            reference_id
+        return self.delete_reference_profile_endpoint.call_with_http_info(**kwargs)
+
+    def get_reference_profile(
+        self,
+        org_id,
+        model_id,
+        reference_id,
+        **kwargs
+    ):
+        """Returns a single reference profile  # noqa: E501
+
+        Returns a Reference Profile.            # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_reference_profile(org_id, model_id, reference_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Your company's unique organization ID
+            model_id (str): The unique model ID in your company.
+            reference_id (str): Unique reference Id.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ReferenceProfileItemResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['model_id'] = \
+            model_id
+        kwargs['reference_id'] = \
+            reference_id
+        return self.get_reference_profile_endpoint.call_with_http_info(**kwargs)
 
     def list_reference_profiles(
         self,

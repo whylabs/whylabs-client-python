@@ -773,10 +773,10 @@ class Endpoint(object):
         Example:
 
         api_instance = DatasetProfileApi()
-        api_instance.delete_analyzer_results  # this is an instance of the class Endpoint
-        api_instance.delete_analyzer_results()  # this invokes api_instance.delete_analyzer_results.__call__()
+        api_instance.create_reference_profile  # this is an instance of the class Endpoint
+        api_instance.create_reference_profile()  # this invokes api_instance.create_reference_profile.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.delete_analyzer_results.callable or self.callable in this class
+        api_instance.create_reference_profile.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

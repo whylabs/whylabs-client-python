@@ -1,6 +1,6 @@
 # whylabs_client.DatasetMetadataApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.whylabsapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ import whylabs_client
 from whylabs_client.api import dataset_metadata_api
 from whylabs_client.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -106,10 +106,10 @@ import whylabs_client
 from whylabs_client.api import dataset_metadata_api
 from whylabs_client.model.get_dataset_metadata_response import GetDatasetMetadataResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -186,10 +186,10 @@ import whylabs_client
 from whylabs_client.api import dataset_metadata_api
 from whylabs_client.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters

@@ -1,6 +1,6 @@
 # whylabs_client.SessionsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.whylabsapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**create_reference_profile_upload**](SessionsApi.md#create_reference_profile_upload) | **POST** /v0/sessions/{session_id}/reference | Create a reference profile upload for a given session.
 [**create_session**](SessionsApi.md#create_session) | **POST** /v0/sessions | Create a new session that can be used to upload dataset profiles from whylogs for display in whylabs.
 [**get_session**](SessionsApi.md#get_session) | **GET** /v0/sessions/{session_id} | Get information about a session.
+[**get_session_profile_observatory_link**](SessionsApi.md#get_session_profile_observatory_link) | **POST** /v0/sessions/observatory-link/{session_id} | Get observatory links for profiles in a given session. A max of 3 profiles can be viewed a a time.
 
 
 # **batch_create_reference_profile_upload**
@@ -29,10 +30,10 @@ from whylabs_client.api import sessions_api
 from whylabs_client.model.batch_log_session_reference_response import BatchLogSessionReferenceResponse
 from whylabs_client.model.batch_log_reference_request import BatchLogReferenceRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 
@@ -105,10 +106,10 @@ import time
 import whylabs_client
 from whylabs_client.api import sessions_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -169,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_dataset_profile_upload**
-> AsyncLogResponse create_dataset_profile_upload(session_id, log_async_request)
+> CreateDatasetProfileUploadResponse create_dataset_profile_upload(session_id, log_async_request)
 
 Create an upload for a given session.
 
@@ -183,12 +184,12 @@ import time
 import whylabs_client
 from whylabs_client.api import sessions_api
 from whylabs_client.model.log_async_request import LogAsyncRequest
-from whylabs_client.model.async_log_response import AsyncLogResponse
+from whylabs_client.model.create_dataset_profile_upload_response import CreateDatasetProfileUploadResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 
@@ -226,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AsyncLogResponse**](AsyncLogResponse.md)
+[**CreateDatasetProfileUploadResponse**](CreateDatasetProfileUploadResponse.md)
 
 ### Authorization
 
@@ -263,10 +264,10 @@ from whylabs_client.api import sessions_api
 from whylabs_client.model.log_reference_request import LogReferenceRequest
 from whylabs_client.model.log_session_reference_response import LogSessionReferenceResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 
@@ -336,10 +337,10 @@ from whylabs_client.api import sessions_api
 from whylabs_client.model.create_session_response import CreateSessionResponse
 from whylabs_client.model.create_session_request import CreateSessionRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 
@@ -406,10 +407,10 @@ import whylabs_client
 from whylabs_client.api import sessions_api
 from whylabs_client.model.get_session_response import GetSessionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.whylabsapp.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = whylabs_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.whylabsapp.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -464,6 +465,83 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **0** | GetSession default response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_session_profile_observatory_link**
+> GetProfileObservatoryLinkResponse get_session_profile_observatory_link(session_id, get_profile_observatory_link_request)
+
+Get observatory links for profiles in a given session. A max of 3 profiles can be viewed a a time.
+
+Get observatory links for profiles in a given session. A max of 3 profiles can be viewed a a time.
+
+### Example
+
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import sessions_api
+from whylabs_client.model.get_profile_observatory_link_response import GetProfileObservatoryLinkResponse
+from whylabs_client.model.get_profile_observatory_link_request import GetProfileObservatoryLinkRequest
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = sessions_api.SessionsApi(api_client)
+    session_id = "session_id_example" # str | 
+    get_profile_observatory_link_request = GetProfileObservatoryLinkRequest(
+        batch_profile_timestamps=[
+            1,
+        ],
+        reference_profile_ids=[
+            "reference_profile_ids_example",
+        ],
+    ) # GetProfileObservatoryLinkRequest | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get observatory links for profiles in a given session. A max of 3 profiles can be viewed a a time.
+        api_response = api_instance.get_session_profile_observatory_link(session_id, get_profile_observatory_link_request)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling SessionsApi->get_session_profile_observatory_link: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **session_id** | **str**|  |
+ **get_profile_observatory_link_request** | [**GetProfileObservatoryLinkRequest**](GetProfileObservatoryLinkRequest.md)|  |
+
+### Return type
+
+[**GetProfileObservatoryLinkResponse**](GetProfileObservatoryLinkResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | GetSessionProfileObservatoryLink default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

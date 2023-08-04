@@ -88,7 +88,9 @@ class ReferenceProfileItemResponse(ModelNormal):
             'id': (str,),  # noqa: E501
             'upload_timestamp': (int,),  # noqa: E501
             'dataset_timestamp': (int, none_type,),  # noqa: E501
-            'path': (str,),  # noqa: E501
+            'download_url': (str, none_type,),  # noqa: E501
+            'segments': ([str], none_type,),  # noqa: E501
+            'download_urls': ([str], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -103,7 +105,9 @@ class ReferenceProfileItemResponse(ModelNormal):
         'id': 'id',  # noqa: E501
         'upload_timestamp': 'uploadTimestamp',  # noqa: E501
         'dataset_timestamp': 'datasetTimestamp',  # noqa: E501
-        'path': 'path',  # noqa: E501
+        'download_url': 'downloadUrl',  # noqa: E501
+        'segments': 'segments',  # noqa: E501
+        'download_urls': 'downloadUrls',  # noqa: E501
     }
 
     read_only_vars = {
@@ -153,7 +157,9 @@ class ReferenceProfileItemResponse(ModelNormal):
             id (str): [optional]  # noqa: E501
             upload_timestamp (int): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
-            path (str): [optional]  # noqa: E501
+            download_url (str, none_type): [optional]  # noqa: E501
+            segments ([str], none_type): [optional]  # noqa: E501
+            download_urls ([str], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -241,7 +247,9 @@ class ReferenceProfileItemResponse(ModelNormal):
             id (str): [optional]  # noqa: E501
             upload_timestamp (int): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
-            path (str): [optional]  # noqa: E501
+            download_url (str, none_type): [optional]  # noqa: E501
+            segments ([str], none_type): [optional]  # noqa: E501
+            download_urls ([str], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

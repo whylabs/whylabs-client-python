@@ -32,7 +32,9 @@ from whylabs_client.exceptions import ApiAttributeError
 
 def lazy_import():
     from whylabs_client.model.action_type import ActionType
+    from whylabs_client.model.notification_relationship_item import NotificationRelationshipItem
     globals()['ActionType'] = ActionType
+    globals()['NotificationRelationshipItem'] = NotificationRelationshipItem
 
 
 class NotificationAction(ModelNormal):
@@ -90,7 +92,11 @@ class NotificationAction(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'type': (ActionType,),  # noqa: E501
+            'enabled': (bool, none_type,),  # noqa: E501
             'payload': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'references': ([NotificationRelationshipItem], none_type,),  # noqa: E501
+            'creation_time': (datetime, none_type,),  # noqa: E501
+            'last_update': (datetime,),  # noqa: E501
         }
 
     @cached_property
@@ -101,7 +107,11 @@ class NotificationAction(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'type': 'type',  # noqa: E501
+        'enabled': 'enabled',  # noqa: E501
         'payload': 'payload',  # noqa: E501
+        'references': 'references',  # noqa: E501
+        'creation_time': 'creationTime',  # noqa: E501
+        'last_update': 'lastUpdate',  # noqa: E501
     }
 
     read_only_vars = {
@@ -147,7 +157,11 @@ class NotificationAction(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             id (str): [optional]  # noqa: E501
             type (ActionType): [optional]  # noqa: E501
+            enabled (bool, none_type): [optional]  # noqa: E501
             payload ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            references ([NotificationRelationshipItem], none_type): [optional]  # noqa: E501
+            creation_time (datetime, none_type): [optional]  # noqa: E501
+            last_update (datetime): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -231,7 +245,11 @@ class NotificationAction(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             id (str): [optional]  # noqa: E501
             type (ActionType): [optional]  # noqa: E501
+            enabled (bool, none_type): [optional]  # noqa: E501
             payload ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            references ([NotificationRelationshipItem], none_type): [optional]  # noqa: E501
+            creation_time (datetime, none_type): [optional]  # noqa: E501
+            last_update (datetime): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

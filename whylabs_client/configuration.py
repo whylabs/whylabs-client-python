@@ -113,7 +113,7 @@ conf = whylabs_client.Configuration(
                  ):
         """Constructor
         """
-        self._base_path = "http://localhost" if host is None else host
+        self._base_path = "https://api.whylabsapp.com" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -410,7 +410,7 @@ conf = whylabs_client.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 0.1\n"\
-               "SDK Package Version: 0.4.6".\
+               "SDK Package Version: 0.5.4".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
