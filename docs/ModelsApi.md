@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**get_entity_schema**](ModelsApi.md#get_entity_schema) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema | Get the entity schema config for a given dataset.
 [**get_entity_schema_column**](ModelsApi.md#get_entity_schema_column) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Get the entity schema of a single column for a given dataset.
 [**get_model**](ModelsApi.md#get_model) | **GET** /v0/organizations/{org_id}/models/{model_id} | Get a model metadata
+[**get_provided_config**](ModelsApi.md#get_provided_config) | **GET** /v0/organizations/{org_id}/models/provided-config/ | Get the monitor&#39;s provided config for a given organization/model/segment
 [**list_models**](ModelsApi.md#list_models) | **GET** /v0/organizations/{org_id}/models | Get a list of all of the model ids for an organization.
 [**put_entity_schema**](ModelsApi.md#put_entity_schema) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema | Save the entity schema config for a given dataset.
 [**put_entity_schema_column**](ModelsApi.md#put_entity_schema_column) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Save the entity schema of a single column for a given dataset.
@@ -679,6 +680,105 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **0** | A [ModelMetadataResponse] object if operation succeeds |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_provided_config**
+> ProvidedConfig get_provided_config(org_id)
+
+Get the monitor's provided config for a given organization/model/segment
+
+Get the Provided Config (by WhyLabs) for a given organization/model/segment.         
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.segment_tag import SegmentTag
+from whylabs_client.model.provided_config import ProvidedConfig
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | Your company's unique organization ID
+    model_id = "model-123" # str, none_type | Optional. The unique model ID in your company. (optional)
+    segment_tags = [
+        SegmentTag(
+            key="key_example",
+            value="value_example",
+        ),
+    ] # [SegmentTag], none_type | Optional. List of (key, value) pair tags for a segment. Must not contain duplicate values (optional)
+    segment_tags_json = "segment_tags_json_example" # str, none_type | Optional. Instead of passing segment_tags, passing in a serialized JSON array. If [segment_tags]  is specified, then this field is ignored (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get the monitor's provided config for a given organization/model/segment
+        api_response = api_instance.get_provided_config(org_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->get_provided_config: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get the monitor's provided config for a given organization/model/segment
+        api_response = api_instance.get_provided_config(org_id, model_id=model_id, segment_tags=segment_tags, segment_tags_json=segment_tags_json)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->get_provided_config: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**| Your company&#39;s unique organization ID |
+ **model_id** | **str, none_type**| Optional. The unique model ID in your company. | [optional]
+ **segment_tags** | [**[SegmentTag], none_type**](SegmentTag.md)| Optional. List of (key, value) pair tags for a segment. Must not contain duplicate values | [optional]
+ **segment_tags_json** | **str, none_type**| Optional. Instead of passing segment_tags, passing in a serialized JSON array. If [segment_tags]  is specified, then this field is ignored | [optional]
+
+### Return type
+
+[**ProvidedConfig**](ProvidedConfig.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**0** | a [ProvidedConfig] object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

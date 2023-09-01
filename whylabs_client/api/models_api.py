@@ -28,7 +28,9 @@ from whylabs_client.model.list_models_response import ListModelsResponse
 from whylabs_client.model.metric_schema import MetricSchema
 from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from whylabs_client.model.model_type import ModelType
+from whylabs_client.model.provided_config import ProvidedConfig
 from whylabs_client.model.response import Response
+from whylabs_client.model.segment_tag import SegmentTag
 from whylabs_client.model.time_period import TimePeriod
 
 
@@ -541,6 +543,76 @@ class ModelsApi(object):
                     'model_id': 'path',
                 },
                 'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_provided_config_endpoint = _Endpoint(
+            settings={
+                'response_type': (ProvidedConfig,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/models/provided-config/',
+                'operation_id': 'get_provided_config',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'model_id',
+                    'segment_tags',
+                    'segment_tags_json',
+                ],
+                'required': [
+                    'org_id',
+                ],
+                'nullable': [
+                    'model_id',
+                    'segment_tags',
+                    'segment_tags_json',
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'model_id':
+                        (str, none_type,),
+                    'segment_tags':
+                        ([SegmentTag], none_type,),
+                    'segment_tags_json':
+                        (str, none_type,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'model_id': 'model_id',
+                    'segment_tags': 'segment_tags',
+                    'segment_tags_json': 'segment_tags_json',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'model_id': 'query',
+                    'segment_tags': 'query',
+                    'segment_tags_json': 'query',
+                },
+                'collection_format_map': {
+                    'segment_tags': 'multi',
                 }
             },
             headers_map={
@@ -1492,6 +1564,80 @@ class ModelsApi(object):
         kwargs['model_id'] = \
             model_id
         return self.get_model_endpoint.call_with_http_info(**kwargs)
+
+    def get_provided_config(
+        self,
+        org_id,
+        **kwargs
+    ):
+        """Get the monitor's provided config for a given organization/model/segment  # noqa: E501
+
+        Get the Provided Config (by WhyLabs) for a given organization/model/segment.           # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_provided_config(org_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Your company's unique organization ID
+
+        Keyword Args:
+            model_id (str, none_type): Optional. The unique model ID in your company.. [optional]
+            segment_tags ([SegmentTag], none_type): Optional. List of (key, value) pair tags for a segment. Must not contain duplicate values. [optional]
+            segment_tags_json (str, none_type): Optional. Instead of passing segment_tags, passing in a serialized JSON array. If [segment_tags]  is specified, then this field is ignored. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ProvidedConfig
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        return self.get_provided_config_endpoint.call_with_http_info(**kwargs)
 
     def list_models(
         self,

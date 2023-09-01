@@ -11,7 +11,7 @@
 """
 
 
-__version__ = "0.5.4"
+__version__ = "0.5.6"
 
 # import ApiClient
 from whylabs_client.api_client import ApiClient

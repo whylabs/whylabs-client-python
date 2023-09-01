@@ -772,11 +772,11 @@ class Endpoint(object):
         """ This method is invoked when endpoints are called
         Example:
 
-        api_instance = DatasetProfileApi()
-        api_instance.create_reference_profile  # this is an instance of the class Endpoint
-        api_instance.create_reference_profile()  # this invokes api_instance.create_reference_profile.__call__()
+        api_instance = ApiKeyApi()
+        api_instance.create_api_key  # this is an instance of the class Endpoint
+        api_instance.create_api_key()  # this invokes api_instance.create_api_key.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.create_reference_profile.callable or self.callable in this class
+        api_instance.create_api_key.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)
