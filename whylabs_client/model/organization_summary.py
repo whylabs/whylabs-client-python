@@ -100,6 +100,7 @@ class OrganizationSummary(ModelNormal):
             'slack_webhook': (str, none_type,),  # noqa: E501
             'pager_duty_key': (str, none_type,),  # noqa: E501
             'notification_settings': (NotificationSettings,),  # noqa: E501
+            'parent_org_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -118,6 +119,7 @@ class OrganizationSummary(ModelNormal):
         'slack_webhook': 'slackWebhook',  # noqa: E501
         'pager_duty_key': 'pagerDutyKey',  # noqa: E501
         'notification_settings': 'notificationSettings',  # noqa: E501
+        'parent_org_id': 'parentOrgId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -173,6 +175,7 @@ class OrganizationSummary(ModelNormal):
             slack_webhook (str, none_type): [optional]  # noqa: E501
             pager_duty_key (str, none_type): [optional]  # noqa: E501
             notification_settings (NotificationSettings): [optional]  # noqa: E501
+            parent_org_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -267,6 +270,7 @@ class OrganizationSummary(ModelNormal):
             slack_webhook (str, none_type): [optional]  # noqa: E501
             pager_duty_key (str, none_type): [optional]  # noqa: E501
             notification_settings (NotificationSettings): [optional]  # noqa: E501
+            parent_org_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

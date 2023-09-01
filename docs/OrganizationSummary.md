@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **slack_webhook** | **str, none_type** |  | [optional] 
 **pager_duty_key** | **str, none_type** |  | [optional] 
 **notification_settings** | [**NotificationSettings**](NotificationSettings.md) |  | [optional] 
+**parent_org_id** | **str, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

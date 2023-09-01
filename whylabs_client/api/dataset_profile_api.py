@@ -26,6 +26,7 @@ from whylabs_client.model.create_reference_profile_request import CreateReferenc
 from whylabs_client.model.create_reference_profile_response import CreateReferenceProfileResponse
 from whylabs_client.model.delete_analyzer_results_response import DeleteAnalyzerResultsResponse
 from whylabs_client.model.delete_dataset_profiles_response import DeleteDatasetProfilesResponse
+from whylabs_client.model.profile_traces_response import ProfileTracesResponse
 from whylabs_client.model.reference_profile_item_response import ReferenceProfileItemResponse
 
 
@@ -311,6 +312,81 @@ class DatasetProfileApi(object):
             },
             api_client=api_client
         )
+        self.get_profile_traces_endpoint = _Endpoint(
+            settings={
+                'response_type': (ProfileTracesResponse,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/trace/{trace_id}',
+                'operation_id': 'get_profile_traces',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                    'trace_id',
+                    'limit',
+                    'offset',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                    'trace_id',
+                ],
+                'nullable': [
+                    'limit',
+                    'offset',
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'trace_id':
+                        (str,),
+                    'limit':
+                        (int, none_type,),
+                    'offset':
+                        (int, none_type,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                    'trace_id': 'trace_id',
+                    'limit': 'limit',
+                    'offset': 'offset',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
+                    'trace_id': 'path',
+                    'limit': 'query',
+                    'offset': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_reference_profile_endpoint = _Endpoint(
             settings={
                 'response_type': (ReferenceProfileItemResponse,),
@@ -362,6 +438,87 @@ class DatasetProfileApi(object):
                     'org_id': 'path',
                     'model_id': 'path',
                     'reference_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_profile_traces_endpoint = _Endpoint(
+            settings={
+                'response_type': (ProfileTracesResponse,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/trace',
+                'operation_id': 'list_profile_traces',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                    'from_epoch',
+                    'to_epoch',
+                    'limit',
+                    'offset',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                    'from_epoch',
+                    'to_epoch',
+                ],
+                'nullable': [
+                    'limit',
+                    'offset',
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'from_epoch':
+                        (int,),
+                    'to_epoch':
+                        (int,),
+                    'limit':
+                        (int, none_type,),
+                    'offset':
+                        (int, none_type,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                    'from_epoch': 'from_epoch',
+                    'to_epoch': 'to_epoch',
+                    'limit': 'limit',
+                    'offset': 'offset',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
+                    'from_epoch': 'query',
+                    'to_epoch': 'query',
+                    'limit': 'query',
+                    'offset': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -757,6 +914,87 @@ class DatasetProfileApi(object):
             reference_id
         return self.delete_reference_profile_endpoint.call_with_http_info(**kwargs)
 
+    def get_profile_traces(
+        self,
+        org_id,
+        dataset_id,
+        trace_id,
+        **kwargs
+    ):
+        """Returns a list for profile traces matching a trace id  # noqa: E501
+
+        Returns a list of profile traces matching a trace id            # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_profile_traces(org_id, dataset_id, trace_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str):
+            dataset_id (str):
+            trace_id (str):
+
+        Keyword Args:
+            limit (int, none_type): [optional]
+            offset (int, none_type): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ProfileTracesResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['trace_id'] = \
+            trace_id
+        return self.get_profile_traces_endpoint.call_with_http_info(**kwargs)
+
     def get_reference_profile(
         self,
         org_id,
@@ -835,6 +1073,91 @@ class DatasetProfileApi(object):
         kwargs['reference_id'] = \
             reference_id
         return self.get_reference_profile_endpoint.call_with_http_info(**kwargs)
+
+    def list_profile_traces(
+        self,
+        org_id,
+        dataset_id,
+        from_epoch,
+        to_epoch,
+        **kwargs
+    ):
+        """Returns a list for profile traces  # noqa: E501
+
+        Returns a list of profile traces.            # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_profile_traces(org_id, dataset_id, from_epoch, to_epoch, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Your company's unique organization ID
+            dataset_id (str): The unique dataset ID
+            from_epoch (int): Milli epoch time that represents the end of the time range to query.
+            to_epoch (int): Milli epoch time that represents the end of the time range to query.
+
+        Keyword Args:
+            limit (int, none_type): [optional]
+            offset (int, none_type): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ProfileTracesResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['from_epoch'] = \
+            from_epoch
+        kwargs['to_epoch'] = \
+            to_epoch
+        return self.list_profile_traces_endpoint.call_with_http_info(**kwargs)
 
     def list_reference_profiles(
         self,
