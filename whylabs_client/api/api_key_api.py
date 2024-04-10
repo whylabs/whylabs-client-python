@@ -198,7 +198,7 @@ class ApiKeyApi(object):
         Keyword Args:
             expiration_time (int, none_type): Expiration time in epoch milliseconds. [optional]
             scopes ([str], none_type): Scopes of the token. [optional]
-            alias (str, none_type): A human-friendly name for the API Key  An object with key ID and other metadata about the key. [optional]
+            alias (str, none_type): A human-friendly name for the API Key. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -273,7 +273,7 @@ class ApiKeyApi(object):
         Args:
             org_id (str):
             user_id (str):
-            key_id (str): ID of the key to revoke  Metadata for the revoked API Key
+            key_id (str): ID of the key to revoke
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status

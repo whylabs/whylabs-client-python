@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **add_notification_action**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} add_notification_action(org_id, type, action_id, body)
+> add_notification_action(org_id, type, action_id, body)
 
 Add new notification action
 
@@ -64,8 +64,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Add new notification action
-        api_response = api_instance.add_notification_action(org_id, type, action_id, body)
-        pprint(api_response)
+        api_instance.add_notification_action(org_id, type, action_id, body)
     except whylabs_client.ApiException as e:
         print("Exception when calling NotificationSettingsApi->add_notification_action: %s\n" % e)
 ```
@@ -82,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -91,19 +90,19 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | AddNotificationAction default response |  -  |
+**200** | AddNotificationAction 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_notification_action**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} delete_notification_action(org_id, action_id)
+> delete_notification_action(org_id, action_id)
 
 Delete notification action
 
@@ -145,8 +144,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Delete notification action
-        api_response = api_instance.delete_notification_action(org_id, action_id)
-        pprint(api_response)
+        api_instance.delete_notification_action(org_id, action_id)
     except whylabs_client.ApiException as e:
         print("Exception when calling NotificationSettingsApi->delete_notification_action: %s\n" % e)
 ```
@@ -161,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -170,19 +168,19 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | DeleteNotificationAction default response |  -  |
+**200** | DeleteNotificationAction 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **disable_notification_action**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} disable_notification_action(org_id, action_id)
+> disable_notification_action(org_id, action_id)
 
 Disable notification action
 
@@ -224,8 +222,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Disable notification action
-        api_response = api_instance.disable_notification_action(org_id, action_id)
-        pprint(api_response)
+        api_instance.disable_notification_action(org_id, action_id)
     except whylabs_client.ApiException as e:
         print("Exception when calling NotificationSettingsApi->disable_notification_action: %s\n" % e)
 ```
@@ -240,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -249,19 +246,19 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | DisableNotificationAction default response |  -  |
+**200** | DisableNotificationAction 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **enable_notification_action**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} enable_notification_action(org_id, action_id)
+> enable_notification_action(org_id, action_id)
 
 Enable notification action
 
@@ -303,8 +300,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Enable notification action
-        api_response = api_instance.enable_notification_action(org_id, action_id)
-        pprint(api_response)
+        api_instance.enable_notification_action(org_id, action_id)
     except whylabs_client.ApiException as e:
         print("Exception when calling NotificationSettingsApi->enable_notification_action: %s\n" % e)
 ```
@@ -319,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -328,14 +324,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | EnableNotificationAction default response |  -  |
+**200** | EnableNotificationAction 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -409,7 +405,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | getEmailNotificationActionPayload default response |  -  |
+**200** | getEmailNotificationActionPayload 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -489,7 +485,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | GetNotificationAction default response |  -  |
+**200** | GetNotificationAction 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -563,7 +559,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | getPagerDutyNotificationActionPayload default response |  -  |
+**200** | getPagerDutyNotificationActionPayload 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -637,7 +633,7 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | getSlackNotificationActionPayload default response |  -  |
+**200** | getSlackNotificationActionPayload 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -715,12 +711,12 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | ListNotificationActions default response |  -  |
+**200** | ListNotificationActions 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **put_notification_action**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} put_notification_action(org_id, type, action_id, body)
+> put_notification_action(org_id, type, action_id, body)
 
 Add new notification action
 
@@ -765,8 +761,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Add new notification action
-        api_response = api_instance.put_notification_action(org_id, type, action_id, body)
-        pprint(api_response)
+        api_instance.put_notification_action(org_id, type, action_id, body)
     except whylabs_client.ApiException as e:
         print("Exception when calling NotificationSettingsApi->put_notification_action: %s\n" % e)
 ```
@@ -783,7 +778,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -792,19 +787,19 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | PutNotificationAction default response |  -  |
+**200** | PutNotificationAction 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_notification_action**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} test_notification_action(org_id, action_id)
+> test_notification_action(org_id, action_id)
 
 Test a notification action
 
@@ -846,8 +841,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Test a notification action
-        api_response = api_instance.test_notification_action(org_id, action_id)
-        pprint(api_response)
+        api_instance.test_notification_action(org_id, action_id)
     except whylabs_client.ApiException as e:
         print("Exception when calling NotificationSettingsApi->test_notification_action: %s\n" % e)
 ```
@@ -862,7 +856,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -871,19 +865,19 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | TestNotificationAction default response |  -  |
+**200** | TestNotificationAction 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_notification_action**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} update_notification_action(org_id, type, action_id, body)
+> update_notification_action(org_id, type, action_id, body)
 
 Update notification action
 
@@ -928,8 +922,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Update notification action
-        api_response = api_instance.update_notification_action(org_id, type, action_id, body)
-        pprint(api_response)
+        api_instance.update_notification_action(org_id, type, action_id, body)
     except whylabs_client.ApiException as e:
         print("Exception when calling NotificationSettingsApi->update_notification_action: %s\n" % e)
 ```
@@ -946,7 +939,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -955,14 +948,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | UpdateNotificationAction default response |  -  |
+**200** | UpdateNotificationAction 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

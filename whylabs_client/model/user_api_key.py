@@ -88,6 +88,7 @@ class UserApiKey(ModelNormal):
             'creation_time': (str,),  # noqa: E501
             'key': (str, none_type,),  # noqa: E501
             'expiration_time': (str, none_type,),  # noqa: E501
+            'last_used_time': (str, none_type,),  # noqa: E501
             'scopes': ([str], none_type,),  # noqa: E501
             'alias': (str, none_type,),  # noqa: E501
             'revoked': (bool, none_type,),  # noqa: E501
@@ -105,6 +106,7 @@ class UserApiKey(ModelNormal):
         'creation_time': 'creationTime',  # noqa: E501
         'key': 'key',  # noqa: E501
         'expiration_time': 'expirationTime',  # noqa: E501
+        'last_used_time': 'lastUsedTime',  # noqa: E501
         'scopes': 'scopes',  # noqa: E501
         'alias': 'alias',  # noqa: E501
         'revoked': 'revoked',  # noqa: E501
@@ -159,6 +161,7 @@ class UserApiKey(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             key (str, none_type): The full value of the key. This is not persisted in the system. [optional]  # noqa: E501
             expiration_time (str, none_type): Expiration time in human readable format. [optional]  # noqa: E501
+            last_used_time (str, none_type): Last used time in human readable format. [optional]  # noqa: E501
             scopes ([str], none_type): Scope of the key. [optional]  # noqa: E501
             alias (str, none_type): Human-readable alias for the key. [optional]  # noqa: E501
             revoked (bool, none_type): Whether the key has been revoked. [optional]  # noqa: E501
@@ -255,6 +258,7 @@ class UserApiKey(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             key (str, none_type): The full value of the key. This is not persisted in the system. [optional]  # noqa: E501
             expiration_time (str, none_type): Expiration time in human readable format. [optional]  # noqa: E501
+            last_used_time (str, none_type): Last used time in human readable format. [optional]  # noqa: E501
             scopes ([str], none_type): Scope of the key. [optional]  # noqa: E501
             alias (str, none_type): Human-readable alias for the key. [optional]  # noqa: E501
             revoked (bool, none_type): Whether the key has been revoked. [optional]  # noqa: E501

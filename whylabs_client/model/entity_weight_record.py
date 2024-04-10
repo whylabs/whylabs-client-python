@@ -113,8 +113,12 @@ class EntityWeightRecord(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, segment_weights, metadata, *args, **kwargs):  # noqa: E501
         """EntityWeightRecord - a model defined in OpenAPI
+
+        Args:
+            segment_weights ([SegmentWeight]): A list of entity weights for a segment
+            metadata (EntityWeightRecordMetadata):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -147,8 +151,6 @@ class EntityWeightRecord(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            segment_weights ([SegmentWeight]): A list of entity weights for a segment. [optional]  # noqa: E501
-            metadata (EntityWeightRecordMetadata): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -176,6 +178,8 @@ class EntityWeightRecord(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.segment_weights = segment_weights
+        self.metadata = metadata
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -196,8 +200,12 @@ class EntityWeightRecord(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, segment_weights, metadata, *args, **kwargs):  # noqa: E501
         """EntityWeightRecord - a model defined in OpenAPI
+
+        Args:
+            segment_weights ([SegmentWeight]): A list of entity weights for a segment
+            metadata (EntityWeightRecordMetadata):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -230,8 +238,6 @@ class EntityWeightRecord(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            segment_weights ([SegmentWeight]): A list of entity weights for a segment. [optional]  # noqa: E501
-            metadata (EntityWeightRecordMetadata): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -257,6 +263,8 @@ class EntityWeightRecord(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.segment_weights = segment_weights
+        self.metadata = metadata
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

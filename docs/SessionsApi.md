@@ -47,6 +47,7 @@ with whylabs_client.ApiClient() as api_client:
             LogReferenceRequest(
                 alias="alias_example",
                 dataset_timestamp=1,
+                region="region_example",
             ),
         ],
     ) # BatchLogReferenceRequest | 
@@ -86,12 +87,12 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | BatchCreateReferenceProfileUpload default response |  -  |
+**200** | BatchCreateReferenceProfileUpload 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **claim_guest_session**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} claim_guest_session(session_id, org_id)
+> claim_guest_session(session_id, org_id)
 
 Claim a guest session, copying its model data into another org and expiring the session.
 
@@ -133,8 +134,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Claim a guest session, copying its model data into another org and expiring the session.
-        api_response = api_instance.claim_guest_session(session_id, org_id)
-        pprint(api_response)
+        api_instance.claim_guest_session(session_id, org_id)
     except whylabs_client.ApiException as e:
         print("Exception when calling SessionsApi->claim_guest_session: %s\n" % e)
 ```
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -158,14 +158,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | ClaimGuestSession default response |  -  |
+**200** | ClaimGuestSession 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -206,6 +206,7 @@ with whylabs_client.ApiClient() as api_client:
                 value="value_example",
             ),
         ],
+        region="region_example",
     ) # LogAsyncRequest | 
 
     # example passing only required values which don't have defaults set
@@ -243,7 +244,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | CreateDatasetProfileUpload default response |  -  |
+**200** | CreateDatasetProfileUpload 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -279,6 +280,7 @@ with whylabs_client.ApiClient() as api_client:
     log_reference_request = LogReferenceRequest(
         alias="alias_example",
         dataset_timestamp=1,
+        region="region_example",
     ) # LogReferenceRequest | 
 
     # example passing only required values which don't have defaults set
@@ -316,7 +318,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | CreateReferenceProfileUpload default response |  -  |
+**200** | CreateReferenceProfileUpload 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -386,7 +388,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | A new session id that can be used to upload dataset profiles. |  -  |
+**200** | A new session id that can be used to upload dataset profiles. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -464,7 +466,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | GetSession default response |  -  |
+**200** | GetSession 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -541,7 +543,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | GetSessionProfileObservatoryLink default response |  -  |
+**200** | GetSessionProfileObservatoryLink 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

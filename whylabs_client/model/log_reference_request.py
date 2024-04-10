@@ -84,6 +84,7 @@ class LogReferenceRequest(ModelNormal):
         return {
             'alias': (str, none_type,),  # noqa: E501
             'dataset_timestamp': (int, none_type,),  # noqa: E501
+            'region': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -94,6 +95,7 @@ class LogReferenceRequest(ModelNormal):
     attribute_map = {
         'alias': 'alias',  # noqa: E501
         'dataset_timestamp': 'datasetTimestamp',  # noqa: E501
+        'region': 'region',  # noqa: E501
     }
 
     read_only_vars = {
@@ -139,6 +141,7 @@ class LogReferenceRequest(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             alias (str, none_type): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
+            region (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -222,6 +225,7 @@ class LogReferenceRequest(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             alias (str, none_type): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
+            region (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

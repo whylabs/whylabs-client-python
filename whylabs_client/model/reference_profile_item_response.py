@@ -117,8 +117,15 @@ class ReferenceProfileItemResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, org_id, model_id, alias, id, upload_timestamp, *args, **kwargs):  # noqa: E501
         """ReferenceProfileItemResponse - a model defined in OpenAPI
+
+        Args:
+            org_id (str):
+            model_id (str):
+            alias (str):
+            id (str):
+            upload_timestamp (int):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -151,11 +158,6 @@ class ReferenceProfileItemResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            model_id (str): [optional]  # noqa: E501
-            alias (str): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
             download_url (str, none_type): [optional]  # noqa: E501
             segments ([str], none_type): [optional]  # noqa: E501
@@ -187,6 +189,11 @@ class ReferenceProfileItemResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.org_id = org_id
+        self.model_id = model_id
+        self.alias = alias
+        self.id = id
+        self.upload_timestamp = upload_timestamp
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -207,8 +214,15 @@ class ReferenceProfileItemResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, org_id, model_id, alias, id, upload_timestamp, *args, **kwargs):  # noqa: E501
         """ReferenceProfileItemResponse - a model defined in OpenAPI
+
+        Args:
+            org_id (str):
+            model_id (str):
+            alias (str):
+            id (str):
+            upload_timestamp (int):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -241,11 +255,6 @@ class ReferenceProfileItemResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            model_id (str): [optional]  # noqa: E501
-            alias (str): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
             download_url (str, none_type): [optional]  # noqa: E501
             segments ([str], none_type): [optional]  # noqa: E501
@@ -275,6 +284,11 @@ class ReferenceProfileItemResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.org_id = org_id
+        self.model_id = model_id
+        self.alias = alias
+        self.id = id
+        self.upload_timestamp = upload_timestamp
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -24,10 +24,14 @@ from whylabs_client.model_utils import (  # noqa: F401
 )
 from whylabs_client.model.create_reference_profile_request import CreateReferenceProfileRequest
 from whylabs_client.model.create_reference_profile_response import CreateReferenceProfileResponse
+from whylabs_client.model.delete_analyzer_result import DeleteAnalyzerResult
 from whylabs_client.model.delete_analyzer_results_response import DeleteAnalyzerResultsResponse
 from whylabs_client.model.delete_dataset_profiles_response import DeleteDatasetProfilesResponse
+from whylabs_client.model.delete_profile import DeleteProfile
 from whylabs_client.model.profile_traces_response import ProfileTracesResponse
 from whylabs_client.model.reference_profile_item_response import ReferenceProfileItemResponse
+from whylabs_client.model.segment_list_response import SegmentListResponse
+from whylabs_client.model.segment_tag import SegmentTag
 
 
 class DatasetProfileApi(object):
@@ -120,6 +124,7 @@ class DatasetProfileApi(object):
                 'all': [
                     'org_id',
                     'dataset_id',
+                    'analyzer_id',
                     'start_timestamp',
                     'end_timestamp',
                 ],
@@ -128,6 +133,7 @@ class DatasetProfileApi(object):
                     'dataset_id',
                 ],
                 'nullable': [
+                    'analyzer_id',
                     'start_timestamp',
                     'end_timestamp',
                 ],
@@ -146,6 +152,8 @@ class DatasetProfileApi(object):
                         (str,),
                     'dataset_id':
                         (str,),
+                    'analyzer_id':
+                        (str, none_type,),
                     'start_timestamp':
                         (int, none_type,),
                     'end_timestamp':
@@ -154,12 +162,14 @@ class DatasetProfileApi(object):
                 'attribute_map': {
                     'org_id': 'org_id',
                     'dataset_id': 'dataset_id',
+                    'analyzer_id': 'analyzer_id',
                     'start_timestamp': 'start_timestamp',
                     'end_timestamp': 'end_timestamp',
                 },
                 'location_map': {
                     'org_id': 'path',
                     'dataset_id': 'path',
+                    'analyzer_id': 'query',
                     'start_timestamp': 'query',
                     'end_timestamp': 'query',
                 },
@@ -192,6 +202,7 @@ class DatasetProfileApi(object):
                     'profile_start_timestamp',
                     'profile_end_timestamp',
                     'before_upload_timestamp',
+                    'delete_analyzer_results',
                 ],
                 'required': [
                     'org_id',
@@ -201,6 +212,7 @@ class DatasetProfileApi(object):
                     'profile_start_timestamp',
                     'profile_end_timestamp',
                     'before_upload_timestamp',
+                    'delete_analyzer_results',
                 ],
                 'enum': [
                 ],
@@ -223,6 +235,8 @@ class DatasetProfileApi(object):
                         (int, none_type,),
                     'before_upload_timestamp':
                         (int, none_type,),
+                    'delete_analyzer_results':
+                        (bool, none_type,),
                 },
                 'attribute_map': {
                     'org_id': 'org_id',
@@ -230,6 +244,7 @@ class DatasetProfileApi(object):
                     'profile_start_timestamp': 'profile_start_timestamp',
                     'profile_end_timestamp': 'profile_end_timestamp',
                     'before_upload_timestamp': 'before_upload_timestamp',
+                    'delete_analyzer_results': 'delete_analyzer_results',
                 },
                 'location_map': {
                     'org_id': 'path',
@@ -237,6 +252,7 @@ class DatasetProfileApi(object):
                     'profile_start_timestamp': 'query',
                     'profile_end_timestamp': 'query',
                     'before_upload_timestamp': 'query',
+                    'delete_analyzer_results': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -450,6 +466,108 @@ class DatasetProfileApi(object):
             },
             api_client=api_client
         )
+        self.list_delete_analyzer_results_requests_endpoint = _Endpoint(
+            settings={
+                'response_type': ([DeleteAnalyzerResult],),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/dataset-profiles/delete-requests/analyzer-results',
+                'operation_id': 'list_delete_analyzer_results_requests',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                ],
+                'required': [
+                    'org_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_delete_dataset_profiles_requests_endpoint = _Endpoint(
+            settings={
+                'response_type': ([DeleteProfile],),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/dataset-profiles/delete-requests/dataset-profiles',
+                'operation_id': 'list_delete_dataset_profiles_requests',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                ],
+                'required': [
+                    'org_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.list_profile_traces_endpoint = _Endpoint(
             settings={
                 'response_type': (ProfileTracesResponse,),
@@ -467,6 +585,7 @@ class DatasetProfileApi(object):
                     'dataset_id',
                     'from_epoch',
                     'to_epoch',
+                    'segment',
                     'limit',
                     'offset',
                 ],
@@ -477,6 +596,7 @@ class DatasetProfileApi(object):
                     'to_epoch',
                 ],
                 'nullable': [
+                    'segment',
                     'limit',
                     'offset',
                 ],
@@ -499,6 +619,8 @@ class DatasetProfileApi(object):
                         (int,),
                     'to_epoch':
                         (int,),
+                    'segment':
+                        ([SegmentTag], none_type,),
                     'limit':
                         (int, none_type,),
                     'offset':
@@ -509,6 +631,7 @@ class DatasetProfileApi(object):
                     'dataset_id': 'dataset_id',
                     'from_epoch': 'from_epoch',
                     'to_epoch': 'to_epoch',
+                    'segment': 'segment',
                     'limit': 'limit',
                     'offset': 'offset',
                 },
@@ -517,10 +640,12 @@ class DatasetProfileApi(object):
                     'dataset_id': 'path',
                     'from_epoch': 'query',
                     'to_epoch': 'query',
+                    'segment': 'query',
                     'limit': 'query',
                     'offset': 'query',
                 },
                 'collection_format_map': {
+                    'segment': 'multi',
                 }
             },
             headers_map={
@@ -588,6 +713,63 @@ class DatasetProfileApi(object):
                     'model_id': 'path',
                     'from_epoch': 'query',
                     'to_epoch': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_segments_endpoint = _Endpoint(
+            settings={
+                'response_type': (SegmentListResponse,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/dataset-profiles/models/{model_id}/segments',
+                'operation_id': 'list_segments',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'model_id',
+                ],
+                'required': [
+                    'org_id',
+                    'model_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'model_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'model_id': 'model_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'model_id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -700,6 +882,7 @@ class DatasetProfileApi(object):
             dataset_id (str): The unique dataset ID in your company.
 
         Keyword Args:
+            analyzer_id (str, none_type): [optional]
             start_timestamp (int, none_type): [optional]
             end_timestamp (int, none_type): [optional]
             _return_http_data_only (bool): response data without head status
@@ -765,7 +948,7 @@ class DatasetProfileApi(object):
     ):
         """Deletes a set of dataset profiles  # noqa: E501
 
-        Deletes a set of dataset profiles. Returns false if scheduling deletion encountered some error.            # noqa: E501
+        Deletes a set of dataset profiles. Returns false if scheduling deletion encountered some error.         Optionally deletes analyzer results for the same time range.            # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -780,6 +963,7 @@ class DatasetProfileApi(object):
             profile_start_timestamp (int, none_type): Optional, scope deleting profiles from and more recent than the timestamp. [optional]
             profile_end_timestamp (int, none_type): Optional, scope deleting profiles older than the timestamp. [optional]
             before_upload_timestamp (int, none_type): Optional, scope deleting profiles uploaded prior to the timestamp. [optional]
+            delete_analyzer_results (bool, none_type): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1074,6 +1258,148 @@ class DatasetProfileApi(object):
             reference_id
         return self.get_reference_profile_endpoint.call_with_http_info(**kwargs)
 
+    def list_delete_analyzer_results_requests(
+        self,
+        org_id,
+        **kwargs
+    ):
+        """List requests to delete analyzer results  # noqa: E501
+
+        List the requests to delete analyzer results.            # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_delete_analyzer_results_requests(org_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Your company's unique organization ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [DeleteAnalyzerResult]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        return self.list_delete_analyzer_results_requests_endpoint.call_with_http_info(**kwargs)
+
+    def list_delete_dataset_profiles_requests(
+        self,
+        org_id,
+        **kwargs
+    ):
+        """List requests to delete dataset profiles  # noqa: E501
+
+        List the requests to delete dataset profiles.            # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_delete_dataset_profiles_requests(org_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Your company's unique organization ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [DeleteProfile]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        return self.list_delete_dataset_profiles_requests_endpoint.call_with_http_info(**kwargs)
+
     def list_profile_traces(
         self,
         org_id,
@@ -1098,6 +1424,7 @@ class DatasetProfileApi(object):
             to_epoch (int): Milli epoch time that represents the end of the time range to query.
 
         Keyword Args:
+            segment ([SegmentTag], none_type): [optional]
             limit (int, none_type): [optional]
             offset (int, none_type): [optional]
             _return_http_data_only (bool): response data without head status
@@ -1165,9 +1492,9 @@ class DatasetProfileApi(object):
         model_id,
         **kwargs
     ):
-        """Returns a list for reference profiles  # noqa: E501
+        """Returns a list for reference profiles between the given time range filtered on the upload timestamp  # noqa: E501
 
-        Returns a list of Reference Profiles.            # noqa: E501
+        Returns a list of Reference Profiles between a given time range filtered on the upload timestamp.            # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1179,8 +1506,8 @@ class DatasetProfileApi(object):
             model_id (str): The unique model ID in your company.
 
         Keyword Args:
-            from_epoch (int, none_type): Milli epoch time that represents the end of the time range to query.. [optional]
-            to_epoch (int, none_type): Milli epoch time that represents the end of the time range to query.. [optional]
+            from_epoch (int, none_type): Milli epoch time that represents the end of the time range to query based on the upload timestamp.. [optional]
+            to_epoch (int, none_type): Milli epoch time that represents the end of the time range to query based on the upload timestamp.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1235,4 +1562,79 @@ class DatasetProfileApi(object):
         kwargs['model_id'] = \
             model_id
         return self.list_reference_profiles_endpoint.call_with_http_info(**kwargs)
+
+    def list_segments(
+        self,
+        org_id,
+        model_id,
+        **kwargs
+    ):
+        """Returns a list of segments  # noqa: E501
+
+        Returns a list of segments for the dataset.            # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_segments(org_id, model_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Your company's unique organization ID
+            model_id (str): The unique model ID in your company.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SegmentListResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['model_id'] = \
+            model_id
+        return self.list_segments_endpoint.call_with_http_info(**kwargs)
 

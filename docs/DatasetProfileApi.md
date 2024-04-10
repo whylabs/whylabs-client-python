@@ -10,8 +10,11 @@ Method | HTTP request | Description
 [**delete_reference_profile**](DatasetProfileApi.md#delete_reference_profile) | **DELETE** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles/{reference_id} | Delete a single reference profile
 [**get_profile_traces**](DatasetProfileApi.md#get_profile_traces) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/trace/{trace_id} | Returns a list for profile traces matching a trace id
 [**get_reference_profile**](DatasetProfileApi.md#get_reference_profile) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles/{reference_id} | Returns a single reference profile
+[**list_delete_analyzer_results_requests**](DatasetProfileApi.md#list_delete_analyzer_results_requests) | **GET** /v0/organizations/{org_id}/dataset-profiles/delete-requests/analyzer-results | List requests to delete analyzer results
+[**list_delete_dataset_profiles_requests**](DatasetProfileApi.md#list_delete_dataset_profiles_requests) | **GET** /v0/organizations/{org_id}/dataset-profiles/delete-requests/dataset-profiles | List requests to delete dataset profiles
 [**list_profile_traces**](DatasetProfileApi.md#list_profile_traces) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{dataset_id}/trace | Returns a list for profile traces
-[**list_reference_profiles**](DatasetProfileApi.md#list_reference_profiles) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles | Returns a list for reference profiles
+[**list_reference_profiles**](DatasetProfileApi.md#list_reference_profiles) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/reference-profiles | Returns a list for reference profiles between the given time range filtered on the upload timestamp
+[**list_segments**](DatasetProfileApi.md#list_segments) | **GET** /v0/organizations/{org_id}/dataset-profiles/models/{model_id}/segments | Returns a list of segments
 
 
 # **create_reference_profile**
@@ -72,6 +75,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
         tags=[
             "tags_example",
         ],
+        region="region_example",
     ) # CreateReferenceProfileRequest | 
 
     # example passing only required values which don't have defaults set
@@ -110,7 +114,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | The metadata for the summarized reference profile data |  -  |
+**200** | The metadata for the summarized reference profile data |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -154,6 +158,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     api_instance = dataset_profile_api.DatasetProfileApi(api_client)
     org_id = "org-123" # str | Your company's unique organization ID
     dataset_id = "model-123" # str | The unique dataset ID in your company.
+    analyzer_id = "drift-analyzer" # str, none_type |  (optional)
     start_timestamp = 1577836800000 # int, none_type |  (optional)
     end_timestamp = 1893456000000 # int, none_type |  (optional)
 
@@ -169,7 +174,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Deletes a set of analyzer results
-        api_response = api_instance.delete_analyzer_results(org_id, dataset_id, start_timestamp=start_timestamp, end_timestamp=end_timestamp)
+        api_response = api_instance.delete_analyzer_results(org_id, dataset_id, analyzer_id=analyzer_id, start_timestamp=start_timestamp, end_timestamp=end_timestamp)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling DatasetProfileApi->delete_analyzer_results: %s\n" % e)
@@ -182,6 +187,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**| Your company&#39;s unique organization ID |
  **dataset_id** | **str**| The unique dataset ID in your company. |
+ **analyzer_id** | **str, none_type**|  | [optional]
  **start_timestamp** | **int, none_type**|  | [optional]
  **end_timestamp** | **int, none_type**|  | [optional]
 
@@ -203,7 +209,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | The [DeleteAnalyzerResultsResponse] if operation succeeds |  -  |
+**200** | The \\[DeleteAnalyzerResultsResponse\\] if operation succeeds |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -212,7 +218,7 @@ Name | Type | Description  | Notes
 
 Deletes a set of dataset profiles
 
-Deletes a set of dataset profiles. Returns false if scheduling deletion encountered some error.          
+Deletes a set of dataset profiles. Returns false if scheduling deletion encountered some error.         Optionally deletes analyzer results for the same time range.          
 
 ### Example
 
@@ -250,6 +256,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     profile_start_timestamp = 1577836800000 # int, none_type | Optional, scope deleting profiles from and more recent than the timestamp (optional)
     profile_end_timestamp = 1893456000000 # int, none_type | Optional, scope deleting profiles older than the timestamp (optional)
     before_upload_timestamp = 1577836800000 # int, none_type | Optional, scope deleting profiles uploaded prior to the timestamp (optional)
+    delete_analyzer_results = True # bool, none_type |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -263,7 +270,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Deletes a set of dataset profiles
-        api_response = api_instance.delete_dataset_profiles(org_id, dataset_id, profile_start_timestamp=profile_start_timestamp, profile_end_timestamp=profile_end_timestamp, before_upload_timestamp=before_upload_timestamp)
+        api_response = api_instance.delete_dataset_profiles(org_id, dataset_id, profile_start_timestamp=profile_start_timestamp, profile_end_timestamp=profile_end_timestamp, before_upload_timestamp=before_upload_timestamp, delete_analyzer_results=delete_analyzer_results)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling DatasetProfileApi->delete_dataset_profiles: %s\n" % e)
@@ -279,6 +286,7 @@ Name | Type | Description  | Notes
  **profile_start_timestamp** | **int, none_type**| Optional, scope deleting profiles from and more recent than the timestamp | [optional]
  **profile_end_timestamp** | **int, none_type**| Optional, scope deleting profiles older than the timestamp | [optional]
  **before_upload_timestamp** | **int, none_type**| Optional, scope deleting profiles uploaded prior to the timestamp | [optional]
+ **delete_analyzer_results** | **bool, none_type**|  | [optional]
 
 ### Return type
 
@@ -298,7 +306,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | The [DeleteDatasetProfilesResponse] if operation succeeds |  -  |
+**200** | The \\[DeleteDatasetProfilesResponse\\] if operation succeeds |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -379,7 +387,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | true if successful, false if we encounter failures |  -  |
+**200** | true if successful, false if we encounter failures |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -474,7 +482,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | GetProfileTraces default response |  -  |
+**200** | GetProfileTraces 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -556,7 +564,163 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | The metadata for the summarized dataset profile including paths to JSON and protobuf data |  -  |
+**200** | The metadata for the summarized dataset profile including paths to JSON and protobuf data |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_delete_analyzer_results_requests**
+> [DeleteAnalyzerResult] list_delete_analyzer_results_requests(org_id)
+
+List requests to delete analyzer results
+
+List the requests to delete analyzer results.          
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import dataset_profile_api
+from whylabs_client.model.delete_analyzer_result import DeleteAnalyzerResult
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_profile_api.DatasetProfileApi(api_client)
+    org_id = "org-123" # str | Your company's unique organization ID
+
+    # example passing only required values which don't have defaults set
+    try:
+        # List requests to delete analyzer results
+        api_response = api_instance.list_delete_analyzer_results_requests(org_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling DatasetProfileApi->list_delete_analyzer_results_requests: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**| Your company&#39;s unique organization ID |
+
+### Return type
+
+[**[DeleteAnalyzerResult]**](DeleteAnalyzerResult.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list of \\[DeleteAnalyzerResult\\] requests if operation succeeds |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_delete_dataset_profiles_requests**
+> [DeleteProfile] list_delete_dataset_profiles_requests(org_id)
+
+List requests to delete dataset profiles
+
+List the requests to delete dataset profiles.          
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import dataset_profile_api
+from whylabs_client.model.delete_profile import DeleteProfile
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_profile_api.DatasetProfileApi(api_client)
+    org_id = "org-123" # str | Your company's unique organization ID
+
+    # example passing only required values which don't have defaults set
+    try:
+        # List requests to delete dataset profiles
+        api_response = api_instance.list_delete_dataset_profiles_requests(org_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling DatasetProfileApi->list_delete_dataset_profiles_requests: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**| Your company&#39;s unique organization ID |
+
+### Return type
+
+[**[DeleteProfile]**](DeleteProfile.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list of \\[DeleteProfile\\] requests if operation succeeds |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -575,6 +739,7 @@ Returns a list of profile traces.
 import time
 import whylabs_client
 from whylabs_client.api import dataset_profile_api
+from whylabs_client.model.segment_tag import SegmentTag
 from whylabs_client.model.profile_traces_response import ProfileTracesResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.whylabsapp.com
@@ -602,6 +767,12 @@ with whylabs_client.ApiClient(configuration) as api_client:
     dataset_id = "model-123" # str | The unique dataset ID
     from_epoch = 1577836800000 # int | Milli epoch time that represents the end of the time range to query.
     to_epoch = 1893456000000 # int | Milli epoch time that represents the end of the time range to query.
+    segment = [
+        SegmentTag(
+            key="key_example",
+            value="value_example",
+        ),
+    ] # [SegmentTag], none_type |  (optional)
     limit = 50 # int, none_type |  (optional)
     offset = 0 # int, none_type |  (optional)
 
@@ -617,7 +788,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Returns a list for profile traces
-        api_response = api_instance.list_profile_traces(org_id, dataset_id, from_epoch, to_epoch, limit=limit, offset=offset)
+        api_response = api_instance.list_profile_traces(org_id, dataset_id, from_epoch, to_epoch, segment=segment, limit=limit, offset=offset)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling DatasetProfileApi->list_profile_traces: %s\n" % e)
@@ -632,6 +803,7 @@ Name | Type | Description  | Notes
  **dataset_id** | **str**| The unique dataset ID |
  **from_epoch** | **int**| Milli epoch time that represents the end of the time range to query. |
  **to_epoch** | **int**| Milli epoch time that represents the end of the time range to query. |
+ **segment** | [**[SegmentTag], none_type**](SegmentTag.md)|  | [optional]
  **limit** | **int, none_type**|  | [optional]
  **offset** | **int, none_type**|  | [optional]
 
@@ -653,16 +825,16 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | The metadata for the summarized dataset profile including paths to JSON and protobuf data |  -  |
+**200** | The metadata for the summarized dataset profile including paths to JSON and protobuf data |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_reference_profiles**
 > [ReferenceProfileItemResponse] list_reference_profiles(org_id, model_id)
 
-Returns a list for reference profiles
+Returns a list for reference profiles between the given time range filtered on the upload timestamp
 
-Returns a list of Reference Profiles.          
+Returns a list of Reference Profiles between a given time range filtered on the upload timestamp.          
 
 ### Example
 
@@ -697,12 +869,12 @@ with whylabs_client.ApiClient(configuration) as api_client:
     api_instance = dataset_profile_api.DatasetProfileApi(api_client)
     org_id = "org-123" # str | Your company's unique organization ID
     model_id = "model-123" # str | The unique model ID in your company.
-    from_epoch = 1577836800000 # int, none_type | Milli epoch time that represents the end of the time range to query. (optional)
-    to_epoch = 1893456000000 # int, none_type | Milli epoch time that represents the end of the time range to query. (optional)
+    from_epoch = 1577836800000 # int, none_type | Milli epoch time that represents the end of the time range to query based on the upload timestamp. (optional)
+    to_epoch = 1893456000000 # int, none_type | Milli epoch time that represents the end of the time range to query based on the upload timestamp. (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # Returns a list for reference profiles
+        # Returns a list for reference profiles between the given time range filtered on the upload timestamp
         api_response = api_instance.list_reference_profiles(org_id, model_id)
         pprint(api_response)
     except whylabs_client.ApiException as e:
@@ -711,7 +883,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # Returns a list for reference profiles
+        # Returns a list for reference profiles between the given time range filtered on the upload timestamp
         api_response = api_instance.list_reference_profiles(org_id, model_id, from_epoch=from_epoch, to_epoch=to_epoch)
         pprint(api_response)
     except whylabs_client.ApiException as e:
@@ -725,8 +897,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**| Your company&#39;s unique organization ID |
  **model_id** | **str**| The unique model ID in your company. |
- **from_epoch** | **int, none_type**| Milli epoch time that represents the end of the time range to query. | [optional]
- **to_epoch** | **int, none_type**| Milli epoch time that represents the end of the time range to query. | [optional]
+ **from_epoch** | **int, none_type**| Milli epoch time that represents the end of the time range to query based on the upload timestamp. | [optional]
+ **to_epoch** | **int, none_type**| Milli epoch time that represents the end of the time range to query based on the upload timestamp. | [optional]
 
 ### Return type
 
@@ -746,7 +918,87 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | The metadata for the summarized dataset profile including paths to JSON and protobuf data |  -  |
+**200** | The metadata for the summarized dataset profile including paths to JSON and protobuf data |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_segments**
+> SegmentListResponse list_segments(org_id, model_id)
+
+Returns a list of segments
+
+Returns a list of segments for the dataset.          
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import dataset_profile_api
+from whylabs_client.model.segment_list_response import SegmentListResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = dataset_profile_api.DatasetProfileApi(api_client)
+    org_id = "org-123" # str | Your company's unique organization ID
+    model_id = "model-123" # str | The unique model ID in your company.
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Returns a list of segments
+        api_response = api_instance.list_segments(org_id, model_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling DatasetProfileApi->list_segments: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**| Your company&#39;s unique organization ID |
+ **model_id** | **str**| The unique model ID in your company. |
+
+### Return type
+
+[**SegmentListResponse**](SegmentListResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list of segments for the dataset profile |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

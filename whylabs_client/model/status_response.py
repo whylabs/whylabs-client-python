@@ -88,8 +88,8 @@ class StatusResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'request_id': (str, none_type,),  # noqa: E501
             'errors': ([ErrorStatus],),  # noqa: E501
+            'request_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -98,8 +98,8 @@ class StatusResponse(ModelNormal):
 
 
     attribute_map = {
-        'request_id': 'requestId',  # noqa: E501
         'errors': 'errors',  # noqa: E501
+        'request_id': 'requestId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,8 +109,11 @@ class StatusResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, errors, *args, **kwargs):  # noqa: E501
         """StatusResponse - a model defined in OpenAPI
+
+        Args:
+            errors ([ErrorStatus]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -144,7 +147,6 @@ class StatusResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             request_id (str, none_type): [optional]  # noqa: E501
-            errors ([ErrorStatus]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -172,6 +174,7 @@ class StatusResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.errors = errors
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,8 +195,11 @@ class StatusResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, errors, *args, **kwargs):  # noqa: E501
         """StatusResponse - a model defined in OpenAPI
+
+        Args:
+            errors ([ErrorStatus]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -227,7 +233,6 @@ class StatusResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             request_id (str, none_type): [optional]  # noqa: E501
-            errors ([ErrorStatus]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,6 +258,7 @@ class StatusResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.errors = errors
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

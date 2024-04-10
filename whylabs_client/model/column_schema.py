@@ -85,6 +85,7 @@ class ColumnSchema(ModelNormal):
             'classifier': (str, none_type,),  # noqa: E501
             'data_type': (str, none_type,),  # noqa: E501
             'discreteness': (str, none_type,),  # noqa: E501
+            'tags': ([str], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -96,6 +97,7 @@ class ColumnSchema(ModelNormal):
         'classifier': 'classifier',  # noqa: E501
         'data_type': 'dataType',  # noqa: E501
         'discreteness': 'discreteness',  # noqa: E501
+        'tags': 'tags',  # noqa: E501
     }
 
     read_only_vars = {
@@ -144,6 +146,7 @@ class ColumnSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            tags ([str], none_type): Metadata tags for the column schema information. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -233,6 +236,7 @@ class ColumnSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            tags ([str], none_type): Metadata tags for the column schema information. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

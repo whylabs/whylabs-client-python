@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **creation_time** | **str** | Creation time in human readable format | 
 **key** | **str, none_type** | The full value of the key. This is not persisted in the system | [optional] 
 **expiration_time** | **str, none_type** | Expiration time in human readable format | [optional] 
+**last_used_time** | **str, none_type** | Last used time in human readable format | [optional] 
 **scopes** | **[str], none_type** | Scope of the key | [optional] 
 **alias** | **str, none_type** | Human-readable alias for the key | [optional] 
 **revoked** | **bool, none_type** | Whether the key has been revoked | [optional] 

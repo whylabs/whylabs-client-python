@@ -84,9 +84,9 @@ class CreateDatasetProfileUploadResponse(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'observatory_url': (str,),  # noqa: E501
-            'upload_timestamp': (int,),  # noqa: E501
             'upload_url': (str,),  # noqa: E501
             'dataset_id': (str,),  # noqa: E501
+            'upload_timestamp': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -97,9 +97,9 @@ class CreateDatasetProfileUploadResponse(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'observatory_url': 'observatoryUrl',  # noqa: E501
-        'upload_timestamp': 'uploadTimestamp',  # noqa: E501
         'upload_url': 'uploadUrl',  # noqa: E501
         'dataset_id': 'datasetId',  # noqa: E501
+        'upload_timestamp': 'uploadTimestamp',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,8 +109,14 @@ class CreateDatasetProfileUploadResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, observatory_url, upload_url, dataset_id, *args, **kwargs):  # noqa: E501
         """CreateDatasetProfileUploadResponse - a model defined in OpenAPI
+
+        Args:
+            id (str): The unique ID that identifies the reference
+            observatory_url (str): Url that the profile can be viewed at in the observatory.
+            upload_url (str): The URL to upload the dataset profile to
+            dataset_id (str): The dataset ID for the upload
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -143,11 +149,7 @@ class CreateDatasetProfileUploadResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            observatory_url (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
-            upload_url (str): [optional]  # noqa: E501
-            dataset_id (str): [optional]  # noqa: E501
+            upload_timestamp (int): The time when the upload was completed. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -175,6 +177,10 @@ class CreateDatasetProfileUploadResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.observatory_url = observatory_url
+        self.upload_url = upload_url
+        self.dataset_id = dataset_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,8 +201,14 @@ class CreateDatasetProfileUploadResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, observatory_url, upload_url, dataset_id, *args, **kwargs):  # noqa: E501
         """CreateDatasetProfileUploadResponse - a model defined in OpenAPI
+
+        Args:
+            id (str): The unique ID that identifies the reference
+            observatory_url (str): Url that the profile can be viewed at in the observatory.
+            upload_url (str): The URL to upload the dataset profile to
+            dataset_id (str): The dataset ID for the upload
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -229,11 +241,7 @@ class CreateDatasetProfileUploadResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            observatory_url (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
-            upload_url (str): [optional]  # noqa: E501
-            dataset_id (str): [optional]  # noqa: E501
+            upload_timestamp (int): The time when the upload was completed. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -259,6 +267,10 @@ class CreateDatasetProfileUploadResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.observatory_url = observatory_url
+        self.upload_url = upload_url
+        self.dataset_id = dataset_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

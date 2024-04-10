@@ -104,7 +104,7 @@ class SessionsApi(object):
         )
         self.claim_guest_session_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': None,
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -152,9 +152,7 @@ class SessionsApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client
@@ -548,7 +546,7 @@ class SessionsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """

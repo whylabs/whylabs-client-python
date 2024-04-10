@@ -85,8 +85,8 @@ class LogReferenceResponse(ModelNormal):
             'id': (str,),  # noqa: E501
             'model_id': (str,),  # noqa: E501
             'alias': (str,),  # noqa: E501
-            'upload_timestamp': (int,),  # noqa: E501
             'upload_url': (str,),  # noqa: E501
+            'upload_timestamp': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -98,8 +98,8 @@ class LogReferenceResponse(ModelNormal):
         'id': 'id',  # noqa: E501
         'model_id': 'modelId',  # noqa: E501
         'alias': 'alias',  # noqa: E501
-        'upload_timestamp': 'uploadTimestamp',  # noqa: E501
         'upload_url': 'uploadUrl',  # noqa: E501
+        'upload_timestamp': 'uploadTimestamp',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,8 +109,14 @@ class LogReferenceResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, model_id, alias, upload_url, *args, **kwargs):  # noqa: E501
         """LogReferenceResponse - a model defined in OpenAPI
+
+        Args:
+            id (str): The unique ID that identifies the reference
+            model_id (str): The dataset ID for the upload
+            alias (str): A human readable name
+            upload_url (str): The URL to upload the dataset profile to
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -143,11 +149,7 @@ class LogReferenceResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            model_id (str): [optional]  # noqa: E501
-            alias (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
-            upload_url (str): [optional]  # noqa: E501
+            upload_timestamp (int): The time when the upload was completed. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -175,6 +177,10 @@ class LogReferenceResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.model_id = model_id
+        self.alias = alias
+        self.upload_url = upload_url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,8 +201,14 @@ class LogReferenceResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, model_id, alias, upload_url, *args, **kwargs):  # noqa: E501
         """LogReferenceResponse - a model defined in OpenAPI
+
+        Args:
+            id (str): The unique ID that identifies the reference
+            model_id (str): The dataset ID for the upload
+            alias (str): A human readable name
+            upload_url (str): The URL to upload the dataset profile to
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -229,11 +241,7 @@ class LogReferenceResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            model_id (str): [optional]  # noqa: E501
-            alias (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
-            upload_url (str): [optional]  # noqa: E501
+            upload_timestamp (int): The time when the upload was completed. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -259,6 +267,10 @@ class LogReferenceResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.model_id = model_id
+        self.alias = alias
+        self.upload_url = upload_url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

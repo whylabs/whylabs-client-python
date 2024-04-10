@@ -5,11 +5,11 @@ A single reference item response.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**org_id** | **str** |  | [optional] 
-**model_id** | **str** |  | [optional] 
-**alias** | **str** |  | [optional] 
-**id** | **str** |  | [optional] 
-**upload_timestamp** | **int** |  | [optional] 
+**org_id** | **str** |  | 
+**model_id** | **str** |  | 
+**alias** | **str** |  | 
+**id** | **str** |  | 
+**upload_timestamp** | **int** |  | 
 **dataset_timestamp** | **int, none_type** |  | [optional] 
 **download_url** | **str, none_type** |  | [optional] 
 **segments** | **[str], none_type** |  | [optional] 

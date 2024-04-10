@@ -111,8 +111,13 @@ class NotificationSettings(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, email_settings, slack_settings, pager_duty_settings, *args, **kwargs):  # noqa: E501
         """NotificationSettings - a model defined in OpenAPI
+
+        Args:
+            email_settings (UberNotificationSchedule):
+            slack_settings (UberNotificationSchedule):
+            pager_duty_settings (UberNotificationSchedule):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -145,9 +150,6 @@ class NotificationSettings(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            email_settings (UberNotificationSchedule): [optional]  # noqa: E501
-            slack_settings (UberNotificationSchedule): [optional]  # noqa: E501
-            pager_duty_settings (UberNotificationSchedule): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -175,6 +177,9 @@ class NotificationSettings(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.email_settings = email_settings
+        self.slack_settings = slack_settings
+        self.pager_duty_settings = pager_duty_settings
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,8 +200,13 @@ class NotificationSettings(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, email_settings, slack_settings, pager_duty_settings, *args, **kwargs):  # noqa: E501
         """NotificationSettings - a model defined in OpenAPI
+
+        Args:
+            email_settings (UberNotificationSchedule):
+            slack_settings (UberNotificationSchedule):
+            pager_duty_settings (UberNotificationSchedule):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -229,9 +239,6 @@ class NotificationSettings(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            email_settings (UberNotificationSchedule): [optional]  # noqa: E501
-            slack_settings (UberNotificationSchedule): [optional]  # noqa: E501
-            pager_duty_settings (UberNotificationSchedule): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -257,6 +264,9 @@ class NotificationSettings(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.email_settings = email_settings
+        self.slack_settings = slack_settings
+        self.pager_duty_settings = pager_duty_settings
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

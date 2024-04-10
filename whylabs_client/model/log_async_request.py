@@ -90,6 +90,7 @@ class LogAsyncRequest(ModelNormal):
         return {
             'dataset_timestamp': (int,),  # noqa: E501
             'segment_tags': ([SegmentTag],),  # noqa: E501
+            'region': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -100,6 +101,7 @@ class LogAsyncRequest(ModelNormal):
     attribute_map = {
         'dataset_timestamp': 'datasetTimestamp',  # noqa: E501
         'segment_tags': 'segmentTags',  # noqa: E501
+        'region': 'region',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,8 +111,12 @@ class LogAsyncRequest(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, dataset_timestamp, segment_tags, *args, **kwargs):  # noqa: E501
         """LogAsyncRequest - a model defined in OpenAPI
+
+        Args:
+            dataset_timestamp (int):
+            segment_tags ([SegmentTag]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -143,8 +149,7 @@ class LogAsyncRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            dataset_timestamp (int): [optional]  # noqa: E501
-            segment_tags ([SegmentTag]): [optional]  # noqa: E501
+            region (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -172,6 +177,8 @@ class LogAsyncRequest(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.dataset_timestamp = dataset_timestamp
+        self.segment_tags = segment_tags
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,8 +199,12 @@ class LogAsyncRequest(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, dataset_timestamp, segment_tags, *args, **kwargs):  # noqa: E501
         """LogAsyncRequest - a model defined in OpenAPI
+
+        Args:
+            dataset_timestamp (int):
+            segment_tags ([SegmentTag]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,8 +237,7 @@ class LogAsyncRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            dataset_timestamp (int): [optional]  # noqa: E501
-            segment_tags ([SegmentTag]): [optional]  # noqa: E501
+            region (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,6 +263,8 @@ class LogAsyncRequest(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.dataset_timestamp = dataset_timestamp
+        self.segment_tags = segment_tags
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

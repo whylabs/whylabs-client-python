@@ -88,8 +88,8 @@ class SearchResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'request_id': (str, none_type,),  # noqa: E501
             'results': ([EntitySearchResult],),  # noqa: E501
+            'request_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -98,8 +98,8 @@ class SearchResponse(ModelNormal):
 
 
     attribute_map = {
-        'request_id': 'requestId',  # noqa: E501
         'results': 'results',  # noqa: E501
+        'request_id': 'requestId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,8 +109,11 @@ class SearchResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, results, *args, **kwargs):  # noqa: E501
         """SearchResponse - a model defined in OpenAPI
+
+        Args:
+            results ([EntitySearchResult]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -144,7 +147,6 @@ class SearchResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             request_id (str, none_type): [optional]  # noqa: E501
-            results ([EntitySearchResult]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -172,6 +174,7 @@ class SearchResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.results = results
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,8 +195,11 @@ class SearchResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, results, *args, **kwargs):  # noqa: E501
         """SearchResponse - a model defined in OpenAPI
+
+        Args:
+            results ([EntitySearchResult]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -227,7 +233,6 @@ class SearchResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             request_id (str, none_type): [optional]  # noqa: E501
-            results ([EntitySearchResult]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,6 +258,7 @@ class SearchResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.results = results
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

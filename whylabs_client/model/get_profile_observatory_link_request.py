@@ -103,8 +103,12 @@ class GetProfileObservatoryLinkRequest(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, batch_profile_timestamps, reference_profile_ids, *args, **kwargs):  # noqa: E501
         """GetProfileObservatoryLinkRequest - a model defined in OpenAPI
+
+        Args:
+            batch_profile_timestamps ([int]):
+            reference_profile_ids ([str]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,8 +141,6 @@ class GetProfileObservatoryLinkRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            batch_profile_timestamps ([int]): [optional]  # noqa: E501
-            reference_profile_ids ([str]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -166,6 +168,8 @@ class GetProfileObservatoryLinkRequest(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.batch_profile_timestamps = batch_profile_timestamps
+        self.reference_profile_ids = reference_profile_ids
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -186,8 +190,12 @@ class GetProfileObservatoryLinkRequest(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, batch_profile_timestamps, reference_profile_ids, *args, **kwargs):  # noqa: E501
         """GetProfileObservatoryLinkRequest - a model defined in OpenAPI
+
+        Args:
+            batch_profile_timestamps ([int]):
+            reference_profile_ids ([str]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -220,8 +228,6 @@ class GetProfileObservatoryLinkRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            batch_profile_timestamps ([int]): [optional]  # noqa: E501
-            reference_profile_ids ([str]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -247,6 +253,8 @@ class GetProfileObservatoryLinkRequest(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.batch_profile_timestamps = batch_profile_timestamps
+        self.reference_profile_ids = reference_profile_ids
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

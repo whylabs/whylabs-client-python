@@ -105,8 +105,13 @@ class LogResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, model_id, upload_timestamp, *args, **kwargs):  # noqa: E501
         """LogResponse - a model defined in OpenAPI
+
+        Args:
+            id (str): The unique ID that identifies the upload
+            model_id (str): The model ID for the upload
+            upload_timestamp (int): The time when the upload was completed
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -139,9 +144,6 @@ class LogResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            model_id (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -169,6 +171,9 @@ class LogResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.model_id = model_id
+        self.upload_timestamp = upload_timestamp
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -189,8 +194,13 @@ class LogResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, model_id, upload_timestamp, *args, **kwargs):  # noqa: E501
         """LogResponse - a model defined in OpenAPI
+
+        Args:
+            id (str): The unique ID that identifies the upload
+            model_id (str): The model ID for the upload
+            upload_timestamp (int): The time when the upload was completed
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -223,9 +233,6 @@ class LogResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            model_id (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -251,6 +258,9 @@ class LogResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.model_id = model_id
+        self.upload_timestamp = upload_timestamp
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

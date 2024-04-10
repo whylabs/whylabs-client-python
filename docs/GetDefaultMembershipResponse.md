@@ -1,5 +1,6 @@
 # GetDefaultMembershipResponse
 
+Response for the RemoveMembership API. The membership parameter is the default membership if one exists. One won't exist if the user has no memberships at all.
 
 ## Properties
 Name | Type | Description | Notes

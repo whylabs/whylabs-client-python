@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | CreateOrganizationMembership default response |  -  |
+**200** | CreateOrganizationMembership 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -178,12 +178,12 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | ListOrganizationMemberships default response |  -  |
+**200** | ListOrganizationMemberships 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **remove_organization_membership**
-> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} remove_organization_membership(org_id, email)
+> remove_organization_membership(org_id, email)
 
 Removes membership in a given org from a user, using the user's email address.
 
@@ -225,8 +225,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Removes membership in a given org from a user, using the user's email address.
-        api_response = api_instance.remove_organization_membership(org_id, email)
-        pprint(api_response)
+        api_instance.remove_organization_membership(org_id, email)
     except whylabs_client.ApiException as e:
         print("Exception when calling MembershipApi->remove_organization_membership: %s\n" % e)
 ```
@@ -241,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**
+void (empty response body)
 
 ### Authorization
 
@@ -250,14 +249,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | RemoveOrganizationMembership default response |  -  |
+**200** | RemoveOrganizationMembership 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -340,7 +339,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | UpdateOrganizationMembership default response |  -  |
+**200** | UpdateOrganizationMembership 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

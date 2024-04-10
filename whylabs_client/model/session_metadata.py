@@ -107,8 +107,14 @@ class SessionMetadata(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, session_id, org_id, model_id, user_id, *args, **kwargs):  # noqa: E501
         """SessionMetadata - a model defined in OpenAPI
+
+        Args:
+            session_id (str): The id of the session
+            org_id (str): The org id of the session
+            model_id (str): The model id of the session. There should only be a single model.
+            user_id (str): The generated user id for the session.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -141,10 +147,6 @@ class SessionMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            session_id (str): The id of the session. [optional]  # noqa: E501
-            org_id (str): The org id of the session. [optional]  # noqa: E501
-            model_id (str): The model id of the session. There should only be a single model.. [optional]  # noqa: E501
-            user_id (str): The generated user id for the session.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -172,6 +174,10 @@ class SessionMetadata(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.session_id = session_id
+        self.org_id = org_id
+        self.model_id = model_id
+        self.user_id = user_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,8 +198,14 @@ class SessionMetadata(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, session_id, org_id, model_id, user_id, *args, **kwargs):  # noqa: E501
         """SessionMetadata - a model defined in OpenAPI
+
+        Args:
+            session_id (str): The id of the session
+            org_id (str): The org id of the session
+            model_id (str): The model id of the session. There should only be a single model.
+            user_id (str): The generated user id for the session.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,10 +238,6 @@ class SessionMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            session_id (str): The id of the session. [optional]  # noqa: E501
-            org_id (str): The org id of the session. [optional]  # noqa: E501
-            model_id (str): The model id of the session. There should only be a single model.. [optional]  # noqa: E501
-            user_id (str): The generated user id for the session.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -255,6 +263,10 @@ class SessionMetadata(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.session_id = session_id
+        self.org_id = org_id
+        self.model_id = model_id
+        self.user_id = user_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
