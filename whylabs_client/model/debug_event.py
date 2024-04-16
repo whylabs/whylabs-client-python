@@ -88,10 +88,10 @@ class DebugEvent(ModelNormal):
         """
         lazy_import()
         return {
+            'content': (str,),  # noqa: E501
             'trace_id': (str, none_type,),  # noqa: E501
             'segment': (Segment,),  # noqa: E501
             'tags': ([str], none_type,),  # noqa: E501
-            'content': (str,),  # noqa: E501
             'dataset_timestamp': (int, none_type,),  # noqa: E501
             'creation_timestamp': (int, none_type,),  # noqa: E501
         }
@@ -102,23 +102,27 @@ class DebugEvent(ModelNormal):
 
 
     attribute_map = {
+        'content': 'content',  # noqa: E501
         'trace_id': 'traceId',  # noqa: E501
         'segment': 'segment',  # noqa: E501
         'tags': 'tags',  # noqa: E501
-        'content': 'content',  # noqa: E501
         'dataset_timestamp': 'datasetTimestamp',  # noqa: E501
         'creation_timestamp': 'creationTimestamp',  # noqa: E501
     }
 
     read_only_vars = {
+        'creation_timestamp',  # noqa: E501
     }
 
     _composed_schemas = {}
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, content, *args, **kwargs):  # noqa: E501
         """DebugEvent - a model defined in OpenAPI
+
+        Args:
+            content (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -154,7 +158,6 @@ class DebugEvent(ModelNormal):
             trace_id (str, none_type): [optional]  # noqa: E501
             segment (Segment): [optional]  # noqa: E501
             tags ([str], none_type): [optional]  # noqa: E501
-            content (str): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
             creation_timestamp (int, none_type): [optional]  # noqa: E501
         """
@@ -184,6 +187,7 @@ class DebugEvent(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.content = content
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -204,8 +208,11 @@ class DebugEvent(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, content, *args, **kwargs):  # noqa: E501
         """DebugEvent - a model defined in OpenAPI
+
+        Args:
+            content (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -241,7 +248,6 @@ class DebugEvent(ModelNormal):
             trace_id (str, none_type): [optional]  # noqa: E501
             segment (Segment): [optional]  # noqa: E501
             tags ([str], none_type): [optional]  # noqa: E501
-            content (str): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
             creation_timestamp (int, none_type): [optional]  # noqa: E501
         """
@@ -269,6 +275,7 @@ class DebugEvent(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.content = content
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

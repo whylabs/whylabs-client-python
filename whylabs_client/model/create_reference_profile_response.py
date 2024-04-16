@@ -85,9 +85,9 @@ class CreateReferenceProfileResponse(ModelNormal):
             'id': (str,),  # noqa: E501
             'alias': (str,),  # noqa: E501
             'dataset_id': (str,),  # noqa: E501
-            'upload_timestamp': (int,),  # noqa: E501
             'segments': ([str],),  # noqa: E501
             'upload_urls': ([str],),  # noqa: E501
+            'upload_timestamp': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -99,9 +99,9 @@ class CreateReferenceProfileResponse(ModelNormal):
         'id': 'id',  # noqa: E501
         'alias': 'alias',  # noqa: E501
         'dataset_id': 'datasetId',  # noqa: E501
-        'upload_timestamp': 'uploadTimestamp',  # noqa: E501
         'segments': 'segments',  # noqa: E501
         'upload_urls': 'uploadUrls',  # noqa: E501
+        'upload_timestamp': 'uploadTimestamp',  # noqa: E501
     }
 
     read_only_vars = {
@@ -111,8 +111,15 @@ class CreateReferenceProfileResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, alias, dataset_id, segments, upload_urls, *args, **kwargs):  # noqa: E501
         """CreateReferenceProfileResponse - a model defined in OpenAPI
+
+        Args:
+            id (str): The unique ID that identifies the reference profile
+            alias (str): A human readable name
+            dataset_id (str): The dataset ID for the upload
+            segments ([str]): The segments corresponding to the upload URLs
+            upload_urls ([str]): The URL list to upload the dataset profiles to
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -145,12 +152,7 @@ class CreateReferenceProfileResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            alias (str): [optional]  # noqa: E501
-            dataset_id (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
-            segments ([str]): [optional]  # noqa: E501
-            upload_urls ([str]): [optional]  # noqa: E501
+            upload_timestamp (int): The time when the upload was completed. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -178,6 +180,11 @@ class CreateReferenceProfileResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.alias = alias
+        self.dataset_id = dataset_id
+        self.segments = segments
+        self.upload_urls = upload_urls
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -198,8 +205,15 @@ class CreateReferenceProfileResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, alias, dataset_id, segments, upload_urls, *args, **kwargs):  # noqa: E501
         """CreateReferenceProfileResponse - a model defined in OpenAPI
+
+        Args:
+            id (str): The unique ID that identifies the reference profile
+            alias (str): A human readable name
+            dataset_id (str): The dataset ID for the upload
+            segments ([str]): The segments corresponding to the upload URLs
+            upload_urls ([str]): The URL list to upload the dataset profiles to
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -232,12 +246,7 @@ class CreateReferenceProfileResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            alias (str): [optional]  # noqa: E501
-            dataset_id (str): [optional]  # noqa: E501
-            upload_timestamp (int): [optional]  # noqa: E501
-            segments ([str]): [optional]  # noqa: E501
-            upload_urls ([str]): [optional]  # noqa: E501
+            upload_timestamp (int): The time when the upload was completed. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -263,6 +272,11 @@ class CreateReferenceProfileResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.alias = alias
+        self.dataset_id = dataset_id
+        self.segments = segments
+        self.upload_urls = upload_urls
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

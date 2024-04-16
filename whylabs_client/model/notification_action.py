@@ -32,8 +32,10 @@ from whylabs_client.exceptions import ApiAttributeError
 
 def lazy_import():
     from whylabs_client.model.action_type import ActionType
+    from whylabs_client.model.notification_action_payload import NotificationActionPayload
     from whylabs_client.model.notification_relationship_item import NotificationRelationshipItem
     globals()['ActionType'] = ActionType
+    globals()['NotificationActionPayload'] = NotificationActionPayload
     globals()['NotificationRelationshipItem'] = NotificationRelationshipItem
 
 
@@ -92,11 +94,11 @@ class NotificationAction(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'type': (ActionType,),  # noqa: E501
+            'payload': (NotificationActionPayload,),  # noqa: E501
+            'last_update': (datetime,),  # noqa: E501
             'enabled': (bool, none_type,),  # noqa: E501
-            'payload': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'references': ([NotificationRelationshipItem], none_type,),  # noqa: E501
             'creation_time': (datetime, none_type,),  # noqa: E501
-            'last_update': (datetime,),  # noqa: E501
         }
 
     @cached_property
@@ -107,11 +109,11 @@ class NotificationAction(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'type': 'type',  # noqa: E501
-        'enabled': 'enabled',  # noqa: E501
         'payload': 'payload',  # noqa: E501
+        'last_update': 'lastUpdate',  # noqa: E501
+        'enabled': 'enabled',  # noqa: E501
         'references': 'references',  # noqa: E501
         'creation_time': 'creationTime',  # noqa: E501
-        'last_update': 'lastUpdate',  # noqa: E501
     }
 
     read_only_vars = {
@@ -121,8 +123,14 @@ class NotificationAction(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, type, payload, last_update, *args, **kwargs):  # noqa: E501
         """NotificationAction - a model defined in OpenAPI
+
+        Args:
+            id (str):
+            type (ActionType):
+            payload (NotificationActionPayload):
+            last_update (datetime):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -155,13 +163,9 @@ class NotificationAction(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            type (ActionType): [optional]  # noqa: E501
             enabled (bool, none_type): [optional]  # noqa: E501
-            payload ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
             references ([NotificationRelationshipItem], none_type): [optional]  # noqa: E501
             creation_time (datetime, none_type): [optional]  # noqa: E501
-            last_update (datetime): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -189,6 +193,10 @@ class NotificationAction(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.type = type
+        self.payload = payload
+        self.last_update = last_update
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -209,8 +217,14 @@ class NotificationAction(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, type, payload, last_update, *args, **kwargs):  # noqa: E501
         """NotificationAction - a model defined in OpenAPI
+
+        Args:
+            id (str):
+            type (ActionType):
+            payload (NotificationActionPayload):
+            last_update (datetime):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -243,13 +257,9 @@ class NotificationAction(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
-            type (ActionType): [optional]  # noqa: E501
             enabled (bool, none_type): [optional]  # noqa: E501
-            payload ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
             references ([NotificationRelationshipItem], none_type): [optional]  # noqa: E501
             creation_time (datetime, none_type): [optional]  # noqa: E501
-            last_update (datetime): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -275,6 +285,10 @@ class NotificationAction(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.id = id
+        self.type = type
+        self.payload = payload
+        self.last_update = last_update
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

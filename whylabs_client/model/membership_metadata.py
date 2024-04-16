@@ -113,8 +113,13 @@ class MembershipMetadata(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, org_id, role, user_id, *args, **kwargs):  # noqa: E501
         """MembershipMetadata - a model defined in OpenAPI
+
+        Args:
+            org_id (str):
+            role (Role):
+            user_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -147,9 +152,6 @@ class MembershipMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            role (Role): [optional]  # noqa: E501
-            user_id (str): [optional]  # noqa: E501
             default (bool): [optional]  # noqa: E501
         """
 
@@ -178,6 +180,9 @@ class MembershipMetadata(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.org_id = org_id
+        self.role = role
+        self.user_id = user_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -198,8 +203,13 @@ class MembershipMetadata(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, org_id, role, user_id, *args, **kwargs):  # noqa: E501
         """MembershipMetadata - a model defined in OpenAPI
+
+        Args:
+            org_id (str):
+            role (Role):
+            user_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -232,9 +242,6 @@ class MembershipMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            role (Role): [optional]  # noqa: E501
-            user_id (str): [optional]  # noqa: E501
             default (bool): [optional]  # noqa: E501
         """
 
@@ -261,6 +268,9 @@ class MembershipMetadata(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.org_id = org_id
+        self.role = role
+        self.user_id = user_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

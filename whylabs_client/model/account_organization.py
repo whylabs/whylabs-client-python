@@ -103,11 +103,12 @@ class AccountOrganization(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, org_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, org_id, name, *args, **kwargs):  # noqa: E501
         """AccountOrganization - a model defined in OpenAPI
 
         Args:
             org_id (str): Organization ID
+            name (str): Organization name
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -140,7 +141,6 @@ class AccountOrganization(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): Organization name. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -169,6 +169,7 @@ class AccountOrganization(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.org_id = org_id
+        self.name = name
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -189,11 +190,12 @@ class AccountOrganization(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, org_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, org_id, name, *args, **kwargs):  # noqa: E501
         """AccountOrganization - a model defined in OpenAPI
 
         Args:
             org_id (str): Organization ID
+            name (str): Organization name
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,7 +228,6 @@ class AccountOrganization(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): Organization name. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,6 +254,7 @@ class AccountOrganization(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.org_id = org_id
+        self.name = name
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -88,8 +88,8 @@ class SegmentWeight(ModelNormal):
         """
         lazy_import()
         return {
-            'segment': (Segment,),  # noqa: E501
             'weights': ({str: (float,)},),  # noqa: E501
+            'segment': (Segment,),  # noqa: E501
         }
 
     @cached_property
@@ -98,8 +98,8 @@ class SegmentWeight(ModelNormal):
 
 
     attribute_map = {
-        'segment': 'segment',  # noqa: E501
         'weights': 'weights',  # noqa: E501
+        'segment': 'segment',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,8 +109,11 @@ class SegmentWeight(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, weights, *args, **kwargs):  # noqa: E501
         """SegmentWeight - a model defined in OpenAPI
+
+        Args:
+            weights ({str: (float,)}): Entity weight value for each entity
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -144,7 +147,6 @@ class SegmentWeight(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             segment (Segment): [optional]  # noqa: E501
-            weights ({str: (float,)}): Entity weight value for each entity. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -172,6 +174,7 @@ class SegmentWeight(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.weights = weights
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,8 +195,11 @@ class SegmentWeight(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, weights, *args, **kwargs):  # noqa: E501
         """SegmentWeight - a model defined in OpenAPI
+
+        Args:
+            weights ({str: (float,)}): Entity weight value for each entity
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -227,7 +233,6 @@ class SegmentWeight(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             segment (Segment): [optional]  # noqa: E501
-            weights ({str: (float,)}): Entity weight value for each entity. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,6 +258,7 @@ class SegmentWeight(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.weights = weights
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

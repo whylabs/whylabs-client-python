@@ -115,11 +115,12 @@ class EntitySchema(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, columns, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, columns, metadata, *args, **kwargs):  # noqa: E501
         """EntitySchema - a model defined in OpenAPI
 
         Args:
             columns ({str: (ColumnSchema,)}): Column schema for a given column
+            metadata (SchemaMetadata):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -152,7 +153,6 @@ class EntitySchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            metadata (SchemaMetadata): [optional]  # noqa: E501
             metrics ({str: (MetricSchema,)}, none_type): Schema for user-defined metrics (map of unique custom metric labels to their definitions). [optional]  # noqa: E501
         """
 
@@ -182,6 +182,7 @@ class EntitySchema(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.columns = columns
+        self.metadata = metadata
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -202,11 +203,12 @@ class EntitySchema(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, columns, *args, **kwargs):  # noqa: E501
+    def __init__(self, columns, metadata, *args, **kwargs):  # noqa: E501
         """EntitySchema - a model defined in OpenAPI
 
         Args:
             columns ({str: (ColumnSchema,)}): Column schema for a given column
+            metadata (SchemaMetadata):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -239,7 +241,6 @@ class EntitySchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            metadata (SchemaMetadata): [optional]  # noqa: E501
             metrics ({str: (MetricSchema,)}, none_type): Schema for user-defined metrics (map of unique custom metric labels to their definitions). [optional]  # noqa: E501
         """
 
@@ -267,6 +268,7 @@ class EntitySchema(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.columns = columns
+        self.metadata = metadata
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

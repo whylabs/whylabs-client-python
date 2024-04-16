@@ -107,11 +107,8 @@ class GetMarketplaceMetadataResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, metadata, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
         """GetMarketplaceMetadataResponse - a model defined in OpenAPI
-
-        Args:
-            metadata (AWSMarketplaceMetadata):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -144,6 +141,7 @@ class GetMarketplaceMetadataResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            metadata (AWSMarketplaceMetadata): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -171,7 +169,6 @@ class GetMarketplaceMetadataResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.metadata = metadata
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,11 +189,8 @@ class GetMarketplaceMetadataResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, metadata, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """GetMarketplaceMetadataResponse - a model defined in OpenAPI
-
-        Args:
-            metadata (AWSMarketplaceMetadata):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -229,6 +223,7 @@ class GetMarketplaceMetadataResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            metadata (AWSMarketplaceMetadata): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -254,7 +249,6 @@ class GetMarketplaceMetadataResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.metadata = metadata
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

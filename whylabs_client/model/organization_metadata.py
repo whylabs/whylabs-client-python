@@ -92,18 +92,17 @@ class OrganizationMetadata(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
+            'creation_time': (int,),  # noqa: E501
+            'deleted': (bool,),  # noqa: E501
             'subscription_tier': (SubscriptionTier,),  # noqa: E501
-            'domain': (str, none_type,),  # noqa: E501
             'email_domains': (str, none_type,),  # noqa: E501
             'observatory_url': (str, none_type,),  # noqa: E501
-            'notification_email_address': (str, none_type,),  # noqa: E501
-            'slack_webhook': (str, none_type,),  # noqa: E501
-            'pager_duty_key': (str, none_type,),  # noqa: E501
-            'creation_time': (int,),  # noqa: E501
             'notification_settings': (NotificationSettings,),  # noqa: E501
-            'deleted': (bool,),  # noqa: E501
             'use_cloud_front': (bool, none_type,),  # noqa: E501
             'parent_org_id': (str, none_type,),  # noqa: E501
+            'subscription_id': (str, none_type,),  # noqa: E501
+            'storage_bucket_override': (str, none_type,),  # noqa: E501
+            'allow_managed_membership_updates_only': (bool, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -114,18 +113,17 @@ class OrganizationMetadata(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
+        'creation_time': 'creationTime',  # noqa: E501
+        'deleted': 'deleted',  # noqa: E501
         'subscription_tier': 'subscriptionTier',  # noqa: E501
-        'domain': 'domain',  # noqa: E501
         'email_domains': 'emailDomains',  # noqa: E501
         'observatory_url': 'observatoryUrl',  # noqa: E501
-        'notification_email_address': 'notificationEmailAddress',  # noqa: E501
-        'slack_webhook': 'slackWebhook',  # noqa: E501
-        'pager_duty_key': 'pagerDutyKey',  # noqa: E501
-        'creation_time': 'creationTime',  # noqa: E501
         'notification_settings': 'notificationSettings',  # noqa: E501
-        'deleted': 'deleted',  # noqa: E501
         'use_cloud_front': 'useCloudFront',  # noqa: E501
         'parent_org_id': 'parentOrgId',  # noqa: E501
+        'subscription_id': 'subscriptionId',  # noqa: E501
+        'storage_bucket_override': 'storageBucketOverride',  # noqa: E501
+        'allow_managed_membership_updates_only': 'allowManagedMembershipUpdatesOnly',  # noqa: E501
     }
 
     read_only_vars = {
@@ -135,11 +133,14 @@ class OrganizationMetadata(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, creation_time, deleted, *args, **kwargs):  # noqa: E501
         """OrganizationMetadata - a model defined in OpenAPI
 
         Args:
             id (str):
+            name (str):
+            creation_time (int):
+            deleted (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -172,19 +173,15 @@ class OrganizationMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): [optional]  # noqa: E501
             subscription_tier (SubscriptionTier): [optional]  # noqa: E501
-            domain (str, none_type): [optional]  # noqa: E501
             email_domains (str, none_type): [optional]  # noqa: E501
             observatory_url (str, none_type): [optional]  # noqa: E501
-            notification_email_address (str, none_type): [optional]  # noqa: E501
-            slack_webhook (str, none_type): [optional]  # noqa: E501
-            pager_duty_key (str, none_type): [optional]  # noqa: E501
-            creation_time (int): [optional]  # noqa: E501
             notification_settings (NotificationSettings): [optional]  # noqa: E501
-            deleted (bool): [optional]  # noqa: E501
             use_cloud_front (bool, none_type): [optional]  # noqa: E501
             parent_org_id (str, none_type): [optional]  # noqa: E501
+            subscription_id (str, none_type): [optional]  # noqa: E501
+            storage_bucket_override (str, none_type): [optional]  # noqa: E501
+            allow_managed_membership_updates_only (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -213,6 +210,9 @@ class OrganizationMetadata(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
+        self.name = name
+        self.creation_time = creation_time
+        self.deleted = deleted
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -233,11 +233,14 @@ class OrganizationMetadata(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, creation_time, deleted, *args, **kwargs):  # noqa: E501
         """OrganizationMetadata - a model defined in OpenAPI
 
         Args:
             id (str):
+            name (str):
+            creation_time (int):
+            deleted (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -270,19 +273,15 @@ class OrganizationMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): [optional]  # noqa: E501
             subscription_tier (SubscriptionTier): [optional]  # noqa: E501
-            domain (str, none_type): [optional]  # noqa: E501
             email_domains (str, none_type): [optional]  # noqa: E501
             observatory_url (str, none_type): [optional]  # noqa: E501
-            notification_email_address (str, none_type): [optional]  # noqa: E501
-            slack_webhook (str, none_type): [optional]  # noqa: E501
-            pager_duty_key (str, none_type): [optional]  # noqa: E501
-            creation_time (int): [optional]  # noqa: E501
             notification_settings (NotificationSettings): [optional]  # noqa: E501
-            deleted (bool): [optional]  # noqa: E501
             use_cloud_front (bool, none_type): [optional]  # noqa: E501
             parent_org_id (str, none_type): [optional]  # noqa: E501
+            subscription_id (str, none_type): [optional]  # noqa: E501
+            storage_bucket_override (str, none_type): [optional]  # noqa: E501
+            allow_managed_membership_updates_only (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -309,6 +308,9 @@ class OrganizationMetadata(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
+        self.name = name
+        self.creation_time = creation_time
+        self.deleted = deleted
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

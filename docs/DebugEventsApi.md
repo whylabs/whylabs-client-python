@@ -62,7 +62,6 @@ with whylabs_client.ApiClient(configuration) as api_client:
         ],
         content="content_example",
         dataset_timestamp=1,
-        creation_timestamp=1,
     ) # DebugEvent | 
 
     # example passing only required values which don't have defaults set
@@ -101,7 +100,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | 202 if the response is accepted |  -  |
+**200** | 202 if the response is accepted |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -105,8 +105,11 @@ class ProfileTrace(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, trace_id, *args, **kwargs):  # noqa: E501
         """ProfileTrace - a model defined in OpenAPI
+
+        Args:
+            trace_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -139,7 +142,6 @@ class ProfileTrace(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            trace_id (str): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
             download_url (str, none_type): [optional]  # noqa: E501
         """
@@ -169,6 +171,7 @@ class ProfileTrace(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.trace_id = trace_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -189,8 +192,11 @@ class ProfileTrace(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, trace_id, *args, **kwargs):  # noqa: E501
         """ProfileTrace - a model defined in OpenAPI
+
+        Args:
+            trace_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -223,7 +229,6 @@ class ProfileTrace(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            trace_id (str): [optional]  # noqa: E501
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
             download_url (str, none_type): [optional]  # noqa: E501
         """
@@ -251,6 +256,7 @@ class ProfileTrace(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.trace_id = trace_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

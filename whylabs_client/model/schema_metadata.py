@@ -82,9 +82,9 @@ class SchemaMetadata(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'author': (str,),  # noqa: E501
             'version': (int,),  # noqa: E501
             'updated_timestamp': (int,),  # noqa: E501
-            'author': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -93,9 +93,9 @@ class SchemaMetadata(ModelNormal):
 
 
     attribute_map = {
+        'author': 'author',  # noqa: E501
         'version': 'version',  # noqa: E501
         'updated_timestamp': 'updatedTimestamp',  # noqa: E501
-        'author': 'author',  # noqa: E501
     }
 
     read_only_vars = {
@@ -105,8 +105,11 @@ class SchemaMetadata(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, author, *args, **kwargs):  # noqa: E501
         """SchemaMetadata - a model defined in OpenAPI
+
+        Args:
+            author (str): Author of the entity schema version
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -139,9 +142,8 @@ class SchemaMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            version (int): [optional]  # noqa: E501
-            updated_timestamp (int): [optional]  # noqa: E501
-            author (str): [optional]  # noqa: E501
+            version (int): Version of the entity schema. [optional]  # noqa: E501
+            updated_timestamp (int): Update timestamp in milliseconds. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -169,6 +171,7 @@ class SchemaMetadata(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.author = author
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -189,8 +192,11 @@ class SchemaMetadata(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, author, *args, **kwargs):  # noqa: E501
         """SchemaMetadata - a model defined in OpenAPI
+
+        Args:
+            author (str): Author of the entity schema version
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -223,9 +229,8 @@ class SchemaMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            version (int): [optional]  # noqa: E501
-            updated_timestamp (int): [optional]  # noqa: E501
-            author (str): [optional]  # noqa: E501
+            version (int): Version of the entity schema. [optional]  # noqa: E501
+            updated_timestamp (int): Update timestamp in milliseconds. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -251,6 +256,7 @@ class SchemaMetadata(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.author = author
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

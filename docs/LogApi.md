@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | GetProfileObservatoryLink default response |  -  |
+**200** | GetProfileObservatoryLink 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -148,6 +148,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
                 value="value_example",
             ),
         ],
+        region="region_example",
     ) # LogAsyncRequest | 
 
     # example passing only required values which don't have defaults set
@@ -186,7 +187,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | LogAsync default response |  -  |
+**200** | LogAsync 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -234,6 +235,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     log_reference_request = LogReferenceRequest(
         alias="alias_example",
         dataset_timestamp=1,
+        region="region_example",
     ) # LogReferenceRequest | 
 
     # example passing only required values which don't have defaults set
@@ -272,7 +274,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | LogReference default response |  -  |
+**200** | LogReference 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

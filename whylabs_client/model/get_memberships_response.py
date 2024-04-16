@@ -63,8 +63,6 @@ class GetMembershipsResponse(ModelNormal):
     }
 
     validations = {
-        ('memberships',): {
-        },
     }
 
     @cached_property

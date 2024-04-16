@@ -105,8 +105,13 @@ class MonitorConfigVersion(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, path, version_id, last_modified, *args, **kwargs):  # noqa: E501
         """MonitorConfigVersion - a model defined in OpenAPI
+
+        Args:
+            path (str):
+            version_id (str):
+            last_modified (int):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -139,9 +144,6 @@ class MonitorConfigVersion(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            path (str): [optional]  # noqa: E501
-            version_id (str): [optional]  # noqa: E501
-            last_modified (int): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -169,6 +171,9 @@ class MonitorConfigVersion(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.path = path
+        self.version_id = version_id
+        self.last_modified = last_modified
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -189,8 +194,13 @@ class MonitorConfigVersion(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, path, version_id, last_modified, *args, **kwargs):  # noqa: E501
         """MonitorConfigVersion - a model defined in OpenAPI
+
+        Args:
+            path (str):
+            version_id (str):
+            last_modified (int):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -223,9 +233,6 @@ class MonitorConfigVersion(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            path (str): [optional]  # noqa: E501
-            version_id (str): [optional]  # noqa: E501
-            last_modified (int): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -251,6 +258,9 @@ class MonitorConfigVersion(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.path = path
+        self.version_id = version_id
+        self.last_modified = last_modified
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -83,12 +83,12 @@ class ModelMetadataResponse(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'name': (str,),  # noqa: E501
             'org_id': (str,),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'creation_time': (int,),  # noqa: E501
             'time_period': (str,),  # noqa: E501
-            'model_type': (str, none_type,),  # noqa: E501
             'model_category': (str,),  # noqa: E501
+            'model_type': (str, none_type,),  # noqa: E501
             'active': (bool, none_type,),  # noqa: E501
         }
 
@@ -99,12 +99,12 @@ class ModelMetadataResponse(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'name': 'name',  # noqa: E501
         'org_id': 'orgId',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'creation_time': 'creationTime',  # noqa: E501
         'time_period': 'timePeriod',  # noqa: E501
-        'model_type': 'modelType',  # noqa: E501
         'model_category': 'modelCategory',  # noqa: E501
+        'model_type': 'modelType',  # noqa: E501
         'active': 'active',  # noqa: E501
     }
 
@@ -115,12 +115,16 @@ class ModelMetadataResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, org_id, name, creation_time, time_period, model_category, *args, **kwargs):  # noqa: E501
         """ModelMetadataResponse - a model defined in OpenAPI
 
         Args:
             id (str):
+            org_id (str):
             name (str):
+            creation_time (int):
+            time_period (str):
+            model_category (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -153,11 +157,7 @@ class ModelMetadataResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            creation_time (int): [optional]  # noqa: E501
-            time_period (str): [optional]  # noqa: E501
             model_type (str, none_type): [optional]  # noqa: E501
-            model_category (str): [optional]  # noqa: E501
             active (bool, none_type): [optional]  # noqa: E501
         """
 
@@ -187,7 +187,11 @@ class ModelMetadataResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
+        self.org_id = org_id
         self.name = name
+        self.creation_time = creation_time
+        self.time_period = time_period
+        self.model_category = model_category
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -208,12 +212,16 @@ class ModelMetadataResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, org_id, name, creation_time, time_period, model_category, *args, **kwargs):  # noqa: E501
         """ModelMetadataResponse - a model defined in OpenAPI
 
         Args:
             id (str):
+            org_id (str):
             name (str):
+            creation_time (int):
+            time_period (str):
+            model_category (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,11 +254,7 @@ class ModelMetadataResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            creation_time (int): [optional]  # noqa: E501
-            time_period (str): [optional]  # noqa: E501
             model_type (str, none_type): [optional]  # noqa: E501
-            model_category (str): [optional]  # noqa: E501
             active (bool, none_type): [optional]  # noqa: E501
         """
 
@@ -278,7 +282,11 @@ class ModelMetadataResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
+        self.org_id = org_id
         self.name = name
+        self.creation_time = creation_time
+        self.time_period = time_period
+        self.model_category = model_category
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

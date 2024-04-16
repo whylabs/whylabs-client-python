@@ -42,7 +42,7 @@ class NotificationSettingsApi(object):
         self.api_client = api_client
         self.add_notification_action_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': None,
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -101,9 +101,7 @@ class NotificationSettingsApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [
                     'application/json'
                 ]
@@ -112,7 +110,7 @@ class NotificationSettingsApi(object):
         )
         self.delete_notification_action_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': None,
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -160,16 +158,14 @@ class NotificationSettingsApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client
         )
         self.disable_notification_action_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': None,
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -217,16 +213,14 @@ class NotificationSettingsApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client
         )
         self.enable_notification_action_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': None,
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -274,9 +268,7 @@ class NotificationSettingsApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client
@@ -523,7 +515,7 @@ class NotificationSettingsApi(object):
         )
         self.put_notification_action_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': None,
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -582,9 +574,7 @@ class NotificationSettingsApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [
                     'application/json'
                 ]
@@ -593,7 +583,7 @@ class NotificationSettingsApi(object):
         )
         self.test_notification_action_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': None,
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -641,16 +631,14 @@ class NotificationSettingsApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [],
             },
             api_client=api_client
         )
         self.update_notification_action_endpoint = _Endpoint(
             settings={
-                'response_type': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                'response_type': None,
                 'auth': [
                     'ApiKeyAuth'
                 ],
@@ -709,9 +697,7 @@ class NotificationSettingsApi(object):
                 }
             },
             headers_map={
-                'accept': [
-                    'application/json'
-                ],
+                'accept': [],
                 'content_type': [
                     'application/json'
                 ]
@@ -767,7 +753,7 @@ class NotificationSettingsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -846,7 +832,7 @@ class NotificationSettingsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -921,7 +907,7 @@ class NotificationSettingsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -996,7 +982,7 @@ class NotificationSettingsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1419,7 +1405,7 @@ class NotificationSettingsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1498,7 +1484,7 @@ class NotificationSettingsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1577,7 +1563,7 @@ class NotificationSettingsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            {str: (bool, date, datetime, dict, float, int, list, str, none_type)}
+            None
                 If the method is called asynchronously, returns the request
                 thread.
         """

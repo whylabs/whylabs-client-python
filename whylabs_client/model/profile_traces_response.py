@@ -90,7 +90,7 @@ class ProfileTracesResponse(ModelNormal):
         return {
             'traces': ([ProfileTrace],),  # noqa: E501
             'next_offset': (int, none_type,),  # noqa: E501
-            'truncated': (bool, none_type,),  # noqa: E501
+            'is_truncated': (bool, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -101,7 +101,7 @@ class ProfileTracesResponse(ModelNormal):
     attribute_map = {
         'traces': 'traces',  # noqa: E501
         'next_offset': 'nextOffset',  # noqa: E501
-        'truncated': 'truncated',  # noqa: E501
+        'is_truncated': 'isTruncated',  # noqa: E501
     }
 
     read_only_vars = {
@@ -111,8 +111,11 @@ class ProfileTracesResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, traces, *args, **kwargs):  # noqa: E501
         """ProfileTracesResponse - a model defined in OpenAPI
+
+        Args:
+            traces ([ProfileTrace]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -145,9 +148,8 @@ class ProfileTracesResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            traces ([ProfileTrace]): [optional]  # noqa: E501
             next_offset (int, none_type): [optional]  # noqa: E501
-            truncated (bool, none_type): [optional]  # noqa: E501
+            is_truncated (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -175,6 +177,7 @@ class ProfileTracesResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.traces = traces
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,8 +198,11 @@ class ProfileTracesResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, traces, *args, **kwargs):  # noqa: E501
         """ProfileTracesResponse - a model defined in OpenAPI
+
+        Args:
+            traces ([ProfileTrace]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -229,9 +235,8 @@ class ProfileTracesResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            traces ([ProfileTrace]): [optional]  # noqa: E501
             next_offset (int, none_type): [optional]  # noqa: E501
-            truncated (bool, none_type): [optional]  # noqa: E501
+            is_truncated (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -257,6 +262,7 @@ class ProfileTracesResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.traces = traces
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

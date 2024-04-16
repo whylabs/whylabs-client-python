@@ -93,6 +93,7 @@ class CreateReferenceProfileRequest(ModelNormal):
             'dataset_timestamp': (int, none_type,),  # noqa: E501
             'segments': ([Segment], none_type,),  # noqa: E501
             'tags': ([str], none_type,),  # noqa: E501
+            'region': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -106,6 +107,7 @@ class CreateReferenceProfileRequest(ModelNormal):
         'dataset_timestamp': 'datasetTimestamp',  # noqa: E501
         'segments': 'segments',  # noqa: E501
         'tags': 'tags',  # noqa: E501
+        'region': 'region',  # noqa: E501
     }
 
     read_only_vars = {
@@ -154,6 +156,7 @@ class CreateReferenceProfileRequest(ModelNormal):
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
             segments ([Segment], none_type): [optional]  # noqa: E501
             tags ([str], none_type): [optional]  # noqa: E501
+            region (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -240,6 +243,7 @@ class CreateReferenceProfileRequest(ModelNormal):
             dataset_timestamp (int, none_type): [optional]  # noqa: E501
             segments ([Segment], none_type): [optional]  # noqa: E501
             tags ([str], none_type): [optional]  # noqa: E501
+            region (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

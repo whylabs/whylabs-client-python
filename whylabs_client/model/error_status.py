@@ -105,8 +105,11 @@ class ErrorStatus(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, error_code, *args, **kwargs):  # noqa: E501
         """ErrorStatus - a model defined in OpenAPI
+
+        Args:
+            error_code (int):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -139,7 +142,6 @@ class ErrorStatus(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            error_code (int): [optional]  # noqa: E501
             item_id (str, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
         """
@@ -169,6 +171,7 @@ class ErrorStatus(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.error_code = error_code
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -189,8 +192,11 @@ class ErrorStatus(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, error_code, *args, **kwargs):  # noqa: E501
         """ErrorStatus - a model defined in OpenAPI
+
+        Args:
+            error_code (int):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -223,7 +229,6 @@ class ErrorStatus(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            error_code (int): [optional]  # noqa: E501
             item_id (str, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
         """
@@ -251,6 +256,7 @@ class ErrorStatus(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.error_code = error_code
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

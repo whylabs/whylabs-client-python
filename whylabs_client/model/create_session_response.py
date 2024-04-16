@@ -105,7 +105,7 @@ class CreateSessionResponse(ModelNormal):
         """CreateSessionResponse - a model defined in OpenAPI
 
         Args:
-            id (str): Token for the created session, to be passsed into other session APIs.
+            id (str): Token for the created session, to be passed into other session APIs.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -190,7 +190,7 @@ class CreateSessionResponse(ModelNormal):
         """CreateSessionResponse - a model defined in OpenAPI
 
         Args:
-            id (str): Token for the created session, to be passsed into other session APIs.
+            id (str): Token for the created session, to be passed into other session APIs.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

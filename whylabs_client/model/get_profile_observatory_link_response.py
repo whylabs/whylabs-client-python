@@ -103,8 +103,12 @@ class GetProfileObservatoryLinkResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, observatory_url, individual_observatory_urls, *args, **kwargs):  # noqa: E501
         """GetProfileObservatoryLinkResponse - a model defined in OpenAPI
+
+        Args:
+            observatory_url (str): The url to use to view each of the profiles. This will show each profile side by side.
+            individual_observatory_urls ([str]): One url for each profile that was sent in. These will show the profiles individually.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,8 +141,6 @@ class GetProfileObservatoryLinkResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            observatory_url (str): [optional]  # noqa: E501
-            individual_observatory_urls ([str]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -166,6 +168,8 @@ class GetProfileObservatoryLinkResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.observatory_url = observatory_url
+        self.individual_observatory_urls = individual_observatory_urls
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -186,8 +190,12 @@ class GetProfileObservatoryLinkResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, observatory_url, individual_observatory_urls, *args, **kwargs):  # noqa: E501
         """GetProfileObservatoryLinkResponse - a model defined in OpenAPI
+
+        Args:
+            observatory_url (str): The url to use to view each of the profiles. This will show each profile side by side.
+            individual_observatory_urls ([str]): One url for each profile that was sent in. These will show the profiles individually.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -220,8 +228,6 @@ class GetProfileObservatoryLinkResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            observatory_url (str): [optional]  # noqa: E501
-            individual_observatory_urls ([str]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -247,6 +253,8 @@ class GetProfileObservatoryLinkResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.observatory_url = observatory_url
+        self.individual_observatory_urls = individual_observatory_urls
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

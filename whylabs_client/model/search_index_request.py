@@ -109,8 +109,12 @@ class SearchIndexRequest(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, org_id, type, *args, **kwargs):  # noqa: E501
         """SearchIndexRequest - a model defined in OpenAPI
+
+        Args:
+            org_id (str):
+            type (SearchIndexType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -143,8 +147,6 @@ class SearchIndexRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            type (SearchIndexType): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -172,6 +174,8 @@ class SearchIndexRequest(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.org_id = org_id
+        self.type = type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,8 +196,12 @@ class SearchIndexRequest(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, org_id, type, *args, **kwargs):  # noqa: E501
         """SearchIndexRequest - a model defined in OpenAPI
+
+        Args:
+            org_id (str):
+            type (SearchIndexType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,8 +234,6 @@ class SearchIndexRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            type (SearchIndexType): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,6 +259,8 @@ class SearchIndexRequest(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.org_id = org_id
+        self.type = type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -52,7 +52,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     scopes = [
         ":user",
     ] # [str], none_type | Scopes of the token (optional)
-    alias = "MLApplicationName" # str, none_type | A human-friendly name for the API Key  An object with key ID and other metadata about the key (optional)
+    alias = "MLApplicationName" # str, none_type | A human-friendly name for the API Key (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
  **user_id** | **str**| The unique user ID in an organization. |
  **expiration_time** | **int, none_type**| Expiration time in epoch milliseconds | [optional]
  **scopes** | **[str], none_type**| Scopes of the token | [optional]
- **alias** | **str, none_type**| A human-friendly name for the API Key  An object with key ID and other metadata about the key | [optional]
+ **alias** | **str, none_type**| A human-friendly name for the API Key | [optional]
 
 ### Return type
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | A object with key ID and other metadata about the key |  -  |
+**200** | A object with key ID and other metadata about the key |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -145,7 +145,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     api_instance = api_key_api.ApiKeyApi(api_client)
     org_id = "org-123" # str | 
     user_id = "user-123" # str | 
-    key_id = "HMiFAgQeNb" # str | ID of the key to revoke  Metadata for the revoked API Key
+    key_id = "HMiFAgQeNb" # str | ID of the key to revoke
 
     # example passing only required values which don't have defaults set
     try:
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  |
  **user_id** | **str**|  |
- **key_id** | **str**| ID of the key to revoke  Metadata for the revoked API Key |
+ **key_id** | **str**| ID of the key to revoke |
 
 ### Return type
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**0** | Revoked API Key&#39;s metadata |  -  |
+**200** | Revoked API Key&#39;s metadata |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

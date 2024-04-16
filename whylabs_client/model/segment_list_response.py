@@ -111,8 +111,13 @@ class SegmentListResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, org_id, model_id, segments, *args, **kwargs):  # noqa: E501
         """SegmentListResponse - a model defined in OpenAPI
+
+        Args:
+            org_id (str):
+            model_id (str):
+            segments ([Segment]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -145,9 +150,6 @@ class SegmentListResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            model_id (str): [optional]  # noqa: E501
-            segments ([Segment]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -175,6 +177,9 @@ class SegmentListResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.org_id = org_id
+        self.model_id = model_id
+        self.segments = segments
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,8 +200,13 @@ class SegmentListResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, org_id, model_id, segments, *args, **kwargs):  # noqa: E501
         """SegmentListResponse - a model defined in OpenAPI
+
+        Args:
+            org_id (str):
+            model_id (str):
+            segments ([Segment]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -229,9 +239,6 @@ class SegmentListResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            org_id (str): [optional]  # noqa: E501
-            model_id (str): [optional]  # noqa: E501
-            segments ([Segment]): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -257,6 +264,9 @@ class SegmentListResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.org_id = org_id
+        self.model_id = model_id
+        self.segments = segments
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
