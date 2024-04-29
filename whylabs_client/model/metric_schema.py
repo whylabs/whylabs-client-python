@@ -109,9 +109,9 @@ class MetricSchema(ModelNormal):
         """MetricSchema - a model defined in OpenAPI
 
         Args:
-            label (str): User-friendly label for the metric. This should be a unique for the entity.
+            label (str): User-friendly label for the metric.
             column (str): Entity column to extract the metric from
-            default_metric (str): whylogs metric to extract. Note that other metrics may be available for this column as well, this is the one to be used by default. Should match the values of the SimpleColumnMetric enum within the monitor config schema.
+            default_metric (str): whylogs metric to extract when this schema is applied. Should match the values of the SimpleColumnMetric enum within the monitor config schema.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -198,9 +198,9 @@ class MetricSchema(ModelNormal):
         """MetricSchema - a model defined in OpenAPI
 
         Args:
-            label (str): User-friendly label for the metric. This should be a unique for the entity.
+            label (str): User-friendly label for the metric.
             column (str): Entity column to extract the metric from
-            default_metric (str): whylogs metric to extract. Note that other metrics may be available for this column as well, this is the one to be used by default. Should match the values of the SimpleColumnMetric enum within the monitor config schema.
+            default_metric (str): whylogs metric to extract when this schema is applied. Should match the values of the SimpleColumnMetric enum within the monitor config schema.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

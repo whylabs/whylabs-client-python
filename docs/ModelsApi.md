@@ -8,14 +8,16 @@ Method | HTTP request | Description
 [**deactivate_model**](ModelsApi.md#deactivate_model) | **DELETE** /v0/organizations/{org_id}/models/{model_id} | Mark a model as inactive
 [**delete_entity_schema**](ModelsApi.md#delete_entity_schema) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema | Delete the entity schema config for a given dataset.
 [**delete_entity_schema_column**](ModelsApi.md#delete_entity_schema_column) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Delete the entity schema of a single column for a given dataset.
-[**delete_entity_schema_metric**](ModelsApi.md#delete_entity_schema_metric) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_label} | Delete the schema of a single metric for a given dataset.
+[**delete_entity_schema_metric**](ModelsApi.md#delete_entity_schema_metric) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_name} | Delete the schema of a single metric for a given dataset.
 [**get_entity_schema**](ModelsApi.md#get_entity_schema) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema | Get the entity schema config for a given dataset.
 [**get_entity_schema_column**](ModelsApi.md#get_entity_schema_column) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Get the entity schema of a single column for a given dataset.
 [**get_model**](ModelsApi.md#get_model) | **GET** /v0/organizations/{org_id}/models/{model_id} | Get a model metadata
+[**get_named_metric_schemas**](ModelsApi.md#get_named_metric_schemas) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema/metrics | Get all of the named metrics for a given dataset.
 [**list_models**](ModelsApi.md#list_models) | **GET** /v0/organizations/{org_id}/models | Get a list of all of the model ids for an organization.
 [**put_entity_schema**](ModelsApi.md#put_entity_schema) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema | Save the entity schema config for a given dataset.
 [**put_entity_schema_column**](ModelsApi.md#put_entity_schema_column) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Save the entity schema of a single column for a given dataset.
 [**put_entity_schema_metric**](ModelsApi.md#put_entity_schema_metric) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric | Save the schema of a single metric for a given dataset.
+[**put_named_metric_schema**](ModelsApi.md#put_named_metric_schema) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_name} | Save the schema of a single named metric for a given dataset.
 [**update_model**](ModelsApi.md#update_model) | **PUT** /v0/organizations/{org_id}/models/{model_id} | Update a model&#39;s metadata
 
 
@@ -359,7 +361,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_entity_schema_metric**
-> Response delete_entity_schema_metric(org_id, dataset_id, metric_label)
+> Response delete_entity_schema_metric(org_id, dataset_id, metric_name)
 
 Delete the schema of a single metric for a given dataset.
 
@@ -398,12 +400,12 @@ with whylabs_client.ApiClient(configuration) as api_client:
     api_instance = models_api.ModelsApi(api_client)
     org_id = "org-123" # str | 
     dataset_id = "model-123" # str | 
-    metric_label = "feature-123" # str | 
+    metric_name = "estimated_performance_median" # str | 
 
     # example passing only required values which don't have defaults set
     try:
         # Delete the schema of a single metric for a given dataset.
-        api_response = api_instance.delete_entity_schema_metric(org_id, dataset_id, metric_label)
+        api_response = api_instance.delete_entity_schema_metric(org_id, dataset_id, metric_name)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling ModelsApi->delete_entity_schema_metric: %s\n" % e)
@@ -416,7 +418,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_id** | **str**|  |
  **dataset_id** | **str**|  |
- **metric_label** | **str**|  |
+ **metric_name** | **str**|  |
 
 ### Return type
 
@@ -682,6 +684,86 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_named_metric_schemas**
+> [NamedMetricSchema] get_named_metric_schemas(org_id, dataset_id)
+
+Get all of the named metrics for a given dataset.
+
+Get all of the named metrics for a given dataset.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.named_metric_schema import NamedMetricSchema
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get all of the named metrics for a given dataset.
+        api_response = api_instance.get_named_metric_schemas(org_id, dataset_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->get_named_metric_schemas: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+
+### Return type
+
+[**[NamedMetricSchema]**](NamedMetricSchema.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | GetNamedMetricSchemas 200 response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_models**
 > ListModelsResponse list_models(org_id)
 
@@ -819,7 +901,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
         ),
         metrics={
             "key": MetricSchema(
-                label="estimated_prediction.median",
+                label="Estimated prediction median",
                 column="estimated_prediction",
                 default_metric="median",
             ),
@@ -963,7 +1045,7 @@ Name | Type | Description  | Notes
 
 Save the schema of a single metric for a given dataset.
 
-Save the schema of a single metric for a given dataset.
+Save the schema of a single metric for a given dataset. The metric will be given a name based on the label in the schema, replacing any non-alphanumeric with _.
 
 ### Example
 
@@ -1000,7 +1082,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     org_id = "org-123" # str | 
     dataset_id = "model-123" # str | 
     metric_schema = MetricSchema(
-        label="estimated_prediction.median",
+        label="Estimated prediction median",
         column="estimated_prediction",
         default_metric="median",
     ) # MetricSchema | 
@@ -1042,6 +1124,95 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | PutEntitySchemaMetric 200 response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_named_metric_schema**
+> Response put_named_metric_schema(org_id, dataset_id, metric_name, metric_schema_fields)
+
+Save the schema of a single named metric for a given dataset.
+
+Save the schema of a single named metric for a given dataset.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.metric_schema_fields import MetricSchemaFields
+from whylabs_client.model.response import Response
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+    metric_name = "estimated_performance_median" # str | 
+    metric_schema_fields = MetricSchemaFields(
+        label="Estimated prediction median",
+        column="estimated_prediction",
+        builtin_metric="median",
+    ) # MetricSchemaFields | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Save the schema of a single named metric for a given dataset.
+        api_response = api_instance.put_named_metric_schema(org_id, dataset_id, metric_name, metric_schema_fields)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->put_named_metric_schema: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+ **metric_name** | **str**|  |
+ **metric_schema_fields** | [**MetricSchemaFields**](MetricSchemaFields.md)|  |
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | PutNamedMetricSchema 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

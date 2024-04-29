@@ -257,6 +257,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     profile_end_timestamp = 1893456000000 # int, none_type | Optional, scope deleting profiles older than the timestamp (optional)
     before_upload_timestamp = 1577836800000 # int, none_type | Optional, scope deleting profiles uploaded prior to the timestamp (optional)
     delete_analyzer_results = True # bool, none_type |  (optional)
+    column_name = "column_name_example" # str, none_type |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -270,7 +271,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Deletes a set of dataset profiles
-        api_response = api_instance.delete_dataset_profiles(org_id, dataset_id, profile_start_timestamp=profile_start_timestamp, profile_end_timestamp=profile_end_timestamp, before_upload_timestamp=before_upload_timestamp, delete_analyzer_results=delete_analyzer_results)
+        api_response = api_instance.delete_dataset_profiles(org_id, dataset_id, profile_start_timestamp=profile_start_timestamp, profile_end_timestamp=profile_end_timestamp, before_upload_timestamp=before_upload_timestamp, delete_analyzer_results=delete_analyzer_results, column_name=column_name)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling DatasetProfileApi->delete_dataset_profiles: %s\n" % e)
@@ -287,6 +288,7 @@ Name | Type | Description  | Notes
  **profile_end_timestamp** | **int, none_type**| Optional, scope deleting profiles older than the timestamp | [optional]
  **before_upload_timestamp** | **int, none_type**| Optional, scope deleting profiles uploaded prior to the timestamp | [optional]
  **delete_analyzer_results** | **bool, none_type**|  | [optional]
+ **column_name** | **str, none_type**|  | [optional]
 
 ### Return type
 

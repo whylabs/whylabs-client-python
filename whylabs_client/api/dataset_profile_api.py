@@ -203,6 +203,7 @@ class DatasetProfileApi(object):
                     'profile_end_timestamp',
                     'before_upload_timestamp',
                     'delete_analyzer_results',
+                    'column_name',
                 ],
                 'required': [
                     'org_id',
@@ -213,6 +214,7 @@ class DatasetProfileApi(object):
                     'profile_end_timestamp',
                     'before_upload_timestamp',
                     'delete_analyzer_results',
+                    'column_name',
                 ],
                 'enum': [
                 ],
@@ -237,6 +239,8 @@ class DatasetProfileApi(object):
                         (int, none_type,),
                     'delete_analyzer_results':
                         (bool, none_type,),
+                    'column_name':
+                        (str, none_type,),
                 },
                 'attribute_map': {
                     'org_id': 'org_id',
@@ -245,6 +249,7 @@ class DatasetProfileApi(object):
                     'profile_end_timestamp': 'profile_end_timestamp',
                     'before_upload_timestamp': 'before_upload_timestamp',
                     'delete_analyzer_results': 'delete_analyzer_results',
+                    'column_name': 'column_name',
                 },
                 'location_map': {
                     'org_id': 'path',
@@ -253,6 +258,7 @@ class DatasetProfileApi(object):
                     'profile_end_timestamp': 'query',
                     'before_upload_timestamp': 'query',
                     'delete_analyzer_results': 'query',
+                    'column_name': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -964,6 +970,7 @@ class DatasetProfileApi(object):
             profile_end_timestamp (int, none_type): Optional, scope deleting profiles older than the timestamp. [optional]
             before_upload_timestamp (int, none_type): Optional, scope deleting profiles uploaded prior to the timestamp. [optional]
             delete_analyzer_results (bool, none_type): [optional]
+            column_name (str, none_type): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

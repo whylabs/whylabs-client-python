@@ -26,8 +26,10 @@ from whylabs_client.model.column_schema import ColumnSchema
 from whylabs_client.model.entity_schema import EntitySchema
 from whylabs_client.model.list_models_response import ListModelsResponse
 from whylabs_client.model.metric_schema import MetricSchema
+from whylabs_client.model.metric_schema_fields import MetricSchemaFields
 from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from whylabs_client.model.model_type import ModelType
+from whylabs_client.model.named_metric_schema import NamedMetricSchema
 from whylabs_client.model.response import Response
 from whylabs_client.model.time_period import TimePeriod
 
@@ -317,7 +319,7 @@ class ModelsApi(object):
                 'auth': [
                     'ApiKeyAuth'
                 ],
-                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_label}',
+                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_name}',
                 'operation_id': 'delete_entity_schema_metric',
                 'http_method': 'DELETE',
                 'servers': None,
@@ -326,12 +328,12 @@ class ModelsApi(object):
                 'all': [
                     'org_id',
                     'dataset_id',
-                    'metric_label',
+                    'metric_name',
                 ],
                 'required': [
                     'org_id',
                     'dataset_id',
-                    'metric_label',
+                    'metric_name',
                 ],
                 'nullable': [
                 ],
@@ -350,18 +352,18 @@ class ModelsApi(object):
                         (str,),
                     'dataset_id':
                         (str,),
-                    'metric_label':
+                    'metric_name':
                         (str,),
                 },
                 'attribute_map': {
                     'org_id': 'org_id',
                     'dataset_id': 'dataset_id',
-                    'metric_label': 'metric_label',
+                    'metric_name': 'metric_name',
                 },
                 'location_map': {
                     'org_id': 'path',
                     'dataset_id': 'path',
-                    'metric_label': 'path',
+                    'metric_name': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -539,6 +541,63 @@ class ModelsApi(object):
                 'location_map': {
                     'org_id': 'path',
                     'model_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_named_metric_schemas_endpoint = _Endpoint(
+            settings={
+                'response_type': ([NamedMetricSchema],),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/schema/metrics',
+                'operation_id': 'get_named_metric_schemas',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -786,6 +845,76 @@ class ModelsApi(object):
                     'org_id': 'path',
                     'dataset_id': 'path',
                     'metric_schema': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.put_named_metric_schema_endpoint = _Endpoint(
+            settings={
+                'response_type': (Response,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_name}',
+                'operation_id': 'put_named_metric_schema',
+                'http_method': 'PUT',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                    'metric_name',
+                    'metric_schema_fields',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                    'metric_name',
+                    'metric_schema_fields',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'metric_name':
+                        (str,),
+                    'metric_schema_fields':
+                        (MetricSchemaFields,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                    'metric_name': 'metric_name',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
+                    'metric_name': 'path',
+                    'metric_schema_fields': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -1189,7 +1318,7 @@ class ModelsApi(object):
         self,
         org_id,
         dataset_id,
-        metric_label,
+        metric_name,
         **kwargs
     ):
         """Delete the schema of a single metric for a given dataset.  # noqa: E501
@@ -1198,13 +1327,13 @@ class ModelsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.delete_entity_schema_metric(org_id, dataset_id, metric_label, async_req=True)
+        >>> thread = api.delete_entity_schema_metric(org_id, dataset_id, metric_name, async_req=True)
         >>> result = thread.get()
 
         Args:
             org_id (str):
             dataset_id (str):
-            metric_label (str):
+            metric_name (str):
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -1260,8 +1389,8 @@ class ModelsApi(object):
             org_id
         kwargs['dataset_id'] = \
             dataset_id
-        kwargs['metric_label'] = \
-            metric_label
+        kwargs['metric_name'] = \
+            metric_name
         return self.delete_entity_schema_metric_endpoint.call_with_http_info(**kwargs)
 
     def get_entity_schema(
@@ -1492,6 +1621,81 @@ class ModelsApi(object):
         kwargs['model_id'] = \
             model_id
         return self.get_model_endpoint.call_with_http_info(**kwargs)
+
+    def get_named_metric_schemas(
+        self,
+        org_id,
+        dataset_id,
+        **kwargs
+    ):
+        """Get all of the named metrics for a given dataset.  # noqa: E501
+
+        Get all of the named metrics for a given dataset.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_named_metric_schemas(org_id, dataset_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str):
+            dataset_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [NamedMetricSchema]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        return self.get_named_metric_schemas_endpoint.call_with_http_info(**kwargs)
 
     def list_models(
         self,
@@ -1735,7 +1939,7 @@ class ModelsApi(object):
     ):
         """Save the schema of a single metric for a given dataset.  # noqa: E501
 
-        Save the schema of a single metric for a given dataset.  # noqa: E501
+        Save the schema of a single metric for a given dataset. The metric will be given a name based on the label in the schema, replacing any non-alphanumeric with _.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1804,6 +2008,89 @@ class ModelsApi(object):
         kwargs['metric_schema'] = \
             metric_schema
         return self.put_entity_schema_metric_endpoint.call_with_http_info(**kwargs)
+
+    def put_named_metric_schema(
+        self,
+        org_id,
+        dataset_id,
+        metric_name,
+        metric_schema_fields,
+        **kwargs
+    ):
+        """Save the schema of a single named metric for a given dataset.  # noqa: E501
+
+        Save the schema of a single named metric for a given dataset.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.put_named_metric_schema(org_id, dataset_id, metric_name, metric_schema_fields, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str):
+            dataset_id (str):
+            metric_name (str):
+            metric_schema_fields (MetricSchemaFields):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['metric_name'] = \
+            metric_name
+        kwargs['metric_schema_fields'] = \
+            metric_schema_fields
+        return self.put_named_metric_schema_endpoint.call_with_http_info(**kwargs)
 
     def update_model(
         self,
