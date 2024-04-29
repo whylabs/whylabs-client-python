@@ -48,6 +48,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     api_instance = assets_api.AssetsApi(api_client)
     asset_id = "asset-123" # str | 
     tag = "tag_example" # str, none_type |  (optional)
+    version = 1 # int, none_type |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -61,7 +62,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Endpoint to retrieve assets
-        api_response = api_instance.get_asset(asset_id, tag=tag)
+        api_response = api_instance.get_asset(asset_id, tag=tag, version=version)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling AssetsApi->get_asset: %s\n" % e)
@@ -74,6 +75,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **asset_id** | **str**|  |
  **tag** | **str, none_type**|  | [optional]
+ **version** | **int, none_type**|  | [optional]
 
 ### Return type
 

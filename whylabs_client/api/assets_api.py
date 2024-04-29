@@ -53,12 +53,14 @@ class AssetsApi(object):
                 'all': [
                     'asset_id',
                     'tag',
+                    'version',
                 ],
                 'required': [
                     'asset_id',
                 ],
                 'nullable': [
                     'tag',
+                    'version',
                 ],
                 'enum': [
                 ],
@@ -75,14 +77,18 @@ class AssetsApi(object):
                         (str,),
                     'tag':
                         (str, none_type,),
+                    'version':
+                        (int, none_type,),
                 },
                 'attribute_map': {
                     'asset_id': 'asset_id',
                     'tag': 'tag',
+                    'version': 'version',
                 },
                 'location_map': {
                     'asset_id': 'path',
                     'tag': 'query',
+                    'version': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -173,6 +179,7 @@ class AssetsApi(object):
 
         Keyword Args:
             tag (str, none_type): [optional]
+            version (int, none_type): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

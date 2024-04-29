@@ -97,6 +97,7 @@ class DeleteProfile(ModelNormal):
             'delete_gte': (int, none_type,),  # noqa: E501
             'delete_lt': (int, none_type,),  # noqa: E501
             'before_upload_ts': (int, none_type,),  # noqa: E501
+            'column_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -114,6 +115,7 @@ class DeleteProfile(ModelNormal):
         'delete_gte': 'deleteGte',  # noqa: E501
         'delete_lt': 'deleteLt',  # noqa: E501
         'before_upload_ts': 'beforeUploadTs',  # noqa: E501
+        'column_name': 'columnName',  # noqa: E501
     }
 
     read_only_vars = {
@@ -168,6 +170,7 @@ class DeleteProfile(ModelNormal):
             delete_gte (int, none_type): [optional]  # noqa: E501
             delete_lt (int, none_type): [optional]  # noqa: E501
             before_upload_ts (int, none_type): [optional]  # noqa: E501
+            column_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -265,6 +268,7 @@ class DeleteProfile(ModelNormal):
             delete_gte (int, none_type): [optional]  # noqa: E501
             delete_lt (int, none_type): [optional]  # noqa: E501
             before_upload_ts (int, none_type): [optional]  # noqa: E501
+            column_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
