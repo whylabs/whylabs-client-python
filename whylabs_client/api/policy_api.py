@@ -51,6 +51,7 @@ class PolicyApi(object):
                     'dataset_id',
                     'label',
                     'version',
+                    'schema_version',
                 ],
                 'required': [
                     'dataset_id',
@@ -58,6 +59,7 @@ class PolicyApi(object):
                 'nullable': [
                     'label',
                     'version',
+                    'schema_version',
                 ],
                 'enum': [
                 ],
@@ -76,16 +78,20 @@ class PolicyApi(object):
                         (str, none_type,),
                     'version':
                         (int, none_type,),
+                    'schema_version':
+                        (str, none_type,),
                 },
                 'attribute_map': {
                     'dataset_id': 'dataset_id',
                     'label': 'label',
                     'version': 'version',
+                    'schema_version': 'schema_version',
                 },
                 'location_map': {
                     'dataset_id': 'query',
                     'label': 'query',
                     'version': 'query',
+                    'schema_version': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -119,6 +125,7 @@ class PolicyApi(object):
         Keyword Args:
             label (str, none_type): [optional]
             version (int, none_type): [optional]
+            schema_version (str, none_type): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

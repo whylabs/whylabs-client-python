@@ -82,8 +82,7 @@ class UploadAssetRequest(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'file_name': (str,),  # noqa: E501
-            'tag': (str, none_type,),  # noqa: E501
+            'debug': (bool, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -92,8 +91,7 @@ class UploadAssetRequest(ModelNormal):
 
 
     attribute_map = {
-        'file_name': 'fileName',  # noqa: E501
-        'tag': 'tag',  # noqa: E501
+        'debug': 'debug',  # noqa: E501
     }
 
     read_only_vars = {
@@ -103,11 +101,8 @@ class UploadAssetRequest(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, file_name, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
         """UploadAssetRequest - a model defined in OpenAPI
-
-        Args:
-            file_name (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -140,7 +135,7 @@ class UploadAssetRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tag (str, none_type): [optional]  # noqa: E501
+            debug (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -168,7 +163,6 @@ class UploadAssetRequest(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.file_name = file_name
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -189,11 +183,8 @@ class UploadAssetRequest(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, file_name, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """UploadAssetRequest - a model defined in OpenAPI
-
-        Args:
-            file_name (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,7 +217,7 @@ class UploadAssetRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tag (str, none_type): [optional]  # noqa: E501
+            debug (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -252,7 +243,6 @@ class UploadAssetRequest(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.file_name = file_name
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -22,8 +22,11 @@ from whylabs_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from whylabs_client.model.claim_configuration_membership import ClaimConfigurationMembership
+from whylabs_client.model.claim_membership_role_configuration import ClaimMembershipRoleConfiguration
 from whylabs_client.model.list_organization_memberships_response import ListOrganizationMembershipsResponse
 from whylabs_client.model.membership_metadata import MembershipMetadata
+from whylabs_client.model.response import Response
 from whylabs_client.model.role import Role
 
 
@@ -38,6 +41,70 @@ class MembershipApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.add_saml_role_mapping_endpoint = _Endpoint(
+            settings={
+                'response_type': (Response,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v1/membership/saml/role-mapping',
+                'operation_id': 'add_saml_role_mapping',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'connection',
+                    'group',
+                    'claim_configuration_membership',
+                ],
+                'required': [
+                    'connection',
+                    'group',
+                    'claim_configuration_membership',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'connection':
+                        (str,),
+                    'group':
+                        (str,),
+                    'claim_configuration_membership':
+                        ([ClaimConfigurationMembership],),
+                },
+                'attribute_map': {
+                    'connection': 'connection',
+                    'group': 'group',
+                },
+                'location_map': {
+                    'connection': 'query',
+                    'group': 'query',
+                    'claim_configuration_membership': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.create_organization_membership_endpoint = _Endpoint(
             settings={
                 'response_type': (MembershipMetadata,),
@@ -95,6 +162,114 @@ class MembershipApi(object):
                     'email': 'query',
                     'role': 'query',
                     'set_default': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.delete_saml_role_mapping_endpoint = _Endpoint(
+            settings={
+                'response_type': (Response,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v1/membership/saml/role-mapping',
+                'operation_id': 'delete_saml_role_mapping',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'connection',
+                    'group',
+                ],
+                'required': [
+                    'connection',
+                    'group',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'connection':
+                        (str,),
+                    'group':
+                        (str,),
+                },
+                'attribute_map': {
+                    'connection': 'connection',
+                    'group': 'group',
+                },
+                'location_map': {
+                    'connection': 'query',
+                    'group': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_saml_role_mapping_endpoint = _Endpoint(
+            settings={
+                'response_type': (ClaimMembershipRoleConfiguration,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v1/membership/saml/role-mapping',
+                'operation_id': 'get_saml_role_mapping',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'connection',
+                ],
+                'required': [
+                    'connection',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'connection':
+                        (str,),
+                },
+                'attribute_map': {
+                    'connection': 'connection',
+                },
+                'location_map': {
+                    'connection': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -277,6 +452,85 @@ class MembershipApi(object):
             api_client=api_client
         )
 
+    def add_saml_role_mapping(
+        self,
+        connection,
+        group,
+        claim_configuration_membership,
+        **kwargs
+    ):
+        """Add SAML JIT role claim mapping.  # noqa: E501
+
+        Add SAML JIT role claim mapping.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.add_saml_role_mapping(connection, group, claim_configuration_membership, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            connection (str):
+            group (str):
+            claim_configuration_membership ([ClaimConfigurationMembership]):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['connection'] = \
+            connection
+        kwargs['group'] = \
+            group
+        kwargs['claim_configuration_membership'] = \
+            claim_configuration_membership
+        return self.add_saml_role_mapping_endpoint.call_with_http_info(**kwargs)
+
     def create_organization_membership(
         self,
         org_id,
@@ -284,9 +538,9 @@ class MembershipApi(object):
         role,
         **kwargs
     ):
-        """Create a membership for a user, making them apart of an organization. Uses the user's current email address.  # noqa: E501
+        """Create a membership for a user, making them a part of an organization. Uses the user's current email address.  # noqa: E501
 
-        Create a membership for a user, making them apart of an organization. Uses the user's current email address.  # noqa: E501
+        Create a membership for a user, making them a part of an organization. Uses the user's current email address.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -356,6 +610,152 @@ class MembershipApi(object):
         kwargs['role'] = \
             role
         return self.create_organization_membership_endpoint.call_with_http_info(**kwargs)
+
+    def delete_saml_role_mapping(
+        self,
+        connection,
+        group,
+        **kwargs
+    ):
+        """Delete SAML JIT role claim mapping.  # noqa: E501
+
+        DeleteSAML JIT role claim mapping.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_saml_role_mapping(connection, group, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            connection (str):
+            group (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['connection'] = \
+            connection
+        kwargs['group'] = \
+            group
+        return self.delete_saml_role_mapping_endpoint.call_with_http_info(**kwargs)
+
+    def get_saml_role_mapping(
+        self,
+        connection,
+        **kwargs
+    ):
+        """Get SAML JIT role claim mapping.  # noqa: E501
+
+        Get SAML JIT role claim mapping.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_saml_role_mapping(connection, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            connection (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ClaimMembershipRoleConfiguration
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['connection'] = \
+            connection
+        return self.get_saml_role_mapping_endpoint.call_with_http_info(**kwargs)
 
     def list_organization_memberships(
         self,

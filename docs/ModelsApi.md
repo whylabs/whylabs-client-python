@@ -903,7 +903,8 @@ with whylabs_client.ApiClient(configuration) as api_client:
             "key": MetricSchema(
                 label="Estimated prediction median",
                 column="estimated_prediction",
-                default_metric="median",
+                default_metric="default_metric_example",
+                builtin_metric="median",
             ),
         },
     ) # EntitySchema | 
@@ -1084,7 +1085,8 @@ with whylabs_client.ApiClient(configuration) as api_client:
     metric_schema = MetricSchema(
         label="Estimated prediction median",
         column="estimated_prediction",
-        default_metric="median",
+        default_metric="default_metric_example",
+        builtin_metric="median",
     ) # MetricSchema | 
 
     # example passing only required values which don't have defaults set

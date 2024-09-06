@@ -83,6 +83,7 @@ class GetAssetResponse(ModelNormal):
         """
         return {
             'download_url': (str,),  # noqa: E501
+            'shared': (bool,),  # noqa: E501
             'version': (int, none_type,),  # noqa: E501
             'tag': (str, none_type,),  # noqa: E501
         }
@@ -94,6 +95,7 @@ class GetAssetResponse(ModelNormal):
 
     attribute_map = {
         'download_url': 'downloadUrl',  # noqa: E501
+        'shared': 'shared',  # noqa: E501
         'version': 'version',  # noqa: E501
         'tag': 'tag',  # noqa: E501
     }
@@ -105,11 +107,12 @@ class GetAssetResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, download_url, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, download_url, shared, *args, **kwargs):  # noqa: E501
         """GetAssetResponse - a model defined in OpenAPI
 
         Args:
             download_url (str):
+            shared (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -172,6 +175,7 @@ class GetAssetResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.download_url = download_url
+        self.shared = shared
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,11 +196,12 @@ class GetAssetResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, download_url, *args, **kwargs):  # noqa: E501
+    def __init__(self, download_url, shared, *args, **kwargs):  # noqa: E501
         """GetAssetResponse - a model defined in OpenAPI
 
         Args:
             download_url (str):
+            shared (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -257,6 +262,7 @@ class GetAssetResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.download_url = download_url
+        self.shared = shared
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
