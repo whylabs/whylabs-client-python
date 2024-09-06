@@ -34,9 +34,13 @@ def lazy_import():
     from whylabs_client.model.email_notification_action import EmailNotificationAction
     from whylabs_client.model.pager_duty_notification_action import PagerDutyNotificationAction
     from whylabs_client.model.slack_notification_action import SlackNotificationAction
+    from whylabs_client.model.teams_notification_action import TeamsNotificationAction
+    from whylabs_client.model.webhook_notification_action import WebhookNotificationAction
     globals()['EmailNotificationAction'] = EmailNotificationAction
     globals()['PagerDutyNotificationAction'] = PagerDutyNotificationAction
     globals()['SlackNotificationAction'] = SlackNotificationAction
+    globals()['TeamsNotificationAction'] = TeamsNotificationAction
+    globals()['WebhookNotificationAction'] = WebhookNotificationAction
 
 
 class NotificationActionPayload(ModelComposed):
@@ -92,9 +96,14 @@ class NotificationActionPayload(ModelComposed):
         """
         lazy_import()
         return {
+            'body': (str, none_type,),  # noqa: E501
             'email': (str,),  # noqa: E501
             'slack_webhook': (str,),  # noqa: E501
             'pager_duty_key': (str,),  # noqa: E501
+            'webhook': (str,),  # noqa: E501
+            'url': (str,),  # noqa: E501
+            'method': (str,),  # noqa: E501
+            'headers': ({str: (str,)},),  # noqa: E501
         }
 
     @cached_property
@@ -103,9 +112,14 @@ class NotificationActionPayload(ModelComposed):
 
 
     attribute_map = {
+        'body': 'body',  # noqa: E501
         'email': 'email',  # noqa: E501
         'slack_webhook': 'slackWebhook',  # noqa: E501
         'pager_duty_key': 'pagerDutyKey',  # noqa: E501
+        'webhook': 'webhook',  # noqa: E501
+        'url': 'url',  # noqa: E501
+        'method': 'method',  # noqa: E501
+        'headers': 'headers',  # noqa: E501
     }
 
     read_only_vars = {
@@ -147,9 +161,14 @@ class NotificationActionPayload(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            body (str, none_type): [optional]  # noqa: E501
             email (str): [optional]  # noqa: E501
             slack_webhook (str): [optional]  # noqa: E501
             pager_duty_key (str): [optional]  # noqa: E501
+            webhook (str): [optional]  # noqa: E501
+            url (str): [optional]  # noqa: E501
+            method (str): [optional]  # noqa: E501
+            headers ({str: (str,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -249,9 +268,14 @@ class NotificationActionPayload(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            body (str, none_type): [optional]  # noqa: E501
             email (str): [optional]  # noqa: E501
             slack_webhook (str): [optional]  # noqa: E501
             pager_duty_key (str): [optional]  # noqa: E501
+            webhook (str): [optional]  # noqa: E501
+            url (str): [optional]  # noqa: E501
+            method (str): [optional]  # noqa: E501
+            headers ({str: (str,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -322,5 +346,7 @@ class NotificationActionPayload(ModelComposed):
               EmailNotificationAction,
               PagerDutyNotificationAction,
               SlackNotificationAction,
+              TeamsNotificationAction,
+              WebhookNotificationAction,
           ],
         }

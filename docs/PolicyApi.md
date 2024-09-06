@@ -47,6 +47,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     dataset_id = "model-123" # str | 
     label = "label_example" # str, none_type |  (optional)
     version = 1 # int, none_type |  (optional)
+    schema_version = "schema_version_example" # str, none_type |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -60,7 +61,7 @@ with whylabs_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Endpoint to get the policy configuration
-        api_response = api_instance.get_policy(dataset_id, label=label, version=version)
+        api_response = api_instance.get_policy(dataset_id, label=label, version=version, schema_version=schema_version)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling PolicyApi->get_policy: %s\n" % e)
@@ -74,6 +75,7 @@ Name | Type | Description  | Notes
  **dataset_id** | **str**|  |
  **label** | **str, none_type**|  | [optional]
  **version** | **int, none_type**|  | [optional]
+ **schema_version** | **str, none_type**|  | [optional]
 
 ### Return type
 

@@ -31,9 +31,7 @@ from whylabs_client.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from whylabs_client.model.notification_settings import NotificationSettings
     from whylabs_client.model.subscription_tier import SubscriptionTier
-    globals()['NotificationSettings'] = NotificationSettings
     globals()['SubscriptionTier'] = SubscriptionTier
 
 
@@ -97,11 +95,11 @@ class OrganizationMetadata(ModelNormal):
             'subscription_tier': (SubscriptionTier,),  # noqa: E501
             'email_domains': (str, none_type,),  # noqa: E501
             'observatory_url': (str, none_type,),  # noqa: E501
-            'notification_settings': (NotificationSettings,),  # noqa: E501
             'use_cloud_front': (bool, none_type,),  # noqa: E501
             'parent_org_id': (str, none_type,),  # noqa: E501
             'subscription_id': (str, none_type,),  # noqa: E501
             'storage_bucket_override': (str, none_type,),  # noqa: E501
+            'storage_uri_override': (str, none_type,),  # noqa: E501
             'allow_managed_membership_updates_only': (bool, none_type,),  # noqa: E501
         }
 
@@ -118,11 +116,11 @@ class OrganizationMetadata(ModelNormal):
         'subscription_tier': 'subscriptionTier',  # noqa: E501
         'email_domains': 'emailDomains',  # noqa: E501
         'observatory_url': 'observatoryUrl',  # noqa: E501
-        'notification_settings': 'notificationSettings',  # noqa: E501
         'use_cloud_front': 'useCloudFront',  # noqa: E501
         'parent_org_id': 'parentOrgId',  # noqa: E501
         'subscription_id': 'subscriptionId',  # noqa: E501
         'storage_bucket_override': 'storageBucketOverride',  # noqa: E501
+        'storage_uri_override': 'storageUriOverride',  # noqa: E501
         'allow_managed_membership_updates_only': 'allowManagedMembershipUpdatesOnly',  # noqa: E501
     }
 
@@ -176,11 +174,11 @@ class OrganizationMetadata(ModelNormal):
             subscription_tier (SubscriptionTier): [optional]  # noqa: E501
             email_domains (str, none_type): [optional]  # noqa: E501
             observatory_url (str, none_type): [optional]  # noqa: E501
-            notification_settings (NotificationSettings): [optional]  # noqa: E501
             use_cloud_front (bool, none_type): [optional]  # noqa: E501
             parent_org_id (str, none_type): [optional]  # noqa: E501
             subscription_id (str, none_type): [optional]  # noqa: E501
             storage_bucket_override (str, none_type): [optional]  # noqa: E501
+            storage_uri_override (str, none_type): [optional]  # noqa: E501
             allow_managed_membership_updates_only (bool, none_type): [optional]  # noqa: E501
         """
 
@@ -276,11 +274,11 @@ class OrganizationMetadata(ModelNormal):
             subscription_tier (SubscriptionTier): [optional]  # noqa: E501
             email_domains (str, none_type): [optional]  # noqa: E501
             observatory_url (str, none_type): [optional]  # noqa: E501
-            notification_settings (NotificationSettings): [optional]  # noqa: E501
             use_cloud_front (bool, none_type): [optional]  # noqa: E501
             parent_org_id (str, none_type): [optional]  # noqa: E501
             subscription_id (str, none_type): [optional]  # noqa: E501
             storage_bucket_override (str, none_type): [optional]  # noqa: E501
+            storage_uri_override (str, none_type): [optional]  # noqa: E501
             allow_managed_membership_updates_only (bool, none_type): [optional]  # noqa: E501
         """
 

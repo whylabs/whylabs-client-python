@@ -82,7 +82,7 @@ class UploadAssetResponse(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'upload_url': (str,),  # noqa: E501
+            'upload_url': (str, none_type,),  # noqa: E501
             'version': (int, none_type,),  # noqa: E501
             'tag': (str, none_type,),  # noqa: E501
         }
@@ -105,11 +105,8 @@ class UploadAssetResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, upload_url, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
         """UploadAssetResponse - a model defined in OpenAPI
-
-        Args:
-            upload_url (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -142,6 +139,7 @@ class UploadAssetResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            upload_url (str, none_type): [optional]  # noqa: E501
             version (int, none_type): [optional]  # noqa: E501
             tag (str, none_type): [optional]  # noqa: E501
         """
@@ -171,7 +169,6 @@ class UploadAssetResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.upload_url = upload_url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,11 +189,8 @@ class UploadAssetResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, upload_url, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """UploadAssetResponse - a model defined in OpenAPI
-
-        Args:
-            upload_url (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -229,6 +223,7 @@ class UploadAssetResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            upload_url (str, none_type): [optional]  # noqa: E501
             version (int, none_type): [optional]  # noqa: E501
             tag (str, none_type): [optional]  # noqa: E501
         """
@@ -256,7 +251,6 @@ class UploadAssetResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.upload_url = upload_url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

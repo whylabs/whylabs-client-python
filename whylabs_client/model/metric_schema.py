@@ -84,7 +84,8 @@ class MetricSchema(ModelNormal):
         return {
             'label': (str,),  # noqa: E501
             'column': (str,),  # noqa: E501
-            'default_metric': (str,),  # noqa: E501
+            'default_metric': (str, none_type,),  # noqa: E501
+            'builtin_metric': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -96,6 +97,7 @@ class MetricSchema(ModelNormal):
         'label': 'label',  # noqa: E501
         'column': 'column',  # noqa: E501
         'default_metric': 'defaultMetric',  # noqa: E501
+        'builtin_metric': 'builtinMetric',  # noqa: E501
     }
 
     read_only_vars = {
@@ -105,13 +107,12 @@ class MetricSchema(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, label, column, default_metric, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, label, column, *args, **kwargs):  # noqa: E501
         """MetricSchema - a model defined in OpenAPI
 
         Args:
             label (str): User-friendly label for the metric.
             column (str): Entity column to extract the metric from
-            default_metric (str): whylogs metric to extract when this schema is applied. Should match the values of the SimpleColumnMetric enum within the monitor config schema.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -144,6 +145,8 @@ class MetricSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            default_metric (str, none_type): [optional]  # noqa: E501
+            builtin_metric (str, none_type): The built-in profile metric to extract when this schema is applied. Should match the values of the SimpleColumnMetric enum within the monitor config schema.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -173,7 +176,6 @@ class MetricSchema(ModelNormal):
 
         self.label = label
         self.column = column
-        self.default_metric = default_metric
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -194,13 +196,12 @@ class MetricSchema(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, label, column, default_metric, *args, **kwargs):  # noqa: E501
+    def __init__(self, label, column, *args, **kwargs):  # noqa: E501
         """MetricSchema - a model defined in OpenAPI
 
         Args:
             label (str): User-friendly label for the metric.
             column (str): Entity column to extract the metric from
-            default_metric (str): whylogs metric to extract when this schema is applied. Should match the values of the SimpleColumnMetric enum within the monitor config schema.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -233,6 +234,8 @@ class MetricSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            default_metric (str, none_type): [optional]  # noqa: E501
+            builtin_metric (str, none_type): The built-in profile metric to extract when this schema is applied. Should match the values of the SimpleColumnMetric enum within the monitor config schema.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -260,7 +263,6 @@ class MetricSchema(ModelNormal):
 
         self.label = label
         self.column = column
-        self.default_metric = default_metric
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

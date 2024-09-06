@@ -112,6 +112,120 @@ class ApiKeyApi(object):
             },
             api_client=api_client
         )
+        self.delete_api_key_endpoint = _Endpoint(
+            settings={
+                'response_type': (UserApiKey,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v1/api-key',
+                'operation_id': 'delete_api_key',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'key_id',
+                ],
+                'required': [
+                    'key_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'key_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'key_id': 'key_id',
+                },
+                'location_map': {
+                    'key_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.generate_api_key_endpoint = _Endpoint(
+            settings={
+                'response_type': (UserApiKey,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v1/api-key',
+                'operation_id': 'generate_api_key',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'expiration_time',
+                    'scopes',
+                    'alias',
+                ],
+                'required': [],
+                'nullable': [
+                    'expiration_time',
+                    'scopes',
+                    'alias',
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'expiration_time':
+                        (int, none_type,),
+                    'scopes':
+                        ([str], none_type,),
+                    'alias':
+                        (str, none_type,),
+                },
+                'attribute_map': {
+                    'expiration_time': 'expiration_time',
+                    'scopes': 'scopes',
+                    'alias': 'alias',
+                },
+                'location_map': {
+                    'expiration_time': 'query',
+                    'scopes': 'query',
+                    'alias': 'query',
+                },
+                'collection_format_map': {
+                    'scopes': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.revoke_api_key_endpoint = _Endpoint(
             settings={
                 'response_type': (UserApiKey,),
@@ -253,6 +367,146 @@ class ApiKeyApi(object):
         kwargs['user_id'] = \
             user_id
         return self.create_api_key_endpoint.call_with_http_info(**kwargs)
+
+    def delete_api_key(
+        self,
+        key_id,
+        **kwargs
+    ):
+        """Revoke the given API Key, removing its ability to access WhyLabs systems  # noqa: E501
+
+        Revokes the given API Key  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_api_key(key_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            key_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            UserApiKey
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['key_id'] = \
+            key_id
+        return self.delete_api_key_endpoint.call_with_http_info(**kwargs)
+
+    def generate_api_key(
+        self,
+        **kwargs
+    ):
+        """Generate an API key for a user.  # noqa: E501
+
+        Generates an API key for a given user. Must be called either by system administrator or by the user themselves  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.generate_api_key(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            expiration_time (int, none_type): [optional]
+            scopes ([str], none_type): [optional]
+            alias (str, none_type): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            UserApiKey
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.generate_api_key_endpoint.call_with_http_info(**kwargs)
 
     def revoke_api_key(
         self,
