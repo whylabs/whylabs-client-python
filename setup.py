@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "whylabs-client"
-VERSION = "0.6.9"
+VERSION = "0.6.11"
 # To install the library, run the following
 #
 # python setup.py install

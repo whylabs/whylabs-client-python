@@ -22,6 +22,7 @@ from whylabs_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from whylabs_client.model.add_policy_response import AddPolicyResponse
 
 
 class PolicyApi(object):
@@ -104,6 +105,70 @@ class PolicyApi(object):
             },
             api_client=api_client
         )
+        self.put_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (AddPolicyResponse,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v1/policy',
+                'operation_id': 'put_policy',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'dataset_id',
+                    'body',
+                    'label',
+                ],
+                'required': [
+                    'dataset_id',
+                    'body',
+                ],
+                'nullable': [
+                    'label',
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'dataset_id':
+                        (str,),
+                    'body':
+                        (str,),
+                    'label':
+                        (str, none_type,),
+                },
+                'attribute_map': {
+                    'dataset_id': 'dataset_id',
+                    'label': 'label',
+                },
+                'location_map': {
+                    'dataset_id': 'query',
+                    'body': 'body',
+                    'label': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/x-yaml'
+                ]
+            },
+            api_client=api_client
+        )
 
     def get_policy(
         self,
@@ -178,4 +243,80 @@ class PolicyApi(object):
         kwargs['dataset_id'] = \
             dataset_id
         return self.get_policy_endpoint.call_with_http_info(**kwargs)
+
+    def put_policy(
+        self,
+        dataset_id,
+        body,
+        **kwargs
+    ):
+        """Endpoint to store a policy configuration  # noqa: E501
+
+        Endpoint to store a policy configuration  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.put_policy(dataset_id, body, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            dataset_id (str):
+            body (str):
+
+        Keyword Args:
+            label (str, none_type): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AddPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['body'] = \
+            body
+        return self.put_policy_endpoint.call_with_http_info(**kwargs)
 
