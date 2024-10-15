@@ -30,6 +30,7 @@ from whylabs_client.model.metric_schema_fields import MetricSchemaFields
 from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from whylabs_client.model.model_type import ModelType
 from whylabs_client.model.named_metric_schema import NamedMetricSchema
+from whylabs_client.model.reinfer_entity_schema_request import ReinferEntitySchemaRequest
 from whylabs_client.model.response import Response
 from whylabs_client.model.time_period import TimePeriod
 
@@ -915,6 +916,70 @@ class ModelsApi(object):
                     'dataset_id': 'path',
                     'metric_name': 'path',
                     'metric_schema_fields': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.reinfer_entity_schema_endpoint = _Endpoint(
+            settings={
+                'response_type': (EntitySchema,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/schema/reinfer',
+                'operation_id': 'reinfer_entity_schema',
+                'http_method': 'PUT',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                    'reinfer_entity_schema_request',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                    'reinfer_entity_schema_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'reinfer_entity_schema_request':
+                        (ReinferEntitySchemaRequest,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
+                    'reinfer_entity_schema_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -2091,6 +2156,85 @@ class ModelsApi(object):
         kwargs['metric_schema_fields'] = \
             metric_schema_fields
         return self.put_named_metric_schema_endpoint.call_with_http_info(**kwargs)
+
+    def reinfer_entity_schema(
+        self,
+        org_id,
+        dataset_id,
+        reinfer_entity_schema_request,
+        **kwargs
+    ):
+        """Reinfers the entity schema config for a given dataset.  # noqa: E501
+
+        Reinfers the type and discreteness for the columns in a given dataset. Retains additional user information like tags and whether the column is input or output  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reinfer_entity_schema(org_id, dataset_id, reinfer_entity_schema_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str):
+            dataset_id (str):
+            reinfer_entity_schema_request (ReinferEntitySchemaRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            EntitySchema
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['reinfer_entity_schema_request'] = \
+            reinfer_entity_schema_request
+        return self.reinfer_entity_schema_endpoint.call_with_http_info(**kwargs)
 
     def update_model(
         self,

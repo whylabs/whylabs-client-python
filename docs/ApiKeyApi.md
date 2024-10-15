@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_api_key**](ApiKeyApi.md#create_api_key) | **POST** /v0/organizations/{org_id}/api-key | Generate an API key for a user.
 [**delete_api_key**](ApiKeyApi.md#delete_api_key) | **DELETE** /v1/api-key | Revoke the given API Key, removing its ability to access WhyLabs systems
 [**generate_api_key**](ApiKeyApi.md#generate_api_key) | **POST** /v1/api-key | Generate an API key for a user.
+[**list_api_key_metadata**](ApiKeyApi.md#list_api_key_metadata) | **GET** /v1/api-key | List API key metadata for a given organization
 [**revoke_api_key**](ApiKeyApi.md#revoke_api_key) | **DELETE** /v0/organizations/{org_id}/api-key | Revoke the given API Key, removing its ability to access WhyLabs systems
 
 
@@ -267,6 +268,80 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A object with key ID and other metadata about the key |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_api_key_metadata**
+> ListUserApiKeys list_api_key_metadata()
+
+List API key metadata for a given organization
+
+Returns the API key metadata for a given organization
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import api_key_api
+from whylabs_client.model.list_user_api_keys import ListUserApiKeys
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = api_key_api.ApiKeyApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # List API key metadata for a given organization
+        api_response = api_instance.list_api_key_metadata()
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ApiKeyApi->list_api_key_metadata: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListUserApiKeys**](ListUserApiKeys.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A list of objects with key ID and other metadata about the keys, but no secret values |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

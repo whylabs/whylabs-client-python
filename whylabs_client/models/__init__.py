@@ -36,8 +36,6 @@ from whylabs_client.model.analyzers_diagnostic_request import AnalyzersDiagnosti
 from whylabs_client.model.analyzers_diagnostic_response import AnalyzersDiagnosticResponse
 from whylabs_client.model.anomaly_record import AnomalyRecord
 from whylabs_client.model.asset_tag_entry import AssetTagEntry
-from whylabs_client.model.async_diagnosis_response import AsyncDiagnosisResponse
-from whylabs_client.model.async_diagnosis_result_response import AsyncDiagnosisResultResponse
 from whylabs_client.model.async_log_response import AsyncLogResponse
 from whylabs_client.model.audit_content import AuditContent
 from whylabs_client.model.audit_log import AuditLog
@@ -69,7 +67,6 @@ from whylabs_client.model.delete_profile import DeleteProfile
 from whylabs_client.model.deletion_status import DeletionStatus
 from whylabs_client.model.diagnosis_report import DiagnosisReport
 from whylabs_client.model.diagnosis_request import DiagnosisRequest
-from whylabs_client.model.diagnosis_request_status import DiagnosisRequestStatus
 from whylabs_client.model.diagnostic_data_summary import DiagnosticDataSummary
 from whylabs_client.model.diagnostic_interval_request import DiagnosticIntervalRequest
 from whylabs_client.model.diagnostic_interval_response import DiagnosticIntervalResponse
@@ -92,6 +89,8 @@ from whylabs_client.model.get_asset_response import GetAssetResponse
 from whylabs_client.model.get_dataset_metadata_response import GetDatasetMetadataResponse
 from whylabs_client.model.get_default_membership_response import GetDefaultMembershipResponse
 from whylabs_client.model.get_embedding_data_response import GetEmbeddingDataResponse
+from whylabs_client.model.get_embedding_text_request import GetEmbeddingTextRequest
+from whylabs_client.model.get_embedding_text_response import GetEmbeddingTextResponse
 from whylabs_client.model.get_events_response import GetEventsResponse
 from whylabs_client.model.get_marketplace_metadata_response import GetMarketplaceMetadataResponse
 from whylabs_client.model.get_memberships_response import GetMembershipsResponse
@@ -148,6 +147,7 @@ from whylabs_client.model.provision_new_user_response import ProvisionNewUserRes
 from whylabs_client.model.put_account_memberships_request import PutAccountMembershipsRequest
 from whylabs_client.model.quality_issue_record import QualityIssueRecord
 from whylabs_client.model.reference_profile_item_response import ReferenceProfileItemResponse
+from whylabs_client.model.reinfer_entity_schema_request import ReinferEntitySchemaRequest
 from whylabs_client.model.remove_membership_request import RemoveMembershipRequest
 from whylabs_client.model.response import Response
 from whylabs_client.model.result_record import ResultRecord
