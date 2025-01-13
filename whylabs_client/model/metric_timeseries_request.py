@@ -86,6 +86,8 @@ class MetricTimeseriesRequest(ModelNormal):
             'metric': (str,),  # noqa: E501
             'column': (str, none_type,),  # noqa: E501
             'segment': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'analyzer_id': (str, none_type,),  # noqa: E501
+            'monitor_id': (str, none_type,),  # noqa: E501
             'granularity': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
@@ -99,6 +101,8 @@ class MetricTimeseriesRequest(ModelNormal):
         'metric': 'metric',  # noqa: E501
         'column': 'column',  # noqa: E501
         'segment': 'segment',  # noqa: E501
+        'analyzer_id': 'analyzerId',  # noqa: E501
+        'monitor_id': 'monitorId',  # noqa: E501
         'granularity': 'granularity',  # noqa: E501
     }
 
@@ -149,6 +153,8 @@ class MetricTimeseriesRequest(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             column (str, none_type): [optional]  # noqa: E501
             segment (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            analyzer_id (str, none_type): Analyzer ID, optional and only used for monitor metrics like anomaly_count. [optional]  # noqa: E501
+            monitor_id (str, none_type): Monitor ID, optional and only used for monitor metrics like anomaly_count. [optional]  # noqa: E501
             granularity (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
@@ -239,6 +245,8 @@ class MetricTimeseriesRequest(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             column (str, none_type): [optional]  # noqa: E501
             segment (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            analyzer_id (str, none_type): Analyzer ID, optional and only used for monitor metrics like anomaly_count. [optional]  # noqa: E501
+            monitor_id (str, none_type): Monitor ID, optional and only used for monitor metrics like anomaly_count. [optional]  # noqa: E501
             granularity (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 

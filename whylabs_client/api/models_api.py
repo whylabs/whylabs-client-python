@@ -31,6 +31,7 @@ from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from whylabs_client.model.model_type import ModelType
 from whylabs_client.model.named_metric_schema import NamedMetricSchema
 from whylabs_client.model.reinfer_entity_schema_request import ReinferEntitySchemaRequest
+from whylabs_client.model.resource_tag import ResourceTag
 from whylabs_client.model.response import Response
 from whylabs_client.model.time_period import TimePeriod
 
@@ -46,6 +47,70 @@ class ModelsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.add_resource_tag_endpoint = _Endpoint(
+            settings={
+                'response_type': (Response,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/resource-tag',
+                'operation_id': 'add_resource_tag',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                    'resource_tag',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                    'resource_tag',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'resource_tag':
+                        (ResourceTag,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
+                    'resource_tag': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.create_model_endpoint = _Endpoint(
             settings={
                 'response_type': (ModelMetadataResponse,),
@@ -377,6 +442,70 @@ class ModelsApi(object):
             },
             api_client=api_client
         )
+        self.delete_resource_tag_endpoint = _Endpoint(
+            settings={
+                'response_type': (Response,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/resource-tag',
+                'operation_id': 'delete_resource_tag',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                    'resource_tag',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                    'resource_tag',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'resource_tag':
+                        (ResourceTag,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
+                    'resource_tag': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.get_entity_schema_endpoint = _Endpoint(
             settings={
                 'response_type': (EntitySchema,),
@@ -650,6 +779,63 @@ class ModelsApi(object):
                 },
                 'location_map': {
                     'org_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_resource_tags_endpoint = _Endpoint(
+            settings={
+                'response_type': ([ResourceTag],),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/resource-tag/list',
+                'operation_id': 'list_resource_tags',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -1068,6 +1254,149 @@ class ModelsApi(object):
             },
             api_client=api_client
         )
+        self.update_resource_tag_endpoint = _Endpoint(
+            settings={
+                'response_type': (Response,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v0/organizations/{org_id}/models/{dataset_id}/resource-tag',
+                'operation_id': 'update_resource_tag',
+                'http_method': 'PUT',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'dataset_id',
+                    'resource_tag',
+                ],
+                'required': [
+                    'org_id',
+                    'dataset_id',
+                    'resource_tag',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'dataset_id':
+                        (str,),
+                    'resource_tag':
+                        (ResourceTag,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'dataset_id': 'dataset_id',
+                },
+                'location_map': {
+                    'org_id': 'path',
+                    'dataset_id': 'path',
+                    'resource_tag': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+
+    def add_resource_tag(
+        self,
+        org_id,
+        dataset_id,
+        resource_tag,
+        **kwargs
+    ):
+        """Add a resource tag to a dataset  # noqa: E501
+
+        Add a resource tag to a dataset  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.add_resource_tag(org_id, dataset_id, resource_tag, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str):
+            dataset_id (str):
+            resource_tag (ResourceTag):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['resource_tag'] = \
+            resource_tag
+        return self.add_resource_tag_endpoint.call_with_http_info(**kwargs)
 
     def create_model(
         self,
@@ -1458,6 +1787,85 @@ class ModelsApi(object):
             metric_name
         return self.delete_entity_schema_metric_endpoint.call_with_http_info(**kwargs)
 
+    def delete_resource_tag(
+        self,
+        org_id,
+        dataset_id,
+        resource_tag,
+        **kwargs
+    ):
+        """Delete a resource tag to a dataset.  # noqa: E501
+
+        Delete a resource tag to a dataset.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_resource_tag(org_id, dataset_id, resource_tag, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str):
+            dataset_id (str):
+            resource_tag (ResourceTag):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['resource_tag'] = \
+            resource_tag
+        return self.delete_resource_tag_endpoint.call_with_http_info(**kwargs)
+
     def get_entity_schema(
         self,
         org_id,
@@ -1832,6 +2240,81 @@ class ModelsApi(object):
         kwargs['org_id'] = \
             org_id
         return self.list_models_endpoint.call_with_http_info(**kwargs)
+
+    def list_resource_tags(
+        self,
+        org_id,
+        dataset_id,
+        **kwargs
+    ):
+        """List resource tags for a dataset.  # noqa: E501
+
+        List resource tags for a dataset.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_resource_tags(org_id, dataset_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str):
+            dataset_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [ResourceTag]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        return self.list_resource_tags_endpoint.call_with_http_info(**kwargs)
 
     def put_entity_schema(
         self,
@@ -2319,4 +2802,83 @@ class ModelsApi(object):
         kwargs['time_period'] = \
             time_period
         return self.update_model_endpoint.call_with_http_info(**kwargs)
+
+    def update_resource_tag(
+        self,
+        org_id,
+        dataset_id,
+        resource_tag,
+        **kwargs
+    ):
+        """Update a resource tag to a dataset.  # noqa: E501
+
+        Update a resource tag to a dataset.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_resource_tag(org_id, dataset_id, resource_tag, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str):
+            dataset_id (str):
+            resource_tag (ResourceTag):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        kwargs['dataset_id'] = \
+            dataset_id
+        kwargs['resource_tag'] = \
+            resource_tag
+        return self.update_resource_tag_endpoint.call_with_http_info(**kwargs)
 

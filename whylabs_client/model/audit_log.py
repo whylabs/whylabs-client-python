@@ -85,8 +85,8 @@ class AuditLog(ModelNormal):
             'message_id': (str,),  # noqa: E501
             'publish_time': (str,),  # noqa: E501
             'account_id': (str,),  # noqa: E501
-            'principal_id': (str,),  # noqa: E501
-            'identity_id': (str,),  # noqa: E501
+            'api_key_owner': (str,),  # noqa: E501
+            'api_key_id': (str,),  # noqa: E501
             'event_name': (str,),  # noqa: E501
             'status_code': (str,),  # noqa: E501
         }
@@ -100,8 +100,8 @@ class AuditLog(ModelNormal):
         'message_id': 'messageId',  # noqa: E501
         'publish_time': 'publishTime',  # noqa: E501
         'account_id': 'accountId',  # noqa: E501
-        'principal_id': 'principalId',  # noqa: E501
-        'identity_id': 'identityId',  # noqa: E501
+        'api_key_owner': 'apiKeyOwner',  # noqa: E501
+        'api_key_id': 'apiKeyId',  # noqa: E501
         'event_name': 'eventName',  # noqa: E501
         'status_code': 'statusCode',  # noqa: E501
     }
@@ -113,15 +113,15 @@ class AuditLog(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, message_id, publish_time, account_id, principal_id, identity_id, event_name, status_code, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, message_id, publish_time, account_id, api_key_owner, api_key_id, event_name, status_code, *args, **kwargs):  # noqa: E501
         """AuditLog - a model defined in OpenAPI
 
         Args:
             message_id (str):
             publish_time (str):
             account_id (str):
-            principal_id (str):
-            identity_id (str):
+            api_key_owner (str):
+            api_key_id (str):
             event_name (str):
             status_code (str):
 
@@ -186,8 +186,8 @@ class AuditLog(ModelNormal):
         self.message_id = message_id
         self.publish_time = publish_time
         self.account_id = account_id
-        self.principal_id = principal_id
-        self.identity_id = identity_id
+        self.api_key_owner = api_key_owner
+        self.api_key_id = api_key_id
         self.event_name = event_name
         self.status_code = status_code
         for var_name, var_value in kwargs.items():
@@ -210,15 +210,15 @@ class AuditLog(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, message_id, publish_time, account_id, principal_id, identity_id, event_name, status_code, *args, **kwargs):  # noqa: E501
+    def __init__(self, message_id, publish_time, account_id, api_key_owner, api_key_id, event_name, status_code, *args, **kwargs):  # noqa: E501
         """AuditLog - a model defined in OpenAPI
 
         Args:
             message_id (str):
             publish_time (str):
             account_id (str):
-            principal_id (str):
-            identity_id (str):
+            api_key_owner (str):
+            api_key_id (str):
             event_name (str):
             status_code (str):
 
@@ -281,8 +281,8 @@ class AuditLog(ModelNormal):
         self.message_id = message_id
         self.publish_time = publish_time
         self.account_id = account_id
-        self.principal_id = principal_id
-        self.identity_id = identity_id
+        self.api_key_owner = api_key_owner
+        self.api_key_id = api_key_id
         self.event_name = event_name
         self.status_code = status_code
         for var_name, var_value in kwargs.items():

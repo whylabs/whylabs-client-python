@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**generate_api_key**](ApiKeyApi.md#generate_api_key) | **POST** /v1/api-key | Generate an API key for a user.
 [**list_api_key_metadata**](ApiKeyApi.md#list_api_key_metadata) | **GET** /v1/api-key | List API key metadata for a given organization
 [**revoke_api_key**](ApiKeyApi.md#revoke_api_key) | **DELETE** /v0/organizations/{org_id}/api-key | Revoke the given API Key, removing its ability to access WhyLabs systems
+[**validate_api_key**](ApiKeyApi.md#validate_api_key) | **GET** /v1/api-key/validate | Validate API key access
 
 
 # **create_api_key**
@@ -228,13 +229,14 @@ with whylabs_client.ApiClient(configuration) as api_client:
     scopes = [
         ":user",
     ] # [str], none_type |  (optional)
+    resource_id = "model-123" # str, none_type |  (optional)
     alias = "MLApplicationName" # str, none_type |  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # Generate an API key for a user.
-        api_response = api_instance.generate_api_key(expiration_time=expiration_time, scopes=scopes, alias=alias)
+        api_response = api_instance.generate_api_key(expiration_time=expiration_time, scopes=scopes, resource_id=resource_id, alias=alias)
         pprint(api_response)
     except whylabs_client.ApiException as e:
         print("Exception when calling ApiKeyApi->generate_api_key: %s\n" % e)
@@ -247,6 +249,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **expiration_time** | **int, none_type**|  | [optional]
  **scopes** | **[str], none_type**|  | [optional]
+ **resource_id** | **str, none_type**|  | [optional]
  **alias** | **str, none_type**|  | [optional]
 
 ### Return type
@@ -424,6 +427,80 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Revoked API Key&#39;s metadata |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_api_key**
+> Response validate_api_key()
+
+Validate API key access
+
+Returns the status code 200 if the API key is valid, 403 if the API key is invalid
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import api_key_api
+from whylabs_client.model.response import Response
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = api_key_api.ApiKeyApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Validate API key access
+        api_response = api_instance.validate_api_key()
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ApiKeyApi->validate_api_key: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | ValidateApiKey 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

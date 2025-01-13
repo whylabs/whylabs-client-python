@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **metric** | **str** |  | 
 **column** | **str, none_type** |  | [optional] 
 **segment** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
+**analyzer_id** | **str, none_type** | Analyzer ID, optional and only used for monitor metrics like anomaly_count | [optional] 
+**monitor_id** | **str, none_type** | Monitor ID, optional and only used for monitor metrics like anomaly_count | [optional] 
 **granularity** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

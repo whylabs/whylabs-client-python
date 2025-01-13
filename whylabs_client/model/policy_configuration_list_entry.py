@@ -87,6 +87,7 @@ class PolicyConfigurationListEntry(ModelNormal):
             'version': (str,),  # noqa: E501
             'creation_time': (datetime,),  # noqa: E501
             'label': (str, none_type,),  # noqa: E501
+            'policy': (str, none_type,),  # noqa: E501
             'author': (str, none_type,),  # noqa: E501
             'identity': (str, none_type,),  # noqa: E501
             'source': (str, none_type,),  # noqa: E501
@@ -103,6 +104,7 @@ class PolicyConfigurationListEntry(ModelNormal):
         'version': 'version',  # noqa: E501
         'creation_time': 'creationTime',  # noqa: E501
         'label': 'label',  # noqa: E501
+        'policy': 'policy',  # noqa: E501
         'author': 'author',  # noqa: E501
         'identity': 'identity',  # noqa: E501
         'source': 'source',  # noqa: E501
@@ -156,6 +158,7 @@ class PolicyConfigurationListEntry(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             label (str, none_type): [optional]  # noqa: E501
+            policy (str, none_type): [optional]  # noqa: E501
             author (str, none_type): [optional]  # noqa: E501
             identity (str, none_type): [optional]  # noqa: E501
             source (str, none_type): [optional]  # noqa: E501
@@ -251,6 +254,7 @@ class PolicyConfigurationListEntry(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             label (str, none_type): [optional]  # noqa: E501
+            policy (str, none_type): [optional]  # noqa: E501
             author (str, none_type): [optional]  # noqa: E501
             identity (str, none_type): [optional]  # noqa: E501
             source (str, none_type): [optional]  # noqa: E501
