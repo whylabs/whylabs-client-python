@@ -12,9 +12,8 @@
 from whylabs_client.model.aws_marketplace_metadata import AWSMarketplaceMetadata
 from whylabs_client.model.account_organization import AccountOrganization
 from whylabs_client.model.account_user import AccountUser
+from whylabs_client.model.acknowledge_notification_request import AcknowledgeNotificationRequest
 from whylabs_client.model.action_type import ActionType
-from whylabs_client.model.activate_azure_subscription_request import ActivateAzureSubscriptionRequest
-from whylabs_client.model.activate_azure_subscription_response import ActivateAzureSubscriptionResponse
 from whylabs_client.model.add_membership_request import AddMembershipRequest
 from whylabs_client.model.add_policy_response import AddPolicyResponse
 from whylabs_client.model.admin_report_response import AdminReportResponse
@@ -39,8 +38,6 @@ from whylabs_client.model.asset_tag_entry import AssetTagEntry
 from whylabs_client.model.async_log_response import AsyncLogResponse
 from whylabs_client.model.audit_content import AuditContent
 from whylabs_client.model.audit_log import AuditLog
-from whylabs_client.model.azure_marketplace_contact_payload import AzureMarketplaceContactPayload
-from whylabs_client.model.azure_marketplace_subscription_details import AzureMarketplaceSubscriptionDetails
 from whylabs_client.model.batch_log_reference_request import BatchLogReferenceRequest
 from whylabs_client.model.batch_log_session_reference_response import BatchLogSessionReferenceResponse
 from whylabs_client.model.batches_summary import BatchesSummary
@@ -70,13 +67,10 @@ from whylabs_client.model.diagnosis_request import DiagnosisRequest
 from whylabs_client.model.diagnostic_data_summary import DiagnosticDataSummary
 from whylabs_client.model.diagnostic_interval_request import DiagnosticIntervalRequest
 from whylabs_client.model.diagnostic_interval_response import DiagnosticIntervalResponse
-from whylabs_client.model.diff_result_category import DiffResultCategory
-from whylabs_client.model.diff_value import DiffValue
 from whylabs_client.model.email_notification_action import EmailNotificationAction
 from whylabs_client.model.embeddings_feedback_request import EmbeddingsFeedbackRequest
 from whylabs_client.model.embeddings_feedback_signal import EmbeddingsFeedbackSignal
 from whylabs_client.model.entity_schema import EntitySchema
-from whylabs_client.model.entity_schema_backfill_report import EntitySchemaBackfillReport
 from whylabs_client.model.entity_weight_record import EntityWeightRecord
 from whylabs_client.model.entity_weight_record_metadata import EntityWeightRecordMetadata
 from whylabs_client.model.error_status import ErrorStatus
@@ -100,6 +94,7 @@ from whylabs_client.model.get_session_response import GetSessionResponse
 from whylabs_client.model.granularity import Granularity
 from whylabs_client.model.ip_allow_list_configuration import IpAllowListConfiguration
 from whylabs_client.model.ip_allow_list_organization_configuration import IpAllowListOrganizationConfiguration
+from whylabs_client.model.key_value_tag import KeyValueTag
 from whylabs_client.model.list_assets_response import ListAssetsResponse
 from whylabs_client.model.list_models_response import ListModelsResponse
 from whylabs_client.model.list_organization_memberships_response import ListOrganizationMembershipsResponse
@@ -110,7 +105,6 @@ from whylabs_client.model.log_reference_response import LogReferenceResponse
 from whylabs_client.model.log_response import LogResponse
 from whylabs_client.model.log_session_reference_response import LogSessionReferenceResponse
 from whylabs_client.model.log_transaction_metadata import LogTransactionMetadata
-from whylabs_client.model.map_diff_result import MapDiffResult
 from whylabs_client.model.marketplace_dimensions import MarketplaceDimensions
 from whylabs_client.model.member import Member
 from whylabs_client.model.membership import Membership
@@ -122,7 +116,6 @@ from whylabs_client.model.metric_timeseries_request import MetricTimeseriesReque
 from whylabs_client.model.metric_timeseries_response import MetricTimeseriesResponse
 from whylabs_client.model.model_metadata_response import ModelMetadataResponse
 from whylabs_client.model.model_type import ModelType
-from whylabs_client.model.modified_diff import ModifiedDiff
 from whylabs_client.model.monitor_config_version import MonitorConfigVersion
 from whylabs_client.model.named_count import NamedCount
 from whylabs_client.model.named_metric_schema import NamedMetricSchema
@@ -149,6 +142,7 @@ from whylabs_client.model.quality_issue_record import QualityIssueRecord
 from whylabs_client.model.reference_profile_item_response import ReferenceProfileItemResponse
 from whylabs_client.model.reinfer_entity_schema_request import ReinferEntitySchemaRequest
 from whylabs_client.model.remove_membership_request import RemoveMembershipRequest
+from whylabs_client.model.resource_tag import ResourceTag
 from whylabs_client.model.response import Response
 from whylabs_client.model.result_record import ResultRecord
 from whylabs_client.model.revoke_user_session_request import RevokeUserSessionRequest
@@ -183,7 +177,4 @@ from whylabs_client.model.user import User
 from whylabs_client.model.user_api_key import UserApiKey
 from whylabs_client.model.user_api_key_response import UserApiKeyResponse
 from whylabs_client.model.validate_user_session_response import ValidateUserSessionResponse
-from whylabs_client.model.validation_result import ValidationResult
-from whylabs_client.model.validation_result_type import ValidationResultType
-from whylabs_client.model.validation_results import ValidationResults
 from whylabs_client.model.webhook_notification_action import WebhookNotificationAction

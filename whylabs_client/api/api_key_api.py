@@ -23,6 +23,7 @@ from whylabs_client.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from whylabs_client.model.list_user_api_keys import ListUserApiKeys
+from whylabs_client.model.response import Response
 from whylabs_client.model.user_api_key import UserApiKey
 
 
@@ -179,12 +180,14 @@ class ApiKeyApi(object):
                 'all': [
                     'expiration_time',
                     'scopes',
+                    'resource_id',
                     'alias',
                 ],
                 'required': [],
                 'nullable': [
                     'expiration_time',
                     'scopes',
+                    'resource_id',
                     'alias',
                 ],
                 'enum': [
@@ -202,17 +205,21 @@ class ApiKeyApi(object):
                         (int, none_type,),
                     'scopes':
                         ([str], none_type,),
+                    'resource_id':
+                        (str, none_type,),
                     'alias':
                         (str, none_type,),
                 },
                 'attribute_map': {
                     'expiration_time': 'expiration_time',
                     'scopes': 'scopes',
+                    'resource_id': 'resource_id',
                     'alias': 'alias',
                 },
                 'location_map': {
                     'expiration_time': 'query',
                     'scopes': 'query',
+                    'resource_id': 'query',
                     'alias': 'query',
                 },
                 'collection_format_map': {
@@ -322,6 +329,50 @@ class ApiKeyApi(object):
                     'org_id': 'path',
                     'user_id': 'query',
                     'key_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.validate_api_key_endpoint = _Endpoint(
+            settings={
+                'response_type': (Response,),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v1/api-key/validate',
+                'operation_id': 'validate_api_key',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
                 },
                 'collection_format_map': {
                 }
@@ -501,6 +552,7 @@ class ApiKeyApi(object):
         Keyword Args:
             expiration_time (int, none_type): [optional]
             scopes ([str], none_type): [optional]
+            resource_id (str, none_type): [optional]
             alias (str, none_type): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -697,4 +749,70 @@ class ApiKeyApi(object):
         kwargs['key_id'] = \
             key_id
         return self.revoke_api_key_endpoint.call_with_http_info(**kwargs)
+
+    def validate_api_key(
+        self,
+        **kwargs
+    ):
+        """Validate API key access  # noqa: E501
+
+        Returns the status code 200 if the API key is valid, 403 if the API key is invalid  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.validate_api_key(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            Response
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.validate_api_key_endpoint.call_with_http_info(**kwargs)
 

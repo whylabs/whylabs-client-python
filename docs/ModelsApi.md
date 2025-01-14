@@ -4,23 +4,113 @@ All URIs are relative to *https://api.whylabsapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_resource_tag**](ModelsApi.md#add_resource_tag) | **POST** /v0/organizations/{org_id}/models/{dataset_id}/resource-tag | Add a resource tag to a dataset
 [**create_model**](ModelsApi.md#create_model) | **POST** /v0/organizations/{org_id}/models | Create a model with a given name and a time period
 [**deactivate_model**](ModelsApi.md#deactivate_model) | **DELETE** /v0/organizations/{org_id}/models/{model_id} | Mark a model as inactive
 [**delete_entity_schema**](ModelsApi.md#delete_entity_schema) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema | Delete the entity schema config for a given dataset.
 [**delete_entity_schema_column**](ModelsApi.md#delete_entity_schema_column) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Delete the entity schema of a single column for a given dataset.
 [**delete_entity_schema_metric**](ModelsApi.md#delete_entity_schema_metric) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_name} | Delete the schema of a single metric for a given dataset.
+[**delete_resource_tag**](ModelsApi.md#delete_resource_tag) | **DELETE** /v0/organizations/{org_id}/models/{dataset_id}/resource-tag | Delete a resource tag to a dataset.
 [**get_entity_schema**](ModelsApi.md#get_entity_schema) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema | Get the entity schema config for a given dataset.
 [**get_entity_schema_column**](ModelsApi.md#get_entity_schema_column) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Get the entity schema of a single column for a given dataset.
 [**get_model**](ModelsApi.md#get_model) | **GET** /v0/organizations/{org_id}/models/{model_id} | Get a model metadata
 [**get_named_metric_schemas**](ModelsApi.md#get_named_metric_schemas) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/schema/metrics | Get all of the named metrics for a given dataset.
 [**list_models**](ModelsApi.md#list_models) | **GET** /v0/organizations/{org_id}/models | Get a list of all of the model ids for an organization.
+[**list_resource_tags**](ModelsApi.md#list_resource_tags) | **GET** /v0/organizations/{org_id}/models/{dataset_id}/resource-tag/list | List resource tags for a dataset.
 [**put_entity_schema**](ModelsApi.md#put_entity_schema) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema | Save the entity schema config for a given dataset.
 [**put_entity_schema_column**](ModelsApi.md#put_entity_schema_column) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/column/{column_id} | Save the entity schema of a single column for a given dataset.
 [**put_entity_schema_metric**](ModelsApi.md#put_entity_schema_metric) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric | Save the schema of a single metric for a given dataset.
 [**put_named_metric_schema**](ModelsApi.md#put_named_metric_schema) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/metric/{metric_name} | Save the schema of a single named metric for a given dataset.
 [**reinfer_entity_schema**](ModelsApi.md#reinfer_entity_schema) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/schema/reinfer | Reinfers the entity schema config for a given dataset.
 [**update_model**](ModelsApi.md#update_model) | **PUT** /v0/organizations/{org_id}/models/{model_id} | Update a model&#39;s metadata
+[**update_resource_tag**](ModelsApi.md#update_resource_tag) | **PUT** /v0/organizations/{org_id}/models/{dataset_id}/resource-tag | Update a resource tag to a dataset.
 
+
+# **add_resource_tag**
+> Response add_resource_tag(org_id, dataset_id, resource_tag)
+
+Add a resource tag to a dataset
+
+Add a resource tag to a dataset
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.resource_tag import ResourceTag
+from whylabs_client.model.response import Response
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+    resource_tag = ResourceTag(
+        key="key_example",
+        value="value_example",
+    ) # ResourceTag | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Add a resource tag to a dataset
+        api_response = api_instance.add_resource_tag(org_id, dataset_id, resource_tag)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->add_resource_tag: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+ **resource_tag** | [**ResourceTag**](ResourceTag.md)|  |
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | AddResourceTag 200 response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_model**
 > ModelMetadataResponse create_model(org_id, model_name, time_period)
@@ -443,6 +533,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_resource_tag**
+> Response delete_resource_tag(org_id, dataset_id, resource_tag)
+
+Delete a resource tag to a dataset.
+
+Delete a resource tag to a dataset.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.resource_tag import ResourceTag
+from whylabs_client.model.response import Response
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+    resource_tag = ResourceTag(
+        key="key_example",
+        value="value_example",
+    ) # ResourceTag | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete a resource tag to a dataset.
+        api_response = api_instance.delete_resource_tag(org_id, dataset_id, resource_tag)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->delete_resource_tag: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+ **resource_tag** | [**ResourceTag**](ResourceTag.md)|  |
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | DeleteResourceTag 200 response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_entity_schema**
 > EntitySchema get_entity_schema(org_id, dataset_id)
 
@@ -840,6 +1016,86 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A list of model summary items |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_resource_tags**
+> [ResourceTag] list_resource_tags(org_id, dataset_id)
+
+List resource tags for a dataset.
+
+List resource tags for a dataset.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.resource_tag import ResourceTag
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # List resource tags for a dataset.
+        api_response = api_instance.list_resource_tags(org_id, dataset_id)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->list_resource_tags: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+
+### Return type
+
+[**[ResourceTag]**](ResourceTag.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | ListResourceTags 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1398,6 +1654,92 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The \\[ModelMetadataResponse\\] if operation succeeds |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_resource_tag**
+> Response update_resource_tag(org_id, dataset_id, resource_tag)
+
+Update a resource tag to a dataset.
+
+Update a resource tag to a dataset.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import time
+import whylabs_client
+from whylabs_client.api import models_api
+from whylabs_client.model.resource_tag import ResourceTag
+from whylabs_client.model.response import Response
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.whylabsapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = whylabs_client.Configuration(
+    host = "https://api.whylabsapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with whylabs_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = models_api.ModelsApi(api_client)
+    org_id = "org-123" # str | 
+    dataset_id = "model-123" # str | 
+    resource_tag = ResourceTag(
+        key="key_example",
+        value="value_example",
+    ) # ResourceTag | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Update a resource tag to a dataset.
+        api_response = api_instance.update_resource_tag(org_id, dataset_id, resource_tag)
+        pprint(api_response)
+    except whylabs_client.ApiException as e:
+        print("Exception when calling ModelsApi->update_resource_tag: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_id** | **str**|  |
+ **dataset_id** | **str**|  |
+ **resource_tag** | [**ResourceTag**](ResourceTag.md)|  |
+
+### Return type
+
+[**Response**](Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | UpdateResourceTag 200 response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -90,6 +90,7 @@ class UserApiKey(ModelNormal):
             'expiration_time': (str, none_type,),  # noqa: E501
             'last_used_time': (str, none_type,),  # noqa: E501
             'scopes': ([str], none_type,),  # noqa: E501
+            'resource_id': (str, none_type,),  # noqa: E501
             'alias': (str, none_type,),  # noqa: E501
             'revoked': (bool, none_type,),  # noqa: E501
         }
@@ -108,6 +109,7 @@ class UserApiKey(ModelNormal):
         'expiration_time': 'expirationTime',  # noqa: E501
         'last_used_time': 'lastUsedTime',  # noqa: E501
         'scopes': 'scopes',  # noqa: E501
+        'resource_id': 'resourceId',  # noqa: E501
         'alias': 'alias',  # noqa: E501
         'revoked': 'revoked',  # noqa: E501
     }
@@ -163,6 +165,7 @@ class UserApiKey(ModelNormal):
             expiration_time (str, none_type): Expiration time in human readable format. [optional]  # noqa: E501
             last_used_time (str, none_type): Last used time in human readable format. [optional]  # noqa: E501
             scopes ([str], none_type): Scope of the key. [optional]  # noqa: E501
+            resource_id (str, none_type): Restrict write data scope to this resource id. [optional]  # noqa: E501
             alias (str, none_type): Human-readable alias for the key. [optional]  # noqa: E501
             revoked (bool, none_type): Whether the key has been revoked. [optional]  # noqa: E501
         """
@@ -260,6 +263,7 @@ class UserApiKey(ModelNormal):
             expiration_time (str, none_type): Expiration time in human readable format. [optional]  # noqa: E501
             last_used_time (str, none_type): Last used time in human readable format. [optional]  # noqa: E501
             scopes ([str], none_type): Scope of the key. [optional]  # noqa: E501
+            resource_id (str, none_type): Restrict write data scope to this resource id. [optional]  # noqa: E501
             alias (str, none_type): Human-readable alias for the key. [optional]  # noqa: E501
             revoked (bool, none_type): Whether the key has been revoked. [optional]  # noqa: E501
         """

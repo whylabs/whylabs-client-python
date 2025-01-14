@@ -954,7 +954,7 @@ class DatasetProfileApi(object):
     ):
         """Deletes a set of dataset profiles  # noqa: E501
 
-        Deletes a set of dataset profiles. Returns false if scheduling deletion encountered some error.         Optionally deletes analyzer results for the same time range.            # noqa: E501
+        Deletes a set of dataset profiles. Returns false if scheduling deletion encountered some error.         Deletion should usually occur within 1 hour of the request.          Use the [ListDeleteDatasetProfilesRequests](#DatasetProfile/ListDeleteDatasetProfilesRequests)          API to check the status of the deletion request.          Optionally this request also deletes analyzer results between the specified start and end timestamps.             The column_name and before_upload_timestamp scopes are NOT applied to analyzer results deletion, so         make sure you specify a start and end timestamp if setting delete_analyzer_results to true unless         you want to delete all results.           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -968,9 +968,9 @@ class DatasetProfileApi(object):
         Keyword Args:
             profile_start_timestamp (int, none_type): Optional, scope deleting profiles from and more recent than the timestamp. [optional]
             profile_end_timestamp (int, none_type): Optional, scope deleting profiles older than the timestamp. [optional]
-            before_upload_timestamp (int, none_type): Optional, scope deleting profiles uploaded prior to the timestamp. [optional]
-            delete_analyzer_results (bool, none_type): [optional]
-            column_name (str, none_type): [optional]
+            before_upload_timestamp (int, none_type): Optional, scope deleting profiles uploaded on or prior to the timestamp. [optional]
+            delete_analyzer_results (bool, none_type): Optional, delete analyzer results for the time range between the start and end timestamp.. [optional]
+            column_name (str, none_type): Optional, scope deleting profiles for a specific column. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

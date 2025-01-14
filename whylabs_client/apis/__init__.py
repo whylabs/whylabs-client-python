@@ -16,6 +16,7 @@
 # Import APIs into API package:
 from whylabs_client.api.api_key_api import ApiKeyApi
 from whylabs_client.api.assets_api import AssetsApi
+from whylabs_client.api.audit_logs_api import AuditLogsApi
 from whylabs_client.api.data_api import DataApi
 from whylabs_client.api.dataset_profile_api import DatasetProfileApi
 from whylabs_client.api.dataset_metadata_api import DatasetMetadataApi

@@ -170,6 +170,8 @@ with whylabs_client.ApiClient(configuration) as api_client:
         column="column_example",
         metric="metric_example",
         segment=None,
+        analyzer_id="analyzer_id_example",
+        monitor_id="monitor_id_example",
         granularity=None,
     ) # MetricTimeseriesRequest | 
 

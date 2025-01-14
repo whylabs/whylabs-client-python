@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **creation_time** | **int** |  | 
 **time_period** | **str** |  | 
 **model_category** | **str** |  | 
+**tags** | [**[KeyValueTag]**](KeyValueTag.md) |  | 
 **model_type** | **str, none_type** |  | [optional] 
 **active** | **bool, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

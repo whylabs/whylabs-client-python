@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **expiration_time** | **str, none_type** | Expiration time in human readable format | [optional] 
 **last_used_time** | **str, none_type** | Last used time in human readable format | [optional] 
 **scopes** | **[str], none_type** | Scope of the key | [optional] 
+**resource_id** | **str, none_type** | Restrict write data scope to this resource id | [optional] 
 **alias** | **str, none_type** | Human-readable alias for the key | [optional] 
 **revoked** | **bool, none_type** | Whether the key has been revoked | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

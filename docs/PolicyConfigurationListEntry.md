@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **version** | **str** |  | 
 **creation_time** | **datetime** |  | 
 **label** | **str, none_type** |  | [optional] 
+**policy** | **str, none_type** |  | [optional] 
 **author** | **str, none_type** |  | [optional] 
 **identity** | **str, none_type** |  | [optional] 
 **source** | **str, none_type** |  | [optional] 

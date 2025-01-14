@@ -23,6 +23,7 @@ from whylabs_client.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from whylabs_client.model.add_policy_response import AddPolicyResponse
+from whylabs_client.model.policy_configuration_list_entry import PolicyConfigurationListEntry
 
 
 class PolicyApi(object):
@@ -100,6 +101,62 @@ class PolicyApi(object):
             headers_map={
                 'accept': [
                     'application/x-yaml'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_organization_policy_configurations_endpoint = _Endpoint(
+            settings={
+                'response_type': ([PolicyConfigurationListEntry],),
+                'auth': [
+                    'ApiKeyAuth'
+                ],
+                'endpoint_path': '/v1/policy/list',
+                'operation_id': 'list_organization_policy_configurations',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'include_policy',
+                    'schema_version',
+                ],
+                'required': [],
+                'nullable': [
+                    'include_policy',
+                    'schema_version',
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'include_policy':
+                        (bool, none_type,),
+                    'schema_version':
+                        (str, none_type,),
+                },
+                'attribute_map': {
+                    'include_policy': 'include_policy',
+                    'schema_version': 'schema_version',
+                },
+                'location_map': {
+                    'include_policy': 'query',
+                    'schema_version': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
                 ],
                 'content_type': [],
             },
@@ -243,6 +300,74 @@ class PolicyApi(object):
         kwargs['dataset_id'] = \
             dataset_id
         return self.get_policy_endpoint.call_with_http_info(**kwargs)
+
+    def list_organization_policy_configurations(
+        self,
+        **kwargs
+    ):
+        """Endpoint to get the policy configuration available for an organization  # noqa: E501
+
+        Endpoint to get the policy configuration available for an organization  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_organization_policy_configurations(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            include_policy (bool, none_type): [optional]
+            schema_version (str, none_type): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            [PolicyConfigurationListEntry]
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.list_organization_policy_configurations_endpoint.call_with_http_info(**kwargs)
 
     def put_policy(
         self,
